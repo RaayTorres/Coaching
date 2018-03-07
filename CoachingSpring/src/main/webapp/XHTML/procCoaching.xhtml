@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">	
+			<h:form id="formDialog">
+				<p:messages id="msg" />
+				<p:growl id="men"/>
+					<p:panel id="panelProcCoaching" header="ProcCoaching">							
+						<h:panelGrid columns="2" id="panelGrid" >
+												 	<h:outputText id="msgIdProc" value="IdProc"/>
+						 	<p:inputText id="txtIdProc" binding="#{procCoachingView.txtIdProc}">
+						 		<p:ajax update="panelProcCoaching,msg,panelBotones" listener="#{procCoachingView.listener_txtId}"/>
+						 	</p:inputText>	
+																		
+													<h:outputText id="msgIdTpago" value=" IdTpago"/>
+							<p:inputText id="txtIdTpago" disabled="true" binding="#{procCoachingView.txtIdTpago}"/>
+													<h:outputText id="msgIdCoach_Coach" value=" IdCoach_Coach"/>
+							<p:inputText id="txtIdCoach_Coach" disabled="true" binding="#{procCoachingView.txtIdCoach_Coach}"/>
+													<h:outputText id="msgIdCoachee_Coachee" value=" IdCoachee_Coachee"/>
+							<p:inputText id="txtIdCoachee_Coachee" disabled="true" binding="#{procCoachingView.txtIdCoachee_Coachee}"/>
+													<h:outputText id="msgIdHis_RegContable" value=" IdHis_RegContable"/>
+							<p:inputText id="txtIdHis_RegContable" disabled="true" binding="#{procCoachingView.txtIdHis_RegContable}"/>
+												
+										   </h:panelGrid>
+				</p:panel>
+	   			<p:panel id="panelBotones">
+					<div align="center">					
+						<p:commandButton id="btnSave" binding="#{procCoachingView.btnSave}" disabled="true" value="Save" action="#{procCoachingView.action_save()}" update="panelProcCoaching,msg,panelBotones" />
+						<p:commandButton id="btnDelete" binding="#{procCoachingView.btnDelete}" disabled="true" value="Delete" action="#{procCoachingView.action_delete_master()}" onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}" update="panelProcCoaching,msg,panelBotones" />
+						<p:commandButton id="btnClear" value="Clear" action="#{procCoachingView.action_clear()}" update="panelProcCoaching,msg,panelBotones" />
+					</div>
+				</p:panel>			
+			</h:form>
+  </ui:define>
+</ui:composition>

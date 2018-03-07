@@ -1,0 +1,170 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">		
+
+		  			<h:form id="frm">								  		
+						
+						<p:panel id="panelDataTableCoachee" header="CoacheeData">
+							<p:growl id="men"/>				
+							<p:dataTable value="#{coacheeView.data}" var="coachee"
+								paginator="true" rows="5">
+																										<p:column filterBy="#{coachee.idCoachee}" sortBy="#{coachee.idCoachee}" >
+										 <f:facet name="header">
+										<h:outputText value="idCoachee"/>
+										</f:facet>
+										 <h:outputText value="#{coachee.idCoachee}"/>
+										 </p:column>
+			                    																									
+										<p:column filterBy="#{coachee.apellido}" sortBy="#{coachee.apellido}" >
+										 <f:facet name="header">
+										<h:outputText value="Apellido"/>
+										</f:facet>
+										 <h:outputText value="#{coachee.apellido}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{coachee.celular}" sortBy="#{coachee.celular}" >
+										 <f:facet name="header">
+										<h:outputText value="Celular"/>
+										</f:facet>
+										 <h:outputText value="#{coachee.celular}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{coachee.correo}" sortBy="#{coachee.correo}" >
+										 <f:facet name="header">
+										<h:outputText value="Correo"/>
+										</f:facet>
+										 <h:outputText value="#{coachee.correo}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{coachee.direccion}" sortBy="#{coachee.direccion}" >
+										 <f:facet name="header">
+										<h:outputText value="Direccion"/>
+										</f:facet>
+										 <h:outputText value="#{coachee.direccion}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{coachee.foto}" sortBy="#{coachee.foto}" >
+										 <f:facet name="header">
+										<h:outputText value="Foto"/>
+										</f:facet>
+										 <h:outputText value="#{coachee.foto}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{coachee.hobbies}" sortBy="#{coachee.hobbies}" >
+										 <f:facet name="header">
+										<h:outputText value="Hobbies"/>
+										</f:facet>
+										 <h:outputText value="#{coachee.hobbies}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{coachee.identificacion}" sortBy="#{coachee.identificacion}" >
+										 <f:facet name="header">
+										<h:outputText value="Identificacion"/>
+										</f:facet>
+										 <h:outputText value="#{coachee.identificacion}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{coachee.nombre}" sortBy="#{coachee.nombre}" >
+										 <f:facet name="header">
+										<h:outputText value="Nombre"/>
+										</f:facet>
+										 <h:outputText value="#{coachee.nombre}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{coachee.telefono}" sortBy="#{coachee.telefono}" >
+										 <f:facet name="header">
+										<h:outputText value="Telefono"/>
+										</f:facet>
+										 <h:outputText value="#{coachee.telefono}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{coachee.idEstado_Estado}" sortBy="#{coachee.idEstado_Estado}" >
+										 <f:facet name="header">
+										<h:outputText value="IdEstado_Estado"/>
+										</f:facet>
+										 <h:outputText value="#{coachee.idEstado_Estado}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{coachee.idDoc_TipoDocumento}" sortBy="#{coachee.idDoc_TipoDocumento}" >
+										 <f:facet name="header">
+										<h:outputText value="IdDoc_TipoDocumento"/>
+										</f:facet>
+										 <h:outputText value="#{coachee.idDoc_TipoDocumento}"/>
+										</p:column>   
+			                    			                    
+								<p:column headerText="Options">
+									<p:commandButton id="btnEdit" icon="ui-icon-pencil"
+										update=":dialogCoachee"
+										actionListener="#{coacheeView.action_edit}">
+										<f:attribute name="selectedCoachee" value="#{coachee}" />
+									</p:commandButton>
+									<p:commandButton id="btnDelete"									
+										title="Delete" actionListener="#{coacheeView.action_delete_datatable}"
+										onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}"
+										icon="ui-icon-trash" update="@form">
+										<f:attribute name="selectedCoachee" value="#{coachee}" />
+									</p:commandButton>
+								</p:column>									                    
+							</p:dataTable>	
+						</p:panel>
+						<p:panel id="panelBoton">
+							<div align="center">
+								<p:commandButton id="btnNew" value="New"
+									action="#{coacheeView.action_new()}" update=":dialogCoachee" />
+							</div>
+						</p:panel>						
+		   			</h:form>
+					<p:dialog id="dialogCoachee" appendTo="@(body)" draggable="true"
+						closable="false" visible="#{coacheeView.showDialog}" resizable="false"
+						modal="true" width="500">
+						<h:form id="formDialog">
+							<p:messages id="msg" />
+							<p:panel id="panelCoachee" header="Coachee">							
+							    <h:panelGrid columns="2" id="panelGrid" >
+																		 <h:outputText id="msgIdCoachee" value="IdCoachee"/>
+									 <p:inputText id="txtIdCoachee" binding="#{coacheeView.txtIdCoachee}">
+									 <p:ajax update=":dialogCoachee" listener="#{coacheeView.listener_txtId}"/>
+									 </p:inputText>	
+																											
+																		<h:outputText id="msgApellido" value=" Apellido"/>
+									<p:inputText id="txtApellido" disabled="true" binding="#{coacheeView.txtApellido}"/>
+																		<h:outputText id="msgCelular" value=" Celular"/>
+									<p:inputText id="txtCelular" disabled="true" binding="#{coacheeView.txtCelular}"/>
+																		<h:outputText id="msgCorreo" value=" Correo"/>
+									<p:inputText id="txtCorreo" disabled="true" binding="#{coacheeView.txtCorreo}"/>
+																		<h:outputText id="msgDireccion" value=" Direccion"/>
+									<p:inputText id="txtDireccion" disabled="true" binding="#{coacheeView.txtDireccion}"/>
+																		<h:outputText id="msgFoto" value=" Foto"/>
+									<p:inputText id="txtFoto" disabled="true" binding="#{coacheeView.txtFoto}"/>
+																		<h:outputText id="msgHobbies" value=" Hobbies"/>
+									<p:inputText id="txtHobbies" disabled="true" binding="#{coacheeView.txtHobbies}"/>
+																		<h:outputText id="msgIdentificacion" value=" Identificacion"/>
+									<p:inputText id="txtIdentificacion" disabled="true" binding="#{coacheeView.txtIdentificacion}"/>
+																		<h:outputText id="msgNombre" value=" Nombre"/>
+									<p:inputText id="txtNombre" disabled="true" binding="#{coacheeView.txtNombre}"/>
+																		<h:outputText id="msgTelefono" value=" Telefono"/>
+									<p:inputText id="txtTelefono" disabled="true" binding="#{coacheeView.txtTelefono}"/>
+																		<h:outputText id="msgIdEstado_Estado" value=" IdEstado_Estado"/>
+									<p:inputText id="txtIdEstado_Estado" disabled="true" binding="#{coacheeView.txtIdEstado_Estado}"/>
+																		<h:outputText id="msgIdDoc_TipoDocumento" value=" IdDoc_TipoDocumento"/>
+									<p:inputText id="txtIdDoc_TipoDocumento" disabled="true" binding="#{coacheeView.txtIdDoc_TipoDocumento}"/>
+																		
+																    </h:panelGrid>
+							</p:panel>						   
+							<p:panel id="panelBotones">
+								<div align="center">					
+									<p:commandButton id="btnSave" binding="#{coacheeView.btnSave}" value="Save" action="#{coacheeView.action_save()}" update=":dialogCoachee :frm:panelDataTableCoachee" />
+									<p:commandButton id="btnClear" value="Clear" action="#{coacheeView.action_clear()}" update=":dialogCoachee" />
+									<p:commandButton id="btnExit" value="Exit" action="#{coacheeView.action_closeDialog()}" update=":dialogCoachee" />
+								</div>
+				</p:panel>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
+

@@ -1,0 +1,164 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">		
+
+		  			<h:form id="frm">								  		
+						
+						<p:panel id="panelDataTableSesCoaching" header="SesCoachingData">
+							<p:growl id="men"/>				
+							<p:dataTable value="#{sesCoachingView.data}" var="sesCoaching"
+								paginator="true" rows="5">
+																										<p:column filterBy="#{sesCoaching.idSesi}" sortBy="#{sesCoaching.idSesi}" >
+										 <f:facet name="header">
+										<h:outputText value="idSesi"/>
+										</f:facet>
+										 <h:outputText value="#{sesCoaching.idSesi}"/>
+										 </p:column>
+			                    																									
+										<p:column filterBy="#{sesCoaching.accion}" sortBy="#{sesCoaching.accion}" >
+										 <f:facet name="header">
+										<h:outputText value="Accion"/>
+										</f:facet>
+										 <h:outputText value="#{sesCoaching.accion}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{sesCoaching.compromiso}" sortBy="#{sesCoaching.compromiso}" >
+										 <f:facet name="header">
+										<h:outputText value="Compromiso"/>
+										</f:facet>
+										 <h:outputText value="#{sesCoaching.compromiso}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{sesCoaching.fecha}" sortBy="#{sesCoaching.fecha}" >
+										 <f:facet name="header">
+										<h:outputText value="Fecha"/>
+										</f:facet>
+										 <h:outputText value="#{sesCoaching.fecha}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{sesCoaching.focoSesion}" sortBy="#{sesCoaching.focoSesion}" >
+										 <f:facet name="header">
+										<h:outputText value="FocoSesion"/>
+										</f:facet>
+										 <h:outputText value="#{sesCoaching.focoSesion}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{sesCoaching.hora}" sortBy="#{sesCoaching.hora}" >
+										 <f:facet name="header">
+										<h:outputText value="Hora"/>
+										</f:facet>
+										 <h:outputText value="#{sesCoaching.hora}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{sesCoaching.idHis}" sortBy="#{sesCoaching.idHis}" >
+										 <f:facet name="header">
+										<h:outputText value="IdHis"/>
+										</f:facet>
+										 <h:outputText value="#{sesCoaching.idHis}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{sesCoaching.indicador}" sortBy="#{sesCoaching.indicador}" >
+										 <f:facet name="header">
+										<h:outputText value="Indicador"/>
+										</f:facet>
+										 <h:outputText value="#{sesCoaching.indicador}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{sesCoaching.profundidad}" sortBy="#{sesCoaching.profundidad}" >
+										 <f:facet name="header">
+										<h:outputText value="Profundidad"/>
+										</f:facet>
+										 <h:outputText value="#{sesCoaching.profundidad}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{sesCoaching.idEstado_Estado}" sortBy="#{sesCoaching.idEstado_Estado}" >
+										 <f:facet name="header">
+										<h:outputText value="IdEstado_Estado"/>
+										</f:facet>
+										 <h:outputText value="#{sesCoaching.idEstado_Estado}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{sesCoaching.idProc_ProcCoaching}" sortBy="#{sesCoaching.idProc_ProcCoaching}" >
+										 <f:facet name="header">
+										<h:outputText value="IdProc_ProcCoaching"/>
+										</f:facet>
+										 <h:outputText value="#{sesCoaching.idProc_ProcCoaching}"/>
+										</p:column>   
+			                    			                    
+								<p:column headerText="Options">
+									<p:commandButton id="btnEdit" icon="ui-icon-pencil"
+										update=":dialogSesCoaching"
+										actionListener="#{sesCoachingView.action_edit}">
+										<f:attribute name="selectedSesCoaching" value="#{sesCoaching}" />
+									</p:commandButton>
+									<p:commandButton id="btnDelete"									
+										title="Delete" actionListener="#{sesCoachingView.action_delete_datatable}"
+										onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}"
+										icon="ui-icon-trash" update="@form">
+										<f:attribute name="selectedSesCoaching" value="#{sesCoaching}" />
+									</p:commandButton>
+								</p:column>									                    
+							</p:dataTable>	
+						</p:panel>
+						<p:panel id="panelBoton">
+							<div align="center">
+								<p:commandButton id="btnNew" value="New"
+									action="#{sesCoachingView.action_new()}" update=":dialogSesCoaching" />
+							</div>
+						</p:panel>						
+		   			</h:form>
+					<p:dialog id="dialogSesCoaching" appendTo="@(body)" draggable="true"
+						closable="false" visible="#{sesCoachingView.showDialog}" resizable="false"
+						modal="true" width="500">
+						<h:form id="formDialog">
+							<p:messages id="msg" />
+							<p:panel id="panelSesCoaching" header="SesCoaching">							
+							    <h:panelGrid columns="2" id="panelGrid" >
+																		 <h:outputText id="msgIdSesi" value="IdSesi"/>
+									 <p:inputText id="txtIdSesi" binding="#{sesCoachingView.txtIdSesi}">
+									 <p:ajax update=":dialogSesCoaching" listener="#{sesCoachingView.listener_txtId}"/>
+									 </p:inputText>	
+																											
+																		<h:outputText id="msgAccion" value=" Accion"/>
+									<p:inputText id="txtAccion" disabled="true" binding="#{sesCoachingView.txtAccion}"/>
+																		<h:outputText id="msgCompromiso" value=" Compromiso"/>
+									<p:inputText id="txtCompromiso" disabled="true" binding="#{sesCoachingView.txtCompromiso}"/>
+																		<h:outputText id="msgFocoSesion" value=" FocoSesion"/>
+									<p:inputText id="txtFocoSesion" disabled="true" binding="#{sesCoachingView.txtFocoSesion}"/>
+																		<h:outputText id="msgHora" value=" Hora"/>
+									<p:inputText id="txtHora" disabled="true" binding="#{sesCoachingView.txtHora}"/>
+																		<h:outputText id="msgIdHis" value=" IdHis"/>
+									<p:inputText id="txtIdHis" disabled="true" binding="#{sesCoachingView.txtIdHis}"/>
+																		<h:outputText id="msgIndicador" value=" Indicador"/>
+									<p:inputText id="txtIndicador" disabled="true" binding="#{sesCoachingView.txtIndicador}"/>
+																		<h:outputText id="msgProfundidad" value=" Profundidad"/>
+									<p:inputText id="txtProfundidad" disabled="true" binding="#{sesCoachingView.txtProfundidad}"/>
+																		<h:outputText id="msgIdEstado_Estado" value=" IdEstado_Estado"/>
+									<p:inputText id="txtIdEstado_Estado" disabled="true" binding="#{sesCoachingView.txtIdEstado_Estado}"/>
+																		<h:outputText id="msgIdProc_ProcCoaching" value=" IdProc_ProcCoaching"/>
+									<p:inputText id="txtIdProc_ProcCoaching" disabled="true" binding="#{sesCoachingView.txtIdProc_ProcCoaching}"/>
+																		
+																													<h:outputText id="msgFecha" value=" Fecha"/>
+																				<p:calendar showOn="button" navigator="true" locale="en" 
+										binding="#{sesCoachingView.txtFecha}" >
+										<p:ajax event="dateSelect" listener="#{sesCoachingView.listener_txtFecha}"  />
+										</p:calendar>
+																										    </h:panelGrid>
+							</p:panel>						   
+							<p:panel id="panelBotones">
+								<div align="center">					
+									<p:commandButton id="btnSave" binding="#{sesCoachingView.btnSave}" value="Save" action="#{sesCoachingView.action_save()}" update=":dialogSesCoaching :frm:panelDataTableSesCoaching" />
+									<p:commandButton id="btnClear" value="Clear" action="#{sesCoachingView.action_clear()}" update=":dialogSesCoaching" />
+									<p:commandButton id="btnExit" value="Exit" action="#{sesCoachingView.action_closeDialog()}" update=":dialogSesCoaching" />
+								</div>
+				</p:panel>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
+

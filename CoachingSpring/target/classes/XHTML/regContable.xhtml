@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">	
+			<h:form id="formDialog">
+				<p:messages id="msg" />
+				<p:growl id="men"/>
+					<p:panel id="panelRegContable" header="RegContable">							
+						<h:panelGrid columns="2" id="panelGrid" >
+												 	<h:outputText id="msgIdHis" value="IdHis"/>
+						 	<p:inputText id="txtIdHis" binding="#{regContableView.txtIdHis}">
+						 		<p:ajax update="panelRegContable,msg,panelBotones" listener="#{regContableView.listener_txtId}"/>
+						 	</p:inputText>	
+																		
+													<h:outputText id="msgTipo" value=" Tipo"/>
+							<p:inputText id="txtTipo" disabled="true" binding="#{regContableView.txtTipo}"/>
+													<h:outputText id="msgValor" value=" Valor"/>
+							<p:inputText id="txtValor" disabled="true" binding="#{regContableView.txtValor}"/>
+													<h:outputText id="msgIdCoachee_Coachee" value=" IdCoachee_Coachee"/>
+							<p:inputText id="txtIdCoachee_Coachee" disabled="true" binding="#{regContableView.txtIdCoachee_Coachee}"/>
+												
+																				<h:outputText id="msgFechaPago" value=" FechaPago"/>
+														<p:calendar showOn="button" navigator="true" locale="en" 
+							binding="#{regContableView.txtFechaPago}" >
+								<p:ajax event="dateSelect" listener="#{regContableView.listener_txtFechaPago}" />
+							</p:calendar>
+																	   </h:panelGrid>
+				</p:panel>
+	   			<p:panel id="panelBotones">
+					<div align="center">					
+						<p:commandButton id="btnSave" binding="#{regContableView.btnSave}" disabled="true" value="Save" action="#{regContableView.action_save()}" update="panelRegContable,msg,panelBotones" />
+						<p:commandButton id="btnDelete" binding="#{regContableView.btnDelete}" disabled="true" value="Delete" action="#{regContableView.action_delete_master()}" onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}" update="panelRegContable,msg,panelBotones" />
+						<p:commandButton id="btnClear" value="Clear" action="#{regContableView.action_clear()}" update="panelRegContable,msg,panelBotones" />
+					</div>
+				</p:panel>			
+			</h:form>
+  </ui:define>
+</ui:composition>

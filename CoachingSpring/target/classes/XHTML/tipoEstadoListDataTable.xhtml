@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">		
+
+		  			<h:form id="frm">								  		
+						
+						<p:panel id="panelDataTableTipoEstado" header="TipoEstadoData">
+							<p:growl id="men"/>				
+							<p:dataTable value="#{tipoEstadoView.data}" var="tipoEstado"
+								paginator="true" rows="5">
+																										<p:column filterBy="#{tipoEstado.idTestado}" sortBy="#{tipoEstado.idTestado}" >
+										 <f:facet name="header">
+										<h:outputText value="idTestado"/>
+										</f:facet>
+										 <h:outputText value="#{tipoEstado.idTestado}"/>
+										 </p:column>
+			                    																									
+										<p:column filterBy="#{tipoEstado.nombreTipoEstado}" sortBy="#{tipoEstado.nombreTipoEstado}" >
+										 <f:facet name="header">
+										<h:outputText value="NombreTipoEstado"/>
+										</f:facet>
+										 <h:outputText value="#{tipoEstado.nombreTipoEstado}"/>
+										</p:column>   
+			                    			                    
+								<p:column headerText="Options">
+									<p:commandButton id="btnEdit" icon="ui-icon-pencil"
+										update=":dialogTipoEstado"
+										actionListener="#{tipoEstadoView.action_edit}">
+										<f:attribute name="selectedTipoEstado" value="#{tipoEstado}" />
+									</p:commandButton>
+									<p:commandButton id="btnDelete"									
+										title="Delete" actionListener="#{tipoEstadoView.action_delete_datatable}"
+										onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}"
+										icon="ui-icon-trash" update="@form">
+										<f:attribute name="selectedTipoEstado" value="#{tipoEstado}" />
+									</p:commandButton>
+								</p:column>									                    
+							</p:dataTable>	
+						</p:panel>
+						<p:panel id="panelBoton">
+							<div align="center">
+								<p:commandButton id="btnNew" value="New"
+									action="#{tipoEstadoView.action_new()}" update=":dialogTipoEstado" />
+							</div>
+						</p:panel>						
+		   			</h:form>
+					<p:dialog id="dialogTipoEstado" appendTo="@(body)" draggable="true"
+						closable="false" visible="#{tipoEstadoView.showDialog}" resizable="false"
+						modal="true" width="500">
+						<h:form id="formDialog">
+							<p:messages id="msg" />
+							<p:panel id="panelTipoEstado" header="TipoEstado">							
+							    <h:panelGrid columns="2" id="panelGrid" >
+																		 <h:outputText id="msgIdTestado" value="IdTestado"/>
+									 <p:inputText id="txtIdTestado" binding="#{tipoEstadoView.txtIdTestado}">
+									 <p:ajax update=":dialogTipoEstado" listener="#{tipoEstadoView.listener_txtId}"/>
+									 </p:inputText>	
+																											
+																		<h:outputText id="msgNombreTipoEstado" value=" NombreTipoEstado"/>
+									<p:inputText id="txtNombreTipoEstado" disabled="true" binding="#{tipoEstadoView.txtNombreTipoEstado}"/>
+																		
+																    </h:panelGrid>
+							</p:panel>						   
+							<p:panel id="panelBotones">
+								<div align="center">					
+									<p:commandButton id="btnSave" binding="#{tipoEstadoView.btnSave}" value="Save" action="#{tipoEstadoView.action_save()}" update=":dialogTipoEstado :frm:panelDataTableTipoEstado" />
+									<p:commandButton id="btnClear" value="Clear" action="#{tipoEstadoView.action_clear()}" update=":dialogTipoEstado" />
+									<p:commandButton id="btnExit" value="Exit" action="#{tipoEstadoView.action_closeDialog()}" update=":dialogTipoEstado" />
+								</div>
+				</p:panel>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
+

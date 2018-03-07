@@ -1,0 +1,110 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">		
+
+		  			<h:form id="frm">								  		
+						
+						<p:panel id="panelDataTableRegContable" header="RegContableData">
+							<p:growl id="men"/>				
+							<p:dataTable value="#{regContableView.data}" var="regContable"
+								paginator="true" rows="5">
+																										<p:column filterBy="#{regContable.idHis}" sortBy="#{regContable.idHis}" >
+										 <f:facet name="header">
+										<h:outputText value="idHis"/>
+										</f:facet>
+										 <h:outputText value="#{regContable.idHis}"/>
+										 </p:column>
+			                    																									
+										<p:column filterBy="#{regContable.fechaPago}" sortBy="#{regContable.fechaPago}" >
+										 <f:facet name="header">
+										<h:outputText value="FechaPago"/>
+										</f:facet>
+										 <h:outputText value="#{regContable.fechaPago}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{regContable.tipo}" sortBy="#{regContable.tipo}" >
+										 <f:facet name="header">
+										<h:outputText value="Tipo"/>
+										</f:facet>
+										 <h:outputText value="#{regContable.tipo}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{regContable.valor}" sortBy="#{regContable.valor}" >
+										 <f:facet name="header">
+										<h:outputText value="Valor"/>
+										</f:facet>
+										 <h:outputText value="#{regContable.valor}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{regContable.idCoachee_Coachee}" sortBy="#{regContable.idCoachee_Coachee}" >
+										 <f:facet name="header">
+										<h:outputText value="IdCoachee_Coachee"/>
+										</f:facet>
+										 <h:outputText value="#{regContable.idCoachee_Coachee}"/>
+										</p:column>   
+			                    			                    
+								<p:column headerText="Options">
+									<p:commandButton id="btnEdit" icon="ui-icon-pencil"
+										update=":dialogRegContable"
+										actionListener="#{regContableView.action_edit}">
+										<f:attribute name="selectedRegContable" value="#{regContable}" />
+									</p:commandButton>
+									<p:commandButton id="btnDelete"									
+										title="Delete" actionListener="#{regContableView.action_delete_datatable}"
+										onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}"
+										icon="ui-icon-trash" update="@form">
+										<f:attribute name="selectedRegContable" value="#{regContable}" />
+									</p:commandButton>
+								</p:column>									                    
+							</p:dataTable>	
+						</p:panel>
+						<p:panel id="panelBoton">
+							<div align="center">
+								<p:commandButton id="btnNew" value="New"
+									action="#{regContableView.action_new()}" update=":dialogRegContable" />
+							</div>
+						</p:panel>						
+		   			</h:form>
+					<p:dialog id="dialogRegContable" appendTo="@(body)" draggable="true"
+						closable="false" visible="#{regContableView.showDialog}" resizable="false"
+						modal="true" width="500">
+						<h:form id="formDialog">
+							<p:messages id="msg" />
+							<p:panel id="panelRegContable" header="RegContable">							
+							    <h:panelGrid columns="2" id="panelGrid" >
+																		 <h:outputText id="msgIdHis" value="IdHis"/>
+									 <p:inputText id="txtIdHis" binding="#{regContableView.txtIdHis}">
+									 <p:ajax update=":dialogRegContable" listener="#{regContableView.listener_txtId}"/>
+									 </p:inputText>	
+																											
+																		<h:outputText id="msgTipo" value=" Tipo"/>
+									<p:inputText id="txtTipo" disabled="true" binding="#{regContableView.txtTipo}"/>
+																		<h:outputText id="msgValor" value=" Valor"/>
+									<p:inputText id="txtValor" disabled="true" binding="#{regContableView.txtValor}"/>
+																		<h:outputText id="msgIdCoachee_Coachee" value=" IdCoachee_Coachee"/>
+									<p:inputText id="txtIdCoachee_Coachee" disabled="true" binding="#{regContableView.txtIdCoachee_Coachee}"/>
+																		
+																													<h:outputText id="msgFechaPago" value=" FechaPago"/>
+																				<p:calendar showOn="button" navigator="true" locale="en" 
+										binding="#{regContableView.txtFechaPago}" >
+										<p:ajax event="dateSelect" listener="#{regContableView.listener_txtFechaPago}"  />
+										</p:calendar>
+																										    </h:panelGrid>
+							</p:panel>						   
+							<p:panel id="panelBotones">
+								<div align="center">					
+									<p:commandButton id="btnSave" binding="#{regContableView.btnSave}" value="Save" action="#{regContableView.action_save()}" update=":dialogRegContable :frm:panelDataTableRegContable" />
+									<p:commandButton id="btnClear" value="Clear" action="#{regContableView.action_clear()}" update=":dialogRegContable" />
+									<p:commandButton id="btnExit" value="Exit" action="#{regContableView.action_closeDialog()}" update=":dialogRegContable" />
+								</div>
+				</p:panel>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
+

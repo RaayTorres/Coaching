@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">	
+			<h:form id="formDialog">
+				<p:messages id="msg" />
+				<p:growl id="men"/>
+					<p:panel id="panelCoach" header="Coach">							
+						<h:panelGrid columns="2" id="panelGrid" >
+												 	<h:outputText id="msgIdCoach" value="IdCoach"/>
+						 	<p:inputText id="txtIdCoach" binding="#{coachView.txtIdCoach}">
+						 		<p:ajax update="panelCoach,msg,panelBotones" listener="#{coachView.listener_txtId}"/>
+						 	</p:inputText>	
+																		
+													<h:outputText id="msgApellido" value=" Apellido"/>
+							<p:inputText id="txtApellido" disabled="true" binding="#{coachView.txtApellido}"/>
+													<h:outputText id="msgCelular" value=" Celular"/>
+							<p:inputText id="txtCelular" disabled="true" binding="#{coachView.txtCelular}"/>
+													<h:outputText id="msgContrasena" value=" Contrasena"/>
+							<p:inputText id="txtContrasena" disabled="true" binding="#{coachView.txtContrasena}"/>
+													<h:outputText id="msgCorreo" value=" Correo"/>
+							<p:inputText id="txtCorreo" disabled="true" binding="#{coachView.txtCorreo}"/>
+													<h:outputText id="msgHoraPagada" value=" HoraPagada"/>
+							<p:inputText id="txtHoraPagada" disabled="true" binding="#{coachView.txtHoraPagada}"/>
+													<h:outputText id="msgHoraProbono" value=" HoraProbono"/>
+							<p:inputText id="txtHoraProbono" disabled="true" binding="#{coachView.txtHoraProbono}"/>
+													<h:outputText id="msgIdentificacion" value=" Identificacion"/>
+							<p:inputText id="txtIdentificacion" disabled="true" binding="#{coachView.txtIdentificacion}"/>
+													<h:outputText id="msgLogin" value=" Login"/>
+							<p:inputText id="txtLogin" disabled="true" binding="#{coachView.txtLogin}"/>
+													<h:outputText id="msgNombre" value=" Nombre"/>
+							<p:inputText id="txtNombre" disabled="true" binding="#{coachView.txtNombre}"/>
+													<h:outputText id="msgTelefono" value=" Telefono"/>
+							<p:inputText id="txtTelefono" disabled="true" binding="#{coachView.txtTelefono}"/>
+													<h:outputText id="msgIdCat_Categoria" value=" IdCat_Categoria"/>
+							<p:inputText id="txtIdCat_Categoria" disabled="true" binding="#{coachView.txtIdCat_Categoria}"/>
+													<h:outputText id="msgIdEstado_Estado" value=" IdEstado_Estado"/>
+							<p:inputText id="txtIdEstado_Estado" disabled="true" binding="#{coachView.txtIdEstado_Estado}"/>
+													<h:outputText id="msgIdDoc_TipoDocumento" value=" IdDoc_TipoDocumento"/>
+							<p:inputText id="txtIdDoc_TipoDocumento" disabled="true" binding="#{coachView.txtIdDoc_TipoDocumento}"/>
+												
+										   </h:panelGrid>
+				</p:panel>
+	   			<p:panel id="panelBotones">
+					<div align="center">					
+						<p:commandButton id="btnSave" binding="#{coachView.btnSave}" disabled="true" value="Save" action="#{coachView.action_save()}" update="panelCoach,msg,panelBotones" />
+						<p:commandButton id="btnDelete" binding="#{coachView.btnDelete}" disabled="true" value="Delete" action="#{coachView.action_delete_master()}" onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}" update="panelCoach,msg,panelBotones" />
+						<p:commandButton id="btnClear" value="Clear" action="#{coachView.action_clear()}" update="panelCoach,msg,panelBotones" />
+					</div>
+				</p:panel>			
+			</h:form>
+  </ui:define>
+</ui:composition>

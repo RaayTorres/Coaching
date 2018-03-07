@@ -1,0 +1,107 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">		
+
+		  			<h:form id="frm">								  		
+						
+						<p:panel id="panelDataTableParametro" header="ParametroData">
+							<p:growl id="men"/>				
+							<p:dataTable value="#{parametroView.data}" var="parametro"
+								paginator="true" rows="5">
+																										<p:column filterBy="#{parametro.idParam}" sortBy="#{parametro.idParam}" >
+										 <f:facet name="header">
+										<h:outputText value="idParam"/>
+										</f:facet>
+										 <h:outputText value="#{parametro.idParam}"/>
+										 </p:column>
+			                    																									
+										<p:column filterBy="#{parametro.numero}" sortBy="#{parametro.numero}" >
+										 <f:facet name="header">
+										<h:outputText value="Numero"/>
+										</f:facet>
+										 <h:outputText value="#{parametro.numero}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{parametro.texto}" sortBy="#{parametro.texto}" >
+										 <f:facet name="header">
+										<h:outputText value="Texto"/>
+										</f:facet>
+										 <h:outputText value="#{parametro.texto}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{parametro.textoBlob}" sortBy="#{parametro.textoBlob}" >
+										 <f:facet name="header">
+										<h:outputText value="TextoBlob"/>
+										</f:facet>
+										 <h:outputText value="#{parametro.textoBlob}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{parametro.textoClob}" sortBy="#{parametro.textoClob}" >
+										 <f:facet name="header">
+										<h:outputText value="TextoClob"/>
+										</f:facet>
+										 <h:outputText value="#{parametro.textoClob}"/>
+										</p:column>   
+			                    			                    
+								<p:column headerText="Options">
+									<p:commandButton id="btnEdit" icon="ui-icon-pencil"
+										update=":dialogParametro"
+										actionListener="#{parametroView.action_edit}">
+										<f:attribute name="selectedParametro" value="#{parametro}" />
+									</p:commandButton>
+									<p:commandButton id="btnDelete"									
+										title="Delete" actionListener="#{parametroView.action_delete_datatable}"
+										onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}"
+										icon="ui-icon-trash" update="@form">
+										<f:attribute name="selectedParametro" value="#{parametro}" />
+									</p:commandButton>
+								</p:column>									                    
+							</p:dataTable>	
+						</p:panel>
+						<p:panel id="panelBoton">
+							<div align="center">
+								<p:commandButton id="btnNew" value="New"
+									action="#{parametroView.action_new()}" update=":dialogParametro" />
+							</div>
+						</p:panel>						
+		   			</h:form>
+					<p:dialog id="dialogParametro" appendTo="@(body)" draggable="true"
+						closable="false" visible="#{parametroView.showDialog}" resizable="false"
+						modal="true" width="500">
+						<h:form id="formDialog">
+							<p:messages id="msg" />
+							<p:panel id="panelParametro" header="Parametro">							
+							    <h:panelGrid columns="2" id="panelGrid" >
+																		 <h:outputText id="msgIdParam" value="IdParam"/>
+									 <p:inputText id="txtIdParam" binding="#{parametroView.txtIdParam}">
+									 <p:ajax update=":dialogParametro" listener="#{parametroView.listener_txtId}"/>
+									 </p:inputText>	
+																											
+																		<h:outputText id="msgNumero" value=" Numero"/>
+									<p:inputText id="txtNumero" disabled="true" binding="#{parametroView.txtNumero}"/>
+																		<h:outputText id="msgTexto" value=" Texto"/>
+									<p:inputText id="txtTexto" disabled="true" binding="#{parametroView.txtTexto}"/>
+																		<h:outputText id="msgTextoBlob" value=" TextoBlob"/>
+									<p:inputText id="txtTextoBlob" disabled="true" binding="#{parametroView.txtTextoBlob}"/>
+																		<h:outputText id="msgTextoClob" value=" TextoClob"/>
+									<p:inputText id="txtTextoClob" disabled="true" binding="#{parametroView.txtTextoClob}"/>
+																		
+																    </h:panelGrid>
+							</p:panel>						   
+							<p:panel id="panelBotones">
+								<div align="center">					
+									<p:commandButton id="btnSave" binding="#{parametroView.btnSave}" value="Save" action="#{parametroView.action_save()}" update=":dialogParametro :frm:panelDataTableParametro" />
+									<p:commandButton id="btnClear" value="Clear" action="#{parametroView.action_clear()}" update=":dialogParametro" />
+									<p:commandButton id="btnExit" value="Exit" action="#{parametroView.action_closeDialog()}" update=":dialogParametro" />
+								</div>
+				</p:panel>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
+

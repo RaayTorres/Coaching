@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">		
+
+		  			<h:form id="frm">								  		
+						
+						<p:panel id="panelDataTableTipoDocumento" header="TipoDocumentoData">
+							<p:growl id="men"/>				
+							<p:dataTable value="#{tipoDocumentoView.data}" var="tipoDocumento"
+								paginator="true" rows="5">
+																										<p:column filterBy="#{tipoDocumento.idDoc}" sortBy="#{tipoDocumento.idDoc}" >
+										 <f:facet name="header">
+										<h:outputText value="idDoc"/>
+										</f:facet>
+										 <h:outputText value="#{tipoDocumento.idDoc}"/>
+										 </p:column>
+			                    																									
+										<p:column filterBy="#{tipoDocumento.tdocNombre}" sortBy="#{tipoDocumento.tdocNombre}" >
+										 <f:facet name="header">
+										<h:outputText value="TdocNombre"/>
+										</f:facet>
+										 <h:outputText value="#{tipoDocumento.tdocNombre}"/>
+										</p:column>   
+			                    			                    
+								<p:column headerText="Options">
+									<p:commandButton id="btnEdit" icon="ui-icon-pencil"
+										update=":dialogTipoDocumento"
+										actionListener="#{tipoDocumentoView.action_edit}">
+										<f:attribute name="selectedTipoDocumento" value="#{tipoDocumento}" />
+									</p:commandButton>
+									<p:commandButton id="btnDelete"									
+										title="Delete" actionListener="#{tipoDocumentoView.action_delete_datatable}"
+										onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}"
+										icon="ui-icon-trash" update="@form">
+										<f:attribute name="selectedTipoDocumento" value="#{tipoDocumento}" />
+									</p:commandButton>
+								</p:column>									                    
+							</p:dataTable>	
+						</p:panel>
+						<p:panel id="panelBoton">
+							<div align="center">
+								<p:commandButton id="btnNew" value="New"
+									action="#{tipoDocumentoView.action_new()}" update=":dialogTipoDocumento" />
+							</div>
+						</p:panel>						
+		   			</h:form>
+					<p:dialog id="dialogTipoDocumento" appendTo="@(body)" draggable="true"
+						closable="false" visible="#{tipoDocumentoView.showDialog}" resizable="false"
+						modal="true" width="500">
+						<h:form id="formDialog">
+							<p:messages id="msg" />
+							<p:panel id="panelTipoDocumento" header="TipoDocumento">							
+							    <h:panelGrid columns="2" id="panelGrid" >
+																		 <h:outputText id="msgIdDoc" value="IdDoc"/>
+									 <p:inputText id="txtIdDoc" binding="#{tipoDocumentoView.txtIdDoc}">
+									 <p:ajax update=":dialogTipoDocumento" listener="#{tipoDocumentoView.listener_txtId}"/>
+									 </p:inputText>	
+																											
+																		<h:outputText id="msgTdocNombre" value=" TdocNombre"/>
+									<p:inputText id="txtTdocNombre" disabled="true" binding="#{tipoDocumentoView.txtTdocNombre}"/>
+																		
+																    </h:panelGrid>
+							</p:panel>						   
+							<p:panel id="panelBotones">
+								<div align="center">					
+									<p:commandButton id="btnSave" binding="#{tipoDocumentoView.btnSave}" value="Save" action="#{tipoDocumentoView.action_save()}" update=":dialogTipoDocumento :frm:panelDataTableTipoDocumento" />
+									<p:commandButton id="btnClear" value="Clear" action="#{tipoDocumentoView.action_clear()}" update=":dialogTipoDocumento" />
+									<p:commandButton id="btnExit" value="Exit" action="#{tipoDocumentoView.action_closeDialog()}" update=":dialogTipoDocumento" />
+								</div>
+				</p:panel>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
+

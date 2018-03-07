@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
 *
 */
 @Entity
-@Table(name = "tipo_estado", schema = "public")
+@Table(name = "TIPO_ESTADO", schema = "public")
 public class TipoEstado implements java.io.Serializable {
     @NotNull
     private Double idTestado;

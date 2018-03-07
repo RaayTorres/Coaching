@@ -19,21 +19,22 @@ import javax.validation.constraints.*;
 @Entity
 @Table(name = "categoria", schema = "public")
 public class Categoria implements java.io.Serializable {
-    @NotNull
-    private Double idCat;
-    @NotNull
-    @NotEmpty
-    @Size(max = 60)
-    private String catNombre;
-    @NotNull
-    private Double horaPagada;
-    @NotNull
-    private Double horaProbono;
-    @NotNull
-    @NotEmpty
-    @Size(max = 10)
-    private String nombreCorto;
-    private Set<Coach> coaches = new HashSet<Coach>(0);
+  
+	   @NotNull
+	    private Double idCat;
+	    @NotNull
+	    @NotEmpty
+	    @Size(max = 60)
+	    private String catNombre;
+	    @NotNull
+	    private Double horaPagada;
+	    @NotNull
+	    private Double horaProbono;
+	    @NotNull
+	    @NotEmpty
+	    @Size(max = 10)
+	    private String nombreCorto;
+	    private Set<Coach> coaches = new HashSet<Coach>(0);
 
     public Categoria() {
     }

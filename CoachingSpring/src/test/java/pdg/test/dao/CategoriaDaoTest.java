@@ -49,33 +49,33 @@ public class CategoriaDaoTest {
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void addtest() {
 		
-		TipoEstado tip = new TipoEstado();
-		tip.setIdTestado(2.0);
-		tip.setNombreTipoEstado("ave");
-		try {
-			tipoDao.save(tip);
-		} catch (DaoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-		}
-//		assertNotNull(categoriaDao);
-//		
+//		TipoEstado tip = new TipoEstado();
+//		tip.setIdTestado(2.0);
+//		tip.setNombreTipoEstado("ave");
 //		try {
-//		
-//		Categoria cat= new Categoria();
-//		cat.setCatNombre("prueba");
-//		cat.setHoraPagada(2.0);
-//		cat.setHoraProbono(5.0);
-//		cat.setIdCat(1.0);
-//		cat.setNombreCorto("pru");
-//		
-//			categoriaDao.save(cat);
+//			tipoDao.save(tip);
 //		} catch (DaoException e) {
-//		
+//			// TODO Auto-generated catch block
 //			e.printStackTrace();
+//			
 //		}
-//
+		assertNotNull(categoriaDao);
+		
+		try {
+		
+		Categoria cat= new Categoria();
+		cat.setCatNombre("prueba");
+		cat.setHoraPagada(2.0);
+		cat.setHoraProbono(5.0);
+		cat.setIdCat(1.0);
+		cat.setNombreCorto("pru");
+		
+			categoriaDao.save(cat);
+		} catch (DaoException e) {
+		
+			e.printStackTrace();
+		}
+
 //		TiposDocumentos docs = tipo.findById(10L);
 //
 //		Clientes clientes= clienteDao.findById(codigoUser);
@@ -94,17 +94,27 @@ public class CategoriaDaoTest {
 	@Test
 	@Transactional(readOnly = true)
 	public void btest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie = clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clie);
-//
-//		clienteDao.findById(codigoUser);	
+	
+
+		Categoria cat= categoriaDao.findById(1.0);	
+		log.info(cat.getCatNombre());
+		assertNotNull("no existe",cat);
+		
 	}
 //
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void ctest() {
+		
+		Categoria cat= categoriaDao.findById(1.0);
+		cat.setNombreCorto("Tebio");
+		
+		try {
+			categoriaDao.update(cat);
+		} catch (DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 //		assertNotNull(clienteDao);
 //
 //		Clientes clie= clienteDao.findById(codigoUser);
@@ -117,7 +127,10 @@ public class CategoriaDaoTest {
 //
 	@Test
 	@Transactional(readOnly = true)
-	public void dtest() {
+	public void dtest() throws DaoException {
+		
+		Categoria cat= categoriaDao.findById(1.0);
+		categoriaDao.delete(cat);
 //		assertNotNull(clienteDao);
 //
 //		Clientes clie= clienteDao.findById(codigoUser);

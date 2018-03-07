@@ -20,7 +20,7 @@ import pdg.modelo.*;
 
 import pdg.modelo.dto.ProcCoachingDTO;
 
-import pdg.presentation.businessDelegate.IBusinessDelegatorView;
+import pdg.presentation.businessDelegate.IBusinessDelegate;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ import java.util.List;
 public class ProcCoachingRestController {
     private static final Logger log = LoggerFactory.getLogger(ProcCoachingRestController.class);
     @Autowired
-    private IBusinessDelegatorView businessDelegatorView;
+    private IBusinessDelegate businessDelegatorView;
     @Autowired
     private IProcCoachingMapper procCoachingMapper;
 

@@ -13,10 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pdg.modelo.*;
 import pdg.modelo.TipoDocumento;
-
-import pdg.modelo.control.*;
-
 import pdg.modelo.dto.TipoDocumentoDTO;
+import pdg.modelo.logic.*;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -12,6 +12,9 @@ import pdg.dataaccess.api.JpaDaoImpl;
 
 import pdg.modelo.Categoria;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -38,4 +41,10 @@ public class CategoriaDAO extends JpaDaoImpl<Categoria, Double>
         ApplicationContext ctx) {
         return (ICategoriaDAO) ctx.getBean("CategoriaDAO");
     }
+
+  
+
+    
+
+
 }

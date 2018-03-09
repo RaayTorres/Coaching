@@ -6,8 +6,10 @@ import org.slf4j.LoggerFactory;
 import java.io.Serializable;
 
 import java.lang.reflect.ParameterizedType;
-
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -186,4 +188,17 @@ public class JpaDaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
     public void setMaxResults(int maxResults) {
         this.maxResults = maxResults;
     }
+    
+    
+    public Double genSecuencia() {
+  		// nameSquence= "seq_prueba";
+    	
+    	String enSt= entityClass.getName();
+    	String[] parts = enSt.split(Pattern.quote("."));
+    	
+    	BigInteger nig= (BigInteger) entityManager.createNativeQuery("select nextval('seq_"+parts[2]+"')").getSingleResult();
+    	Double nue= new BigDecimal(nig).doubleValue();
+	
+  		return nue;
+  	}
 }

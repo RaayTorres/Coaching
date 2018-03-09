@@ -14,6 +14,7 @@ import javax.validation.constraints.*;
 /**
 * @author Zathura Code Generator http://zathuracode.org
 * www.zathuracode.org
+* ALTER TABLE categoria ALTER COLUMN id_cat SET DEFAULT nextval('seq_prueba')
 *
 */
 @Entity
@@ -21,7 +22,9 @@ import javax.validation.constraints.*;
 public class Categoria implements java.io.Serializable {
   
 	   @NotNull
-	    private Double idCat;
+	   @SequenceGenerator(name="categoria_idCat_GENERATOR", allocationSize = 1, sequenceName="seq_prueba")
+	   @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="categoria_idCat_GENERATOR")
+	  private Double idCat;
 	    @NotNull
 	    @NotEmpty
 	    @Size(max = 60)

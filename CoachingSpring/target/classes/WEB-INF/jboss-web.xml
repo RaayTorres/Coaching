@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+    <context-root>/CoachingSpring</context-root>
+    <virtual-host>default-host</virtual-host>
+    <server-instance>default-server</server-instance>
+</jboss-web>

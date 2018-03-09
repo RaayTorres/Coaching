@@ -1,7 +1,7 @@
 package pdg.dataaccess.api;
 
 import java.io.Serializable;
-
+import java.math.BigInteger;
 import java.util.List;
 
 
@@ -39,4 +39,6 @@ public interface Dao<T, PK extends Serializable> {
     List<T> findByCriteria(String whereCondition);
 
     List<T> findByProperty(String propertyName, Object value);
+
+	public Double genSecuencia();
 }

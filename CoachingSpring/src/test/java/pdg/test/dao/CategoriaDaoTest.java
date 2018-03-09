@@ -4,6 +4,7 @@ package pdg.test.dao;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.junit.Test;
@@ -63,11 +64,12 @@ public class CategoriaDaoTest {
 		
 		try {
 		
+		
 		Categoria cat= new Categoria();
 		cat.setCatNombre("prueba");
 		cat.setHoraPagada(2.0);
 		cat.setHoraProbono(5.0);
-		cat.setIdCat(1.0);
+		cat.setIdCat(categoriaDao.genSecuencia());
 		cat.setNombreCorto("pru");
 		
 			categoriaDao.save(cat);

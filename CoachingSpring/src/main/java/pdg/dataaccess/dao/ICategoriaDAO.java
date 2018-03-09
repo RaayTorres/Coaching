@@ -16,4 +16,5 @@ import java.util.Set;
 *
 */
 public interface ICategoriaDAO extends Dao<Categoria, Double> {
+
 }

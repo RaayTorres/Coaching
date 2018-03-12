@@ -55,6 +55,8 @@ public class CoachLogic implements ICoachLogic {
     private ICoachMapper coachMapper;
     @Autowired
     private Validator validator;
+    @Autowired
+    private ICategoriaDAO categoriaDao;
 
     /**
     * DAO injected by Spring that manages ProcCoaching entities
@@ -431,5 +433,84 @@ public class CoachLogic implements ICoachLogic {
         }
 
         return list;
+    }
+    
+    
+    
+ 
+    
+    public Categoria categoriaAscenso(Coach coach) {
+    	
+    	double horaPro= coach.getHoraProbono();
+    	double horaPag = coach.getHoraPagada();
+    	
+    	List<Categoria> categorias= categoriaDao.findAll();
+    	
+    	Categoria cat= new Categoria();
+    	
+    	for (Categoria categoria : categorias) {
+    		if (categoria.getHoraPagada() == horaPag && categoria.getHoraProbono() == horaPro) {
+				cat = categoria;
+			}else {
+				cat = coach.getCategoria();
+			}
+			
+		}
+    	
+    	return cat;
+    	
+    }
+    
+    public String horasFaltantesAscenso(Coach coach) {
+    	
+    	double horaPro= coach.getHoraProbono();
+    	double horaPag = coach.getHoraPagada();
+    	List<Categoria> categorias= categoriaDao.findAll(); //usar order by para que las traiga en orden
+    	String cat = "";
+    	
+    	double faltaPag= 0.0;
+    	double faltaPro = 0.0;
+       	for (Categoria categoria : categorias) {
+       		double fPag= categoria.getHoraPagada() - horaPag;
+       		double  fPro= categoria.getHoraProbono() - horaPro;
+       		
+    		if (faltaPag > 0 && faltaPro >0) {
+				 cat = categoria.getCatNombre();
+				 faltaPag = fPag;
+				 faltaPro=fPro;
+			}
+			
+		}
+    	
+    	return "Le faltan " + faltaPag + "horas pagadas y"+ faltaPro+ " horas pro-bono para llegar a" + cat;
+    }
+    
+    
+    public List<Coachee> coacheeDelCoach(Coach coach){
+    	
+    	List<Coachee> coachees = null;
+    	List<ProcCoaching> procc= (List<ProcCoaching>) coach.getProcCoachings();
+    	
+    	for (ProcCoaching procCoaching : procc) {
+		coachees.add(procCoaching.getCoachee());
+		}
+    	return coachees;
+    	
+    }
+
+    public List<RegContable> historialDePagoDelosCoachee(Coach coach){
+    	
+    	List<ProcCoaching> procc= (List<ProcCoaching>) coach.getProcCoachings();
+    	List<RegContable> regs= null;
+    	for (ProcCoaching procCoaching : procc) {
+    	
+    		for (RegContable regContable : procCoaching.getCoachee().getRegContables()) {
+				
+    			regs.add(regContable);
+			}
+		
+		}
+    	return regs;
+    	
     }
 }

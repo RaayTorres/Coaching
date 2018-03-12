@@ -62,7 +62,10 @@ public class ProcCoachingLogic implements IProcCoachingLogic {
     */
     @Autowired
     private ISesCoachingDAO sesCoachingDAO;
-
+    
+    @Autowired
+    ISesCoachingLogic sesLogic;
+  
     /**
     * Logic injected by Spring that manages Coach entities
     *
@@ -141,6 +144,12 @@ public class ProcCoachingLogic implements IProcCoachingLogic {
             }
 
             procCoachingDAO.save(entity);
+            
+            for (int i = 0; i < 10; i++) {
+            	SesCoaching  newEntity= new SesCoaching();
+				sesLogic.saveSesCoaching(newEntity);
+			}
+            
             log.debug("save ProcCoaching successful");
         } catch (Exception e) {
             log.error("save ProcCoaching failed", e);
@@ -437,4 +446,16 @@ public class ProcCoachingLogic implements IProcCoachingLogic {
 
         return list;
     }
+    
+    
+/*
+ * R4.SE1: El sistema debe permitir crear un proceso de coaching para un cliente determinado,
+ *  con un número de sesiones por defecto que podrán ser modificadas en aspectos tales como 
+ *  (la fecha de la sesión, el tiempo, compromiso, acciones, indicadores, foco del proceso, profundidad).
+R4.SE2: El sistema debe permitir añadir, modificar o remover sesiones a un proceso de Coaching si es necesario.
+R10.SE1: El sistema debe permitir visualizar y filtrar las sesiones en (activas o completadas)
+ que tiene un coach y dentro de cada sesión mostrar la fecha en la que se realizará o realizó la sesión.
+
+ */
+    
 }

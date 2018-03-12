@@ -1,7 +1,9 @@
 package pdg.modelo.logic;
 
+import pdg.modelo.Categoria;
 import pdg.modelo.Coach;
-
+import pdg.modelo.Coachee;
+import pdg.modelo.RegContable;
 import pdg.modelo.dto.CoachDTO;
 
 import java.math.BigDecimal;
@@ -56,4 +58,29 @@ public interface ICoachLogic {
     public List<CoachDTO> getDataCoach() throws Exception;
 
     public void validateCoach(Coach coach) throws Exception;
+    
+    /*
+     R3.CO1: El sistema debe permitir visualizar en qué categoría (de ascenso) se encuentra el coach 
+     si se encuentra en uno Ser flexible 
+     con el organismo de la certificación, la categoría debe ser opcional..
+	R3.CO2: El sistema debe permitir visualizar las horas faltantes (pro-bono y pagas) 
+	que le hacen falta al coach para alcanzar determinado ascenso.
+	
+	R9.CO1: El sistema debe permitir visualizar todos los clientes que tiene asociados
+ 	el Coach, mostrando la foto y el nombre de cada cliente.
+ 	
+	R11.CO1: El sistema debe permitir al coach visualizar el historial de pagos de los clientes.
+     */
+    public Categoria categoriaAscenso(Coach coach);
+    
+    public String horasFaltantesAscenso(Coach coach);
+    
+    public List<Coachee> coacheeDelCoach(Coach coach);
+    
+    public List<RegContable> historialDePagoDelosCoachee(Coach coach);
+    
 }
+
+
+
+

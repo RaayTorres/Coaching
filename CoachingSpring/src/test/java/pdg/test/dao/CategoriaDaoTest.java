@@ -41,11 +41,7 @@ public class CategoriaDaoTest {
 	
 	@Autowired
 	private ITipoEstadoDAO tipoDao;
-//	@Autowired
-//	private ITipoDocumentoDAO tipo;
-//	private Long codigoUser = 50487412L;
-//
-//
+
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void addtest() {
@@ -66,6 +62,7 @@ public class CategoriaDaoTest {
 		
 		
 		Categoria cat= new Categoria();
+		
 		cat.setCatNombre("prueba");
 		cat.setHoraPagada(2.0);
 		cat.setHoraProbono(5.0);

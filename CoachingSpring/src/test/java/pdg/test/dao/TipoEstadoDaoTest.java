@@ -29,118 +29,89 @@ import pdg.modelo.TipoEstado;
 @Rollback(false)
 public class TipoEstadoDaoTest {
 
-	
+
 	private Logger log= LoggerFactory.getLogger(TipoEstadoDaoTest.class);
-	
-	
-	@Autowired
-	private ICategoriaDAO categoriaDao;
-	
-	
-	
+
+
+
+
 	@Autowired
 	private ITipoEstadoDAO tipoDao;
-//	@Autowired
-//	private ITipoDocumentoDAO tipo;
-//	private Long codigoUser = 50487412L;
-//
-//
+
+
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void addtest() {
+	public void aSaveTest() throws DaoException {
+
+		assertNotNull("Tipo estado es null",tipoDao);
+		TipoEstado miTipoEstado = new TipoEstado();
+
+		miTipoEstado.setIdTestado(tipoDao.genSecuencia());
+		miTipoEstado.setNombreTipoEstado("3");
+
+		tipoDao.save(miTipoEstado);
+
+
+	}
+
+	@Test
+	@Transactional(readOnly = true)
+	public void bBuscarTest() {
+
+		assertNotNull("Tipo estado es null",tipoDao);
+
+		TipoEstado miTipoEstadi = tipoDao.findById(Double.parseDouble("1"));
+
+		System.out.println(miTipoEstadi.getNombreTipoEstado() + "<------------------------------------------------------------------------------------------------------");
+
+		assertNotNull(miTipoEstadi);
+	}
+
+
+	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+	public void cUpdateTest() throws DaoException {
+
+		assertNotNull("Tipo estado es null",tipoDao);
+
+		TipoEstado miTipoEstadi = tipoDao.findById(Double.parseDouble("2"));
+		miTipoEstadi.setNombreTipoEstado("2");
 		
-		TipoEstado tip = new TipoEstado();
-		tip.setIdTestado(2.0);
-		tip.setNombreTipoEstado("ave");
-		try {
-			tipoDao.save(tip);
-		} catch (DaoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-		}
-//		assertNotNull(categoriaDao);
-//		
-//		try {
-//		
-//		Categoria cat= new Categoria();
-//		cat.setCatNombre("prueba");
-//		cat.setHoraPagada(2.0);
-//		cat.setHoraProbono(5.0);
-//		cat.setIdCat(1.0);
-//		cat.setNombreCorto("pru");
-//		
-//			categoriaDao.save(cat);
-//		} catch (DaoException e) {
-//		
-//			e.printStackTrace();
-//		}
-//
-//		TiposDocumentos docs = tipo.findById(10L);
-//
-//		Clientes clientes= clienteDao.findById(codigoUser);
-//		assertNull("ya existe",clientes);
-//		clientes = new Clientes();
-//		clientes.setCliNombre("Luis");
-//		clientes.setCliId(codigoUser);
-//		clientes.setCliTelefono("31569882");
-//		clientes.setTiposDocumentos(docs);
-//		clientes.setCliDireccion("myHome");
-//		clientes.setCliMail("asd@asd.com");
-//
-//		clienteDao.save(clientes);		
+		tipoDao.update(miTipoEstadi);
+		assertNotNull(miTipoEstadi);
+
+
 	}
-//
+
 	@Test
 	@Transactional(readOnly = true)
-	public void btest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie = clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clie);
-//
-//		clienteDao.findById(codigoUser);	
-	}
-//
-	@Test
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void ctest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie= clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clie);
-//
-//		clie.setCliNombre("Jorge");
-//		clienteDao.update(clie);
-	}
-//
-//
-	@Test
-	@Transactional(readOnly = true)
-	public void dtest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie= clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clienteDao);
-//
-//		clienteDao.delete(clie);	
-	}	
-//
-//
-	@Test
-	@Transactional(readOnly = true)
-	public void etest() {
-//		assertNotNull(clienteDao);
-//
-//		List<Clientes> losClientes = clienteDao.findAll();
-//		assertNotNull(losClientes);
-//
-//		for (Clientes lista : losClientes) {
-//			log.info("Nombre:" + lista.getCliNombre());
-//			log.info("Tipo Documento " + lista.getTiposDocumentos().getTdocNombre());
-//		}
-//
+	public void dDeleteTest() throws DaoException {
+
+		assertNotNull("Tipo estado es null",tipoDao);
+
+		TipoEstado miTipoEstadi = tipoDao.findById(Double.parseDouble("4"));
+		
+		tipoDao.delete(miTipoEstadi);
+		
+		
+		
+		
 	}	
 
-	
+	@Test
+	@Transactional(readOnly = true)
+	public void eFindAll() {
+
+		
+		List<TipoEstado> misTiposEstados = tipoDao.findAll();
+		
+		for (TipoEstado tipoEstado : misTiposEstados) {
+			
+			System.out.println(tipoEstado.getNombreTipoEstado() );
+		}
+		
+		
+	}	
+
+
 }

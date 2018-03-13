@@ -19,8 +19,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pdg.dataaccess.api.DaoException;
 import pdg.dataaccess.dao.ICategoriaDAO;
+import pdg.dataaccess.dao.ITipoDocumentoDAO;
 import pdg.dataaccess.dao.ITipoEstadoDAO;
 import pdg.modelo.Categoria;
+import pdg.modelo.TipoDocumento;
 import pdg.modelo.TipoEstado;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -34,112 +36,77 @@ public class TipoDocumentoDaoTest {
 	
 	
 	@Autowired
-	private ICategoriaDAO categoriaDao;
+	private ITipoDocumentoDAO tipoDocumento;
+	private TipoDocumento miTipoDocumento;
+	
+
 	
 	
-	
-	@Autowired
-	private ITipoEstadoDAO tipoDao;
-//	@Autowired
-//	private ITipoDocumentoDAO tipo;
-//	private Long codigoUser = 50487412L;
-//
-//
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void addtest() {
+	public void aSaveTest() throws Exception {
 		
-		TipoEstado tip = new TipoEstado();
-		tip.setIdTestado(2.0);
-		tip.setNombreTipoEstado("ave");
-		try {
-			tipoDao.save(tip);
-		} catch (DaoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-		}
-//		assertNotNull(categoriaDao);
-//		
-//		try {
-//		
-//		Categoria cat= new Categoria();
-//		cat.setCatNombre("prueba");
-//		cat.setHoraPagada(2.0);
-//		cat.setHoraProbono(5.0);
-//		cat.setIdCat(1.0);
-//		cat.setNombreCorto("pru");
-//		
-//			categoriaDao.save(cat);
-//		} catch (DaoException e) {
-//		
-//			e.printStackTrace();
-//		}
-//
-//		TiposDocumentos docs = tipo.findById(10L);
-//
-//		Clientes clientes= clienteDao.findById(codigoUser);
-//		assertNull("ya existe",clientes);
-//		clientes = new Clientes();
-//		clientes.setCliNombre("Luis");
-//		clientes.setCliId(codigoUser);
-//		clientes.setCliTelefono("31569882");
-//		clientes.setTiposDocumentos(docs);
-//		clientes.setCliDireccion("myHome");
-//		clientes.setCliMail("asd@asd.com");
-//
-//		clienteDao.save(clientes);		
+		assertNotNull("Tipo de documento es null",tipoDocumento);
+	
+		
+		
+		miTipoDocumento = new TipoDocumento();
+		miTipoDocumento.setIdDoc(tipoDocumento.genSecuencia());
+		
+		miTipoDocumento.setTdocNombre("Pasaporte Italiano");
+		
+		tipoDocumento.save(miTipoDocumento);
 	}
-//
+
 	@Test
 	@Transactional(readOnly = true)
-	public void btest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie = clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clie);
-//
-//		clienteDao.findById(codigoUser);	
+	public void bBuscarTest() {
+	
+		TipoDocumento nuevoTipo = tipoDocumento.findById(Double.parseDouble("1"));
+		
+		System.out.println(nuevoTipo.getTdocNombre() + "-------------------------------------------------------------------<");
+		
+		assertNotNull(nuevoTipo);
+		
 	}
-//
+
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void ctest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie= clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clie);
-//
-//		clie.setCliNombre("Jorge");
-//		clienteDao.update(clie);
+	public void cUpdateTest() throws DaoException {
+
+		TipoDocumento nuevoTipo = tipoDocumento.findById(Double.parseDouble("1"));
+		
+		nuevoTipo.setTdocNombre("pasaporte");
+		
+		System.out.println(nuevoTipo.getTdocNombre() + "-------------------------------------------------------------------<");
+		tipoDocumento.update(nuevoTipo);
+		
+		assertNotNull(nuevoTipo);
 	}
-//
-//
+
+
 	@Test
 	@Transactional(readOnly = true)
-	public void dtest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie= clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clienteDao);
-//
-//		clienteDao.delete(clie);	
+	public void dEliminarTest() throws DaoException {
+	
+		TipoDocumento nuevoTipo = tipoDocumento.findById(Double.parseDouble("1"));
+		
+		tipoDocumento.delete(nuevoTipo);
+		
 	}	
-//
-//
+
 	@Test
-	@Transactional(readOnly = true)
-	public void etest() {
-//		assertNotNull(clienteDao);
-//
-//		List<Clientes> losClientes = clienteDao.findAll();
-//		assertNotNull(losClientes);
-//
-//		for (Clientes lista : losClientes) {
-//			log.info("Nombre:" + lista.getCliNombre());
-//			log.info("Tipo Documento " + lista.getTiposDocumentos().getTdocNombre());
-//		}
-//
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+	public void eFindAll() {
+
+		List<TipoDocumento> misTiposDocumentos = tipoDocumento.findAll();
+		
+		for (TipoDocumento tipoDocumento : misTiposDocumentos) {
+			
+			System.out.println(tipoDocumento.getTdocNombre() + "+++++++++++++++++++++++++++++++++++++++++++++++++++++++s");
+		}
+		
+		
 	}	
 
 	

@@ -19,8 +19,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pdg.dataaccess.api.DaoException;
 import pdg.dataaccess.dao.ICategoriaDAO;
+import pdg.dataaccess.dao.IEstadoDAO;
 import pdg.dataaccess.dao.ITipoEstadoDAO;
 import pdg.modelo.Categoria;
+import pdg.modelo.Estado;
 import pdg.modelo.TipoEstado;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -29,118 +31,57 @@ import pdg.modelo.TipoEstado;
 @Rollback(false)
 public class EstadoDaoTest {
 
-	
+
 	private Logger log= LoggerFactory.getLogger(EstadoDaoTest.class);
-	
-	
-	@Autowired
-	private ICategoriaDAO categoriaDao;
-	
-	
-	
+
+
+
+
+
 	@Autowired
 	private ITipoEstadoDAO tipoDao;
-//	@Autowired
-//	private ITipoDocumentoDAO tipo;
-//	private Long codigoUser = 50487412L;
-//
-//
+	@Autowired
+	private IEstadoDAO estadoDao;
+
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void addtest() {
+	public void aSaveTest() throws DaoException {
+
+		assertNotNull("estado es null",estadoDao);
+		Estado miEstado = new Estado();
+		TipoEstado miTipoEstado = tipoDao.findById(Double.parseDouble("1"));
 		
-		TipoEstado tip = new TipoEstado();
-		tip.setIdTestado(2.0);
-		tip.setNombreTipoEstado("ave");
-		try {
-			tipoDao.save(tip);
-		} catch (DaoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-		}
-//		assertNotNull(categoriaDao);
-//		
-//		try {
-//		
-//		Categoria cat= new Categoria();
-//		cat.setCatNombre("prueba");
-//		cat.setHoraPagada(2.0);
-//		cat.setHoraProbono(5.0);
-//		cat.setIdCat(1.0);
-//		cat.setNombreCorto("pru");
-//		
-//			categoriaDao.save(cat);
-//		} catch (DaoException e) {
-//		
-//			e.printStackTrace();
-//		}
-//
-//		TiposDocumentos docs = tipo.findById(10L);
-//
-//		Clientes clientes= clienteDao.findById(codigoUser);
-//		assertNull("ya existe",clientes);
-//		clientes = new Clientes();
-//		clientes.setCliNombre("Luis");
-//		clientes.setCliId(codigoUser);
-//		clientes.setCliTelefono("31569882");
-//		clientes.setTiposDocumentos(docs);
-//		clientes.setCliDireccion("myHome");
-//		clientes.setCliMail("asd@asd.com");
-//
-//		clienteDao.save(clientes);		
+		miEstado.setIdEstado(estadoDao.genSecuencia());
+		miEstado.setTipoEstado(miTipoEstado);
+		miEstado.setNombreEstado("Activo");
+
+		estadoDao.save(miEstado);
+
 	}
-//
+
 	@Test
 	@Transactional(readOnly = true)
 	public void btest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie = clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clie);
-//
-//		clienteDao.findById(codigoUser);	
+
 	}
-//
+
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void ctest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie= clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clie);
-//
-//		clie.setCliNombre("Jorge");
-//		clienteDao.update(clie);
+
 	}
-//
-//
+
 	@Test
 	@Transactional(readOnly = true)
 	public void dtest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie= clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clienteDao);
-//
-//		clienteDao.delete(clie);	
+
 	}	
-//
-//
+
 	@Test
 	@Transactional(readOnly = true)
 	public void etest() {
-//		assertNotNull(clienteDao);
-//
-//		List<Clientes> losClientes = clienteDao.findAll();
-//		assertNotNull(losClientes);
-//
-//		for (Clientes lista : losClientes) {
-//			log.info("Nombre:" + lista.getCliNombre());
-//			log.info("Tipo Documento " + lista.getTiposDocumentos().getTdocNombre());
-//		}
-//
+
 	}	
 
-	
+
 }

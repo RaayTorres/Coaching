@@ -35,11 +35,9 @@ public class EstadoDaoTest {
 	private Logger log= LoggerFactory.getLogger(EstadoDaoTest.class);
 
 
-
-
-
 	@Autowired
 	private ITipoEstadoDAO tipoDao;
+	
 	@Autowired
 	private IEstadoDAO estadoDao;
 
@@ -47,40 +45,67 @@ public class EstadoDaoTest {
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void aSaveTest() throws DaoException {
 
-		assertNotNull("estado es null",estadoDao);
+		TipoEstado miTipo = tipoDao.findById(Double.parseDouble("2"));
+		//System.out.println(miTipo.getNombreTipoEstado());
 		Estado miEstado = new Estado();
-		TipoEstado miTipoEstado = tipoDao.findById(Double.parseDouble("1"));
-		
 		miEstado.setIdEstado(estadoDao.genSecuencia());
-		miEstado.setTipoEstado(miTipoEstado);
-		miEstado.setNombreEstado("Activo");
-
+		miEstado.setTipoEstado(miTipo);
+		miEstado.setNombreEstado("Inactivo-borrar");
+		
 		estadoDao.save(miEstado);
+		
 
 	}
 
 	@Test
 	@Transactional(readOnly = true)
-	public void btest() {
+	public void bBuscarTest() {
 
+		
+		Estado miEstado = estadoDao.findById(Double.parseDouble("18"));
+		
+		System.out.println(miEstado.getNombreEstado());
+		
+		assertNotNull(miEstado);
 	}
 
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void ctest() {
+	public void cUpdateTest() throws DaoException {
 
+		
+		Estado miEstado = estadoDao.findById(Double.parseDouble("16"));
+		miEstado.setNombreEstado("Segunda prueba");
+		estadoDao.update(miEstado);
+		assertEquals("Segunda prueba", miEstado.getNombreEstado());
+		
+		
+		
 	}
 
 	@Test
 	@Transactional(readOnly = true)
-	public void dtest() {
+	public void dDeleteTest() throws DaoException {
 
+		
+		Estado miEstado = estadoDao.findById(Double.parseDouble("20"));
+		
+		estadoDao.delete(miEstado);
+		
+		
 	}	
 
 	@Test
 	@Transactional(readOnly = true)
-	public void etest() {
+	public void eFindAll() {
 
+		List<Estado> misEstados = estadoDao.findAll();
+		
+		for (Estado estado : misEstados) {
+			
+			System.out.println(estado.getNombreEstado());
+		}
+		
 	}	
 
 

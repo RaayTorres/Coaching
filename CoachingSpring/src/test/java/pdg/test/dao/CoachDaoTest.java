@@ -19,8 +19,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pdg.dataaccess.api.DaoException;
 import pdg.dataaccess.dao.ICategoriaDAO;
+import pdg.dataaccess.dao.ICoachDAO;
+import pdg.dataaccess.dao.IEstadoDAO;
+import pdg.dataaccess.dao.ITipoDocumentoDAO;
 import pdg.dataaccess.dao.ITipoEstadoDAO;
 import pdg.modelo.Categoria;
+import pdg.modelo.Coach;
+import pdg.modelo.Estado;
+import pdg.modelo.TipoDocumento;
 import pdg.modelo.TipoEstado;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -32,114 +38,91 @@ public class CoachDaoTest {
 	
 	private Logger log= LoggerFactory.getLogger(CoachDaoTest.class);
 	
+	@Autowired
+	private ITipoDocumentoDAO tipoDocumentoDao;
 	
 	@Autowired
-	private ICategoriaDAO categoriaDao;
-	
-	
+	private IEstadoDAO estadoDao;
 	
 	@Autowired
-	private ITipoEstadoDAO tipoDao;
-//	@Autowired
-//	private ITipoDocumentoDAO tipo;
-//	private Long codigoUser = 50487412L;
-//
-//
+	private ICoachDAO coachDao;
+
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void addtest() {
+	public void aSaveTest() throws DaoException {
 		
-		TipoEstado tip = new TipoEstado();
-		tip.setIdTestado(2.0);
-		tip.setNombreTipoEstado("ave");
-		try {
-			tipoDao.save(tip);
-		} catch (DaoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-		}
-//		assertNotNull(categoriaDao);
-//		
-//		try {
-//		
-//		Categoria cat= new Categoria();
-//		cat.setCatNombre("prueba");
-//		cat.setHoraPagada(2.0);
-//		cat.setHoraProbono(5.0);
-//		cat.setIdCat(1.0);
-//		cat.setNombreCorto("pru");
-//		
-//			categoriaDao.save(cat);
-//		} catch (DaoException e) {
-//		
-//			e.printStackTrace();
-//		}
-//
-//		TiposDocumentos docs = tipo.findById(10L);
-//
-//		Clientes clientes= clienteDao.findById(codigoUser);
-//		assertNull("ya existe",clientes);
-//		clientes = new Clientes();
-//		clientes.setCliNombre("Luis");
-//		clientes.setCliId(codigoUser);
-//		clientes.setCliTelefono("31569882");
-//		clientes.setTiposDocumentos(docs);
-//		clientes.setCliDireccion("myHome");
-//		clientes.setCliMail("asd@asd.com");
-//
-//		clienteDao.save(clientes);		
+
+		Coach coach = new Coach();
+		coach.setIdCoach(coachDao.genSecuencia());
+		coach.setNombre("Altair");
+		coach.setApellido("Lbn-LaAhad");
+		coach.setCelular(Double.parseDouble("000011111"));
+		coach.setCorreo("correo@hotmail.com");
+		coach.setHoraPagada(Double.parseDouble("10"));
+		coach.setHoraProbono(Double.parseDouble("10"));
+		coach.setLogin("Ezio");
+		coach.setContrasena("password");
+		coach.setIdentificacion("123456789");
+		Estado nuevoEstado = estadoDao.findById(Double.parseDouble("18"));
+		coach.setEstado(nuevoEstado);
+		TipoDocumento nuevoDocumento = tipoDocumentoDao.findById(Double.parseDouble("1"));
+		coach.setTipoDocumento(nuevoDocumento);
+		
+		coachDao.save(coach);
+		
+		
+		
+		
 	}
-//
+
 	@Test
 	@Transactional(readOnly = true)
-	public void btest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie = clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clie);
-//
-//		clienteDao.findById(codigoUser);	
+	public void bBuscarTest() {
+	
+		Coach coach = coachDao.findById(Double.parseDouble("6"));
+		System.out.println(coach.getNombre() + " " + coach.getApellido());
+		
+		assertNotNull(coach);
+		
 	}
-//
+
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void ctest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie= clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clie);
-//
-//		clie.setCliNombre("Jorge");
-//		clienteDao.update(clie);
+	public void cUpdateTest() throws DaoException {
+
+		Coach coach = coachDao.findById(Double.parseDouble("6"));
+		coach.setApellido("Firenze");
+		
+		coachDao.update(coach);
+		
+		assertEquals("Firenze", coach.getApellido());
+		
+		
 	}
-//
-//
+
 	@Test
 	@Transactional(readOnly = true)
-	public void dtest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie= clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clienteDao);
-//
-//		clienteDao.delete(clie);	
+	public void dDeleteTest() throws DaoException {
+	
+		
+		Coach coach = coachDao.findById(Double.parseDouble("6"));
+		coachDao.delete(coach);
+		
+		
 	}	
-//
-//
+
 	@Test
 	@Transactional(readOnly = true)
-	public void etest() {
-//		assertNotNull(clienteDao);
-//
-//		List<Clientes> losClientes = clienteDao.findAll();
-//		assertNotNull(losClientes);
-//
-//		for (Clientes lista : losClientes) {
-//			log.info("Nombre:" + lista.getCliNombre());
-//			log.info("Tipo Documento " + lista.getTiposDocumentos().getTdocNombre());
-//		}
-//
+	public void eFindAllTest() {
+
+		
+		List<Coach> listaCoach = coachDao.findAll();
+		
+		for (Coach coach : listaCoach) {
+			
+			System.out.println(coach.getNombre() + " " + coach.getApellido());
+		}
+		
 	}	
 
 	

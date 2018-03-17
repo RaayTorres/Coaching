@@ -64,7 +64,7 @@ public class SesCoaching implements java.io.Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_estado")
+    @JoinColumn(name = "estado_id_estado")
     public Estado getEstado() {
         return this.estado;
     }
@@ -74,7 +74,7 @@ public class SesCoaching implements java.io.Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_proc")
+    @JoinColumn(name = "proc_coaching_id_proc")
     public ProcCoaching getProcCoaching() {
         return this.procCoaching;
     }

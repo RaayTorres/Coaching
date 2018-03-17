@@ -57,7 +57,7 @@ public class RegContable implements java.io.Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_coachee")
+    @JoinColumn(name = "coachee_id_coachee")
     public Coachee getCoachee() {
         return this.coachee;
     }

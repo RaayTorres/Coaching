@@ -87,7 +87,7 @@ public class Coachee implements java.io.Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_estado")
+    @JoinColumn(name = "estado_id_estado")
     public Estado getEstado() {
         return this.estado;
     }
@@ -97,7 +97,7 @@ public class Coachee implements java.io.Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_doc")
+    @JoinColumn(name = "tipo_documento_id_doc")
     public TipoDocumento getTipoDocumento() {
         return this.tipoDocumento;
     }

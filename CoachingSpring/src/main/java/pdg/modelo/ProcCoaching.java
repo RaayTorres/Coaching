@@ -55,7 +55,7 @@ public class ProcCoaching implements java.io.Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_coach")
+    @JoinColumn(name = "coach_id_coach")
     public Coach getCoach() {
         return this.coach;
     }
@@ -65,7 +65,7 @@ public class ProcCoaching implements java.io.Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_coachee")
+    @JoinColumn(name = "coachee_id_coachee")
     public Coachee getCoachee() {
         return this.coachee;
     }
@@ -75,7 +75,7 @@ public class ProcCoaching implements java.io.Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_his")
+    @JoinColumn(name = "reg_contable_id_his")
     public RegContable getRegContable() {
         return this.regContable;
     }

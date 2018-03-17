@@ -19,8 +19,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pdg.dataaccess.api.DaoException;
 import pdg.dataaccess.dao.ICategoriaDAO;
+import pdg.dataaccess.dao.ICoacheeDAO;
+import pdg.dataaccess.dao.IEstadoDAO;
+import pdg.dataaccess.dao.ITipoDocumentoDAO;
 import pdg.dataaccess.dao.ITipoEstadoDAO;
 import pdg.modelo.Categoria;
+import pdg.modelo.Coachee;
+import pdg.modelo.Estado;
+import pdg.modelo.TipoDocumento;
 import pdg.modelo.TipoEstado;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -34,43 +40,87 @@ public class CoacheeDaoTest {
 	
 	
 	@Autowired
-	private ICategoriaDAO categoriaDao;
-	
-	
-	
+	private ICoacheeDAO coacheeDao;
+
 	@Autowired
-	private ITipoEstadoDAO tipoDao;
-
+	private IEstadoDAO estadoDao;
+	@Autowired
+	private ITipoDocumentoDAO tipoDocumentoDao;
+	
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void addtest() {
+	public void aSaveTest() throws DaoException {
 		
+		
+		
+		
+		Coachee coachee = new Coachee();
+		coachee.setIdCoachee(coacheeDao.genSecuencia());
+		coachee.setNombre("Jefry");
+		coachee.setApellido("Cardona");
+		coachee.setCelular(Double.parseDouble("000111222"));
+		coachee.setCorreo("tebannew@gmail.com");
+		coachee.setDireccion("Icesi");
+		Estado nuevoEstado = estadoDao.findById(Double.parseDouble("18"));
+		coachee.setEstado(nuevoEstado);
+		coachee.setHobbies("Deportes");
+		coachee.setIdentificacion("11112223333");
+		byte [] abc = new byte[20];
+		coachee.setFoto(abc);
+		TipoDocumento nuevoTipo = tipoDocumentoDao.findById(Double.parseDouble("1"));
+		coachee.setTipoDocumento(nuevoTipo);
+		
+		
+		coacheeDao.save(coachee);
 		
 
 	}
 
 	@Test
 	@Transactional(readOnly = true)
-	public void btest() {
+	public void bBuscarTest() {
 
+		
+		Coachee nuevo= coacheeDao.findById(Double.parseDouble("4"));
+		
+		
+		System.out.println(nuevo.getApellido());
+		
+		
 	}
 
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void ctest() {
+	public void cUpdateTest() throws DaoException {
 
+		Coachee nuevo= coacheeDao.findById(Double.parseDouble("4"));
+		nuevo.setApellido("Chilito");
+		coacheeDao.update(nuevo);
+		
 	}
 
 	@Test
 	@Transactional(readOnly = true)
-	public void dtest() {
+	public void dDeleteTest() throws DaoException {
 
+		Coachee nuevo= coacheeDao.findById(Double.parseDouble("4"));
+		
+		coacheeDao.delete(nuevo);
+		
 	}	
 
 	@Test
 	@Transactional(readOnly = true)
-	public void etest() {
+	public void eFindAll() {
 
+		
+		List<Coachee> listaCoachees = coacheeDao.findAll();
+		
+		for (Coachee coachee : listaCoachees) {
+			
+			System.out.println(coachee.getNombre() + " "+ coachee.getApellido());
+			
+		}
 	}	
 
 	

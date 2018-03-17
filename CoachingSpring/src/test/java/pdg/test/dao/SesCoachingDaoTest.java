@@ -4,6 +4,7 @@ package pdg.test.dao;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -19,8 +20,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pdg.dataaccess.api.DaoException;
 import pdg.dataaccess.dao.ICategoriaDAO;
+import pdg.dataaccess.dao.IEstadoDAO;
+import pdg.dataaccess.dao.IProcCoachingDAO;
+import pdg.dataaccess.dao.ISesCoachingDAO;
 import pdg.dataaccess.dao.ITipoEstadoDAO;
 import pdg.modelo.Categoria;
+import pdg.modelo.Estado;
+import pdg.modelo.ProcCoaching;
+import pdg.modelo.SesCoaching;
 import pdg.modelo.TipoEstado;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -33,113 +40,83 @@ public class SesCoachingDaoTest {
 	private Logger log= LoggerFactory.getLogger(SesCoachingDaoTest.class);
 	
 	
-	@Autowired
-	private ICategoriaDAO categoriaDao;
-	
-	
 	
 	@Autowired
-	private ITipoEstadoDAO tipoDao;
-//	@Autowired
-//	private ITipoDocumentoDAO tipo;
-//	private Long codigoUser = 50487412L;
-//
-//
+	private ISesCoachingDAO sesionDao;
+	
+	@Autowired
+	private IEstadoDAO estadoDao;
+	
+	@Autowired
+	private IProcCoachingDAO procesoDao;
+	
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void addtest() {
+	public void aSaveTest() throws DaoException {
 		
-		TipoEstado tip = new TipoEstado();
-		tip.setIdTestado(2.0);
-		tip.setNombreTipoEstado("ave");
-		try {
-			tipoDao.save(tip);
-		} catch (DaoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-		}
-//		assertNotNull(categoriaDao);
-//		
-//		try {
-//		
-//		Categoria cat= new Categoria();
-//		cat.setCatNombre("prueba");
-//		cat.setHoraPagada(2.0);
-//		cat.setHoraProbono(5.0);
-//		cat.setIdCat(1.0);
-//		cat.setNombreCorto("pru");
-//		
-//			categoriaDao.save(cat);
-//		} catch (DaoException e) {
-//		
-//			e.printStackTrace();
-//		}
-//
-//		TiposDocumentos docs = tipo.findById(10L);
-//
-//		Clientes clientes= clienteDao.findById(codigoUser);
-//		assertNull("ya existe",clientes);
-//		clientes = new Clientes();
-//		clientes.setCliNombre("Luis");
-//		clientes.setCliId(codigoUser);
-//		clientes.setCliTelefono("31569882");
-//		clientes.setTiposDocumentos(docs);
-//		clientes.setCliDireccion("myHome");
-//		clientes.setCliMail("asd@asd.com");
-//
-//		clienteDao.save(clientes);		
+		
+		SesCoaching sesion = new SesCoaching();
+		sesion.setIdSesi(sesionDao.genSecuencia());
+		sesion.setAccion("accion 2");
+		sesion.setCompromiso("compromiso 2");
+		Estado nuevoEstado = estadoDao.findById(Double.parseDouble("18"));
+		sesion.setEstado(nuevoEstado);
+		sesion.setFocoSesion("Foco Sesion 2");
+		sesion.setHora(Double.parseDouble("15"));
+		sesion.setFecha(new Date());
+		sesion.setIndicador("indicador 2");
+		sesion.setProfundidad("profundidad 2");
+		ProcCoaching nuevoProceso = procesoDao.findById(Double.parseDouble("1"));
+		sesion.setProcCoaching(nuevoProceso);
+		sesion.setIdHis(Double.parseDouble("32"));
+	
+		sesionDao.save(sesion);
+		
+	
 	}
-//
+
 	@Test
 	@Transactional(readOnly = true)
-	public void btest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie = clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clie);
-//
-//		clienteDao.findById(codigoUser);	
+	public void bBuscarTest() {
+
+		SesCoaching sesion = sesionDao.findById(Double.parseDouble("1"));
+		
+		System.out.println(sesion.getCompromiso());
+		
 	}
-//
+
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void ctest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie= clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clie);
-//
-//		clie.setCliNombre("Jorge");
-//		clienteDao.update(clie);
+	public void cUpdateTest() throws DaoException {
+
+		SesCoaching sesion = sesionDao.findById(Double.parseDouble("1"));
+		sesion.setCompromiso("Compromiso completo");
+		sesionDao.update(sesion);
+		
 	}
-//
-//
+	
+
 	@Test
 	@Transactional(readOnly = true)
-	public void dtest() {
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie= clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clienteDao);
-//
-//		clienteDao.delete(clie);	
+	public void dDeleteTest() throws DaoException {
+	
+
+		SesCoaching sesion = sesionDao.findById(Double.parseDouble("1"));
+		sesionDao.delete(sesion);
 	}	
-//
-//
+
 	@Test
 	@Transactional(readOnly = true)
 	public void etest() {
-//		assertNotNull(clienteDao);
-//
-//		List<Clientes> losClientes = clienteDao.findAll();
-//		assertNotNull(losClientes);
-//
-//		for (Clientes lista : losClientes) {
-//			log.info("Nombre:" + lista.getCliNombre());
-//			log.info("Tipo Documento " + lista.getTiposDocumentos().getTdocNombre());
-//		}
-//
+
+		List<SesCoaching> sesion = sesionDao.findAll();
+		
+		for (SesCoaching sesCoaching : sesion) {
+			
+			System.out.println(sesCoaching.getCompromiso());
+		}
+		
+		
 	}	
 
 	

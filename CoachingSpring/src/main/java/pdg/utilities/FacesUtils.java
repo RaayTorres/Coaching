@@ -342,7 +342,7 @@ public class FacesUtils {
 		}
 	}
 	
- public static Double checkDouble(Object input) throws ZMessManager {
+ public static Long checkDouble(Object input) throws ZMessManager {
         if (input == null) {
             return null;
         }
@@ -358,7 +358,7 @@ public class FacesUtils {
         }
 
         try {
-            return new Double(inputValue.getValue().toString());
+            return new Long(inputValue.getValue().toString());
         } catch (Exception e) {
             throw new ZMessManager().new NotValidFieldException(inputValue.getId());
         }

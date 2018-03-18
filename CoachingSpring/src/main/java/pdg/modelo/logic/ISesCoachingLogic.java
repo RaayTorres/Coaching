@@ -41,7 +41,7 @@ public interface ISesCoachingLogic {
          * Load an existing SesCoaching entity
          *
          */
-    public SesCoaching getSesCoaching(Double idSesi) throws Exception;
+    public SesCoaching getSesCoaching(Long idSesi) throws Exception;
 
     public List<SesCoaching> findByCriteria(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)

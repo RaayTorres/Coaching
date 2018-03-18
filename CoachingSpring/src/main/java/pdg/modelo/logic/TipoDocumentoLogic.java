@@ -220,7 +220,7 @@ public class TipoDocumentoLogic implements ITipoDocumentoLogic {
     }
 
     @Transactional(readOnly = true)
-    public TipoDocumento getTipoDocumento(Double idDoc)
+    public TipoDocumento getTipoDocumento(Long idDoc)
         throws Exception {
         log.debug("getting TipoDocumento instance");
 

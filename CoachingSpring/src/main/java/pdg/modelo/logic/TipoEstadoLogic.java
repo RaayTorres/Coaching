@@ -199,7 +199,7 @@ public class TipoEstadoLogic implements ITipoEstadoLogic {
     }
 
     @Transactional(readOnly = true)
-    public TipoEstado getTipoEstado(Double idTestado) throws Exception {
+    public TipoEstado getTipoEstado(Long idTestado) throws Exception {
         log.debug("getting TipoEstado instance");
 
         TipoEstado entity = null;

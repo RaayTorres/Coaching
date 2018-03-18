@@ -18,14 +18,14 @@ import java.util.Date;
 public class TipoEstadoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final Logger log = LoggerFactory.getLogger(TipoEstadoDTO.class);
-    private Double idTestado;
+    private Long idTestado;
     private String nombreTipoEstado;
 
-    public Double getIdTestado() {
+    public Long getIdTestado() {
         return idTestado;
     }
 
-    public void setIdTestado(Double idTestado) {
+    public void setIdTestado(Long idTestado) {
         this.idTestado = idTestado;
     }
 

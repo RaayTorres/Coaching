@@ -227,7 +227,7 @@ public class CoacheeLogic implements ICoacheeLogic {
     }
 
     @Transactional(readOnly = true)
-    public Coachee getCoachee(Double idCoachee) throws Exception {
+    public Coachee getCoachee(Long idCoachee) throws Exception {
         log.debug("getting Coachee instance");
 
         Coachee entity = null;

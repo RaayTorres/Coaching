@@ -19,17 +19,17 @@ public class CoacheeDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final Logger log = LoggerFactory.getLogger(CoacheeDTO.class);
     private String apellido;
-    private Double celular;
+    private String celular;
     private String correo;
     private String direccion;
     private byte[] foto;
     private String hobbies;
-    private Double idCoachee;
+    private Long idCoachee;
     private String identificacion;
     private String nombre;
-    private Double telefono;
-    private Double idEstado_Estado;
-    private Double idDoc_TipoDocumento;
+    private String telefono;
+    private Long idEstado_Estado;
+    private Long idDoc_TipoDocumento;
 
     public String getApellido() {
         return apellido;
@@ -39,11 +39,11 @@ public class CoacheeDTO implements Serializable {
         this.apellido = apellido;
     }
 
-    public Double getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(Double celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
@@ -79,11 +79,11 @@ public class CoacheeDTO implements Serializable {
         this.hobbies = hobbies;
     }
 
-    public Double getIdCoachee() {
+    public Long getIdCoachee() {
         return idCoachee;
     }
 
-    public void setIdCoachee(Double idCoachee) {
+    public void setIdCoachee(Long idCoachee) {
         this.idCoachee = idCoachee;
     }
 
@@ -103,27 +103,27 @@ public class CoacheeDTO implements Serializable {
         this.nombre = nombre;
     }
 
-    public Double getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Double telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
-    public Double getIdEstado_Estado() {
+    public Long getIdEstado_Estado() {
         return idEstado_Estado;
     }
 
-    public void setIdEstado_Estado(Double idEstado_Estado) {
+    public void setIdEstado_Estado(Long idEstado_Estado) {
         this.idEstado_Estado = idEstado_Estado;
     }
 
-    public Double getIdDoc_TipoDocumento() {
+    public Long getIdDoc_TipoDocumento() {
         return idDoc_TipoDocumento;
     }
 
-    public void setIdDoc_TipoDocumento(Double idDoc_TipoDocumento) {
+    public void setIdDoc_TipoDocumento(Long idDoc_TipoDocumento) {
         this.idDoc_TipoDocumento = idDoc_TipoDocumento;
     }
 }

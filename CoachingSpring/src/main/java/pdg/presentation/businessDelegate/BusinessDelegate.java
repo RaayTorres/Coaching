@@ -142,7 +142,7 @@ public class BusinessDelegate implements IBusinessDelegate {
         categoriaLogic.updateCategoria(entity);
     }
 
-    public Categoria getCategoria(Double idCat) throws Exception {
+    public Categoria getCategoria(Long idCat) throws Exception {
         Categoria categoria = null;
 
         try {
@@ -197,7 +197,7 @@ public class BusinessDelegate implements IBusinessDelegate {
         coachLogic.updateCoach(entity);
     }
 
-    public Coach getCoach(Double idCoach) throws Exception {
+    public Coach getCoach(Long idCoach) throws Exception {
         Coach coach = null;
 
         try {
@@ -251,7 +251,7 @@ public class BusinessDelegate implements IBusinessDelegate {
         coacheeLogic.updateCoachee(entity);
     }
 
-    public Coachee getCoachee(Double idCoachee) throws Exception {
+    public Coachee getCoachee(Long idCoachee) throws Exception {
         Coachee coachee = null;
 
         try {
@@ -305,7 +305,7 @@ public class BusinessDelegate implements IBusinessDelegate {
         estadoLogic.updateEstado(entity);
     }
 
-    public Estado getEstado(Double idEstado) throws Exception {
+    public Estado getEstado(Long idEstado) throws Exception {
         Estado estado = null;
 
         try {
@@ -359,11 +359,11 @@ public class BusinessDelegate implements IBusinessDelegate {
         parametroLogic.updateParametro(entity);
     }
 
-    public Parametro getParametro(Double idParam) throws Exception {
+    public Parametro getParametro(Long idParam) throws Exception {
         Parametro parametro = null;
 
         try {
-            parametro = parametroLogic.getParametro(idParam);
+            parametro = (Parametro) parametroLogic.getParametro();
         } catch (Exception e) {
             throw e;
         }
@@ -416,7 +416,7 @@ public class BusinessDelegate implements IBusinessDelegate {
         procCoachingLogic.updateProcCoaching(entity);
     }
 
-    public ProcCoaching getProcCoaching(Double idProc)
+    public ProcCoaching getProcCoaching(Long idProc)
         throws Exception {
         ProcCoaching procCoaching = null;
 
@@ -473,7 +473,7 @@ public class BusinessDelegate implements IBusinessDelegate {
         regContableLogic.updateRegContable(entity);
     }
 
-    public RegContable getRegContable(Double idHis) throws Exception {
+    public RegContable getRegContable(Long idHis) throws Exception {
         RegContable regContable = null;
 
         try {
@@ -528,7 +528,7 @@ public class BusinessDelegate implements IBusinessDelegate {
         sesCoachingLogic.updateSesCoaching(entity);
     }
 
-    public SesCoaching getSesCoaching(Double idSesi) throws Exception {
+    public SesCoaching getSesCoaching(Long idSesi) throws Exception {
         SesCoaching sesCoaching = null;
 
         try {
@@ -586,7 +586,7 @@ public class BusinessDelegate implements IBusinessDelegate {
         tipoDocumentoLogic.updateTipoDocumento(entity);
     }
 
-    public TipoDocumento getTipoDocumento(Double idDoc)
+    public TipoDocumento getTipoDocumento(Long idDoc)
         throws Exception {
         TipoDocumento tipoDocumento = null;
 
@@ -643,7 +643,7 @@ public class BusinessDelegate implements IBusinessDelegate {
         tipoEstadoLogic.updateTipoEstado(entity);
     }
 
-    public TipoEstado getTipoEstado(Double idTestado) throws Exception {
+    public TipoEstado getTipoEstado(Long idTestado) throws Exception {
         TipoEstado tipoEstado = null;
 
         try {

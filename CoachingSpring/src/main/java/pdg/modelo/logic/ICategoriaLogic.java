@@ -41,7 +41,7 @@ public interface ICategoriaLogic {
          * Load an existing Categoria entity
          *
          */
-    public Categoria getCategoria(Double idCat) throws Exception;
+    public Categoria getCategoria(Long long1) throws Exception;
 
     public List<Categoria> findByCriteria(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)

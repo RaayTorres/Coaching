@@ -19,24 +19,24 @@ import javax.validation.constraints.*;
 @Entity
 @Table(name = "reg_contable", schema = "public")
 public class RegContable implements java.io.Serializable {
-    @NotNull
-    private Double idHis;
-    @NotNull
-    private Coachee coachee;
-    @NotNull
-    private Date fechaPago;
-    @NotNull
-    @NotEmpty
-    @Size(max = 200)
-    private String tipo;
-    @NotNull
-    private Double valor;
-    private Set<ProcCoaching> procCoachings = new HashSet<ProcCoaching>(0);
+	 @NotNull
+	    private Long idHis;
+	    @NotNull
+	    private Coachee coachee;
+	    @NotNull
+	    private Date fechaPago;
+	    @NotNull
+	    @NotEmpty
+	    @Size(max = 200)
+	    private String tipo;
+	    @NotNull
+	    private Double valor;
+	    private Set<ProcCoaching> procCoachings = new HashSet<ProcCoaching>(0);
 
     public RegContable() {
     }
 
-    public RegContable(Double idHis, Coachee coachee, Date fechaPago,
+    public RegContable(Long idHis, Coachee coachee, Date fechaPago,
         Set<ProcCoaching> procCoachings, String tipo, Double valor) {
         this.idHis = idHis;
         this.coachee = coachee;
@@ -48,11 +48,11 @@ public class RegContable implements java.io.Serializable {
 
     @Id
     @Column(name = "id_his", unique = true, nullable = false)
-    public Double getIdHis() {
+    public Long getIdHis() {
         return this.idHis;
     }
 
-    public void setIdHis(Double idHis) {
+    public void setIdHis(Long idHis) {
         this.idHis = idHis;
     }
 

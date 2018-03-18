@@ -43,7 +43,7 @@ public interface IProcCoachingLogic {
          * Load an existing ProcCoaching entity
          *
          */
-    public ProcCoaching getProcCoaching(Double idProc)
+    public ProcCoaching getProcCoaching(Long long1)
         throws Exception;
 
     public List<ProcCoaching> findByCriteria(Object[] variables,

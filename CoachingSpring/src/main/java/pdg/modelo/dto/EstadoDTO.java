@@ -18,15 +18,15 @@ import java.util.Date;
 public class EstadoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final Logger log = LoggerFactory.getLogger(EstadoDTO.class);
-    private Double idEstado;
+    private Long idEstado;
     private String nombreEstado;
-    private Double idTestado_TipoEstado;
+    private Long idTestado_TipoEstado;
 
-    public Double getIdEstado() {
+    public Long getIdEstado() {
         return idEstado;
     }
 
-    public void setIdEstado(Double idEstado) {
+    public void setIdEstado(Long idEstado) {
         this.idEstado = idEstado;
     }
 
@@ -38,11 +38,11 @@ public class EstadoDTO implements Serializable {
         this.nombreEstado = nombreEstado;
     }
 
-    public Double getIdTestado_TipoEstado() {
+    public Long getIdTestado_TipoEstado() {
         return idTestado_TipoEstado;
     }
 
-    public void setIdTestado_TipoEstado(Double idTestado_TipoEstado) {
+    public void setIdTestado_TipoEstado(Long idTestado_TipoEstado) {
         this.idTestado_TipoEstado = idTestado_TipoEstado;
     }
 }

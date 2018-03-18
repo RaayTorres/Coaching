@@ -41,7 +41,7 @@ public interface ICoacheeLogic {
          * Load an existing Coachee entity
          *
          */
-    public Coachee getCoachee(Double idCoachee) throws Exception;
+    public Coachee getCoachee(Long long1) throws Exception;
 
     public List<Coachee> findByCriteria(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)

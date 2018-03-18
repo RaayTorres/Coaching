@@ -83,8 +83,7 @@ public class CoachMapper implements ICoachMapper {
                 coachDTO.setIdCat_Categoria(null);
             }
 
-            coachDTO.setIdEstado_Estado((coach.getEstado().getIdEstado() != null)
-                ? coach.getEstado().getIdEstado() : null);
+          
             coachDTO.setIdDoc_TipoDocumento((coach.getTipoDocumento().getIdDoc() != null)
                 ? coach.getTipoDocumento().getIdDoc() : null);
 
@@ -137,9 +136,6 @@ public class CoachMapper implements ICoachMapper {
                 estado = logicEstado2.getEstado(coachDTO.getIdEstado_Estado());
             }
 
-            if (estado != null) {
-                coach.setEstado(estado);
-            }
 
             TipoDocumento tipoDocumento = new TipoDocumento();
 

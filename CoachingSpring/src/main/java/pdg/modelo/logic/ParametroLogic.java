@@ -183,7 +183,7 @@ public class ParametroLogic implements IParametroLogic {
     }
 
     @Transactional(readOnly = true)
-    public Parametro getParametro(Double idParam) throws Exception {
+    public Parametro getParametro(Long idParam) throws Exception {
         log.debug("getting Parametro instance");
 
         Parametro entity = null;
@@ -396,4 +396,6 @@ public class ParametroLogic implements IParametroLogic {
 
         return list;
     }
+
+	
 }

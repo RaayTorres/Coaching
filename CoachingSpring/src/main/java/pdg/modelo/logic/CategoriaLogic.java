@@ -150,7 +150,7 @@ public class CategoriaLogic implements ICategoriaLogic {
                 throw new ZMessManager().new DeletingException("coaches");
             }
 
-            categoriaDAO.deleteById(entity.getIdCat());
+            categoriaDAO.delete(entity);
             log.debug("delete Categoria successful");
         } catch (Exception e) {
             log.error("delete Categoria failed", e);
@@ -199,7 +199,7 @@ public class CategoriaLogic implements ICategoriaLogic {
     }
 
     @Transactional(readOnly = true)
-    public Categoria getCategoria(Double idCat) throws Exception {
+    public Categoria getCategoria(Long idCat) throws Exception {
         log.debug("getting Categoria instance");
 
         Categoria entity = null;
@@ -412,4 +412,6 @@ public class CategoriaLogic implements ICategoriaLogic {
 
         return list;
     }
+
+
 }

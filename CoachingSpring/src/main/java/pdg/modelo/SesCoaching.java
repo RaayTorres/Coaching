@@ -17,28 +17,28 @@ import javax.validation.constraints.*;
 @Entity
 @Table(name = "ses_coaching", schema = "public")
 public class SesCoaching implements java.io.Serializable {
-    @NotNull
-    private Double idSesi;
-    @NotNull
-    private Estado estado;
-    @NotNull
-    private ProcCoaching procCoaching;
-    private String accion;
-    private String compromiso;
-    private Date fecha;
-    private String focoSesion;
-    private Double hora;
-    @NotNull
-    private Double idHis;
-    private String indicador;
-    private String profundidad;
+	  @NotNull
+	    private Long idSesi;
+	    @NotNull
+	    private Estado estado;
+	    @NotNull
+	    private ProcCoaching procCoaching;
+	    private String accion;
+	    private String compromiso;
+	    private Date fecha;
+	    private String focoSesion;
+	    private Double hora;
+	    @NotNull
+	    private Long idHis;
+	    private String indicador;
+	    private String profundidad;
 
     public SesCoaching() {
     }
 
-    public SesCoaching(Double idSesi, String accion, String compromiso,
+    public SesCoaching(Long idSesi, String accion, String compromiso,
         Estado estado, Date fecha, String focoSesion, Double hora,
-        Double idHis, String indicador, ProcCoaching procCoaching,
+        Long idHis, String indicador, ProcCoaching procCoaching,
         String profundidad) {
         this.idSesi = idSesi;
         this.estado = estado;
@@ -55,11 +55,11 @@ public class SesCoaching implements java.io.Serializable {
 
     @Id
     @Column(name = "id_sesi", unique = true, nullable = false)
-    public Double getIdSesi() {
+    public Long getIdSesi() {
         return this.idSesi;
     }
 
-    public void setIdSesi(Double idSesi) {
+    public void setIdSesi(Long idSesi) {
         this.idSesi = idSesi;
     }
 
@@ -129,11 +129,11 @@ public class SesCoaching implements java.io.Serializable {
     }
 
     @Column(name = "id_his", nullable = false)
-    public Double getIdHis() {
+    public Long getIdHis() {
         return this.idHis;
     }
 
-    public void setIdHis(Double idHis) {
+    public void setIdHis(Long idHis) {
         this.idHis = idHis;
     }
 

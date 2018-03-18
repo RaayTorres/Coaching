@@ -19,39 +19,36 @@ import javax.validation.constraints.*;
 @Entity
 @Table(name = "estado", schema = "public")
 public class Estado implements java.io.Serializable {
-    @NotNull
-    private Double idEstado;
-    @NotNull
-    private TipoEstado tipoEstado;
-    @NotNull
-    @NotEmpty
-    @Size(max = 60)
-    private String nombreEstado;
-    private Set<Coachee> coachees = new HashSet<Coachee>(0);
-    private Set<Coach> coaches = new HashSet<Coach>(0);
-    private Set<SesCoaching> sesCoachings = new HashSet<SesCoaching>(0);
-
+	   @NotNull
+	    private Long idEstado;
+	    @NotNull
+	    private TipoEstado tipoEstado;
+	    @NotNull
+	    @NotEmpty
+	    @Size(max = 60)
+	    private String nombreEstado;
+	    private Set<Coachee> coachees = new HashSet<Coachee>(0);
+	    private Set<SesCoaching> sesCoachings = new HashSet<SesCoaching>(0);
     public Estado() {
     }
 
-    public Estado(Double idEstado, Set<Coachee> coachees, Set<Coach> coaches,
+    public Estado(Long idEstado, Set<Coachee> coachees, 
         String nombreEstado, Set<SesCoaching> sesCoachings,
         TipoEstado tipoEstado) {
         this.idEstado = idEstado;
         this.tipoEstado = tipoEstado;
         this.nombreEstado = nombreEstado;
         this.coachees = coachees;
-        this.coaches = coaches;
         this.sesCoachings = sesCoachings;
     }
 
     @Id
     @Column(name = "id_estado", unique = true, nullable = false)
-    public Double getIdEstado() {
+    public Long getIdEstado() {
         return this.idEstado;
     }
 
-    public void setIdEstado(Double idEstado) {
+    public void setIdEstado(Long idEstado) {
         this.idEstado = idEstado;
     }
 
@@ -83,14 +80,6 @@ public class Estado implements java.io.Serializable {
         this.coachees = coachees;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "estado")
-    public Set<Coach> getCoaches() {
-        return this.coaches;
-    }
-
-    public void setCoaches(Set<Coach> coaches) {
-        this.coaches = coaches;
-    }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "estado")
     public Set<SesCoaching> getSesCoachings() {

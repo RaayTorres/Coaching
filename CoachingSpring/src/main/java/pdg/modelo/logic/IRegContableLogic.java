@@ -41,7 +41,7 @@ public interface IRegContableLogic {
          * Load an existing RegContable entity
          *
          */
-    public RegContable getRegContable(Double idHis) throws Exception;
+    public RegContable getRegContable(Long long1) throws Exception;
 
     public List<RegContable> findByCriteria(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)

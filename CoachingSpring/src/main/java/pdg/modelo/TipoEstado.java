@@ -19,18 +19,18 @@ import javax.validation.constraints.*;
 @Entity
 @Table(name = "TIPO_ESTADO", schema = "public")
 public class TipoEstado implements java.io.Serializable {
-    @NotNull
-    private Double idTestado;
-    @NotNull
-    @NotEmpty
-    @Size(max = 60)
-    private String nombreTipoEstado;
-    private Set<Estado> estados = new HashSet<Estado>(0);
+	   @NotNull
+	    private Long idTestado;
+	    @NotNull
+	    @NotEmpty
+	    @Size(max = 60)
+	    private String nombreTipoEstado;
+	    private Set<Estado> estados = new HashSet<Estado>(0);
 
     public TipoEstado() {
     }
 
-    public TipoEstado(Double idTestado, Set<Estado> estados,
+    public TipoEstado(Long idTestado, Set<Estado> estados,
         String nombreTipoEstado) {
         this.idTestado = idTestado;
         this.nombreTipoEstado = nombreTipoEstado;
@@ -39,11 +39,11 @@ public class TipoEstado implements java.io.Serializable {
 
     @Id
     @Column(name = "id_testado", unique = true, nullable = false)
-    public Double getIdTestado() {
+    public Long getIdTestado() {
         return this.idTestado;
     }
 
-    public void setIdTestado(Double idTestado) {
+    public void setIdTestado(Long idTestado) {
         this.idTestado = idTestado;
     }
 

@@ -21,7 +21,7 @@ public class CategoriaDTO implements Serializable {
     private String catNombre;
     private Double horaPagada;
     private Double horaProbono;
-    private Double idCat;
+    private Long idCat;
     private String nombreCorto;
 
     public String getCatNombre() {
@@ -48,11 +48,11 @@ public class CategoriaDTO implements Serializable {
         this.horaProbono = horaProbono;
     }
 
-    public Double getIdCat() {
+    public Long getIdCat() {
         return idCat;
     }
 
-    public void setIdCat(Double idCat) {
+    public void setIdCat(Long idCat) {
         this.idCat = idCat;
     }
 

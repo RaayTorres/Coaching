@@ -43,7 +43,7 @@ public interface ICoachLogic {
          * Load an existing Coach entity
          *
          */
-    public Coach getCoach(Double idCoach) throws Exception;
+    public Coach getCoach(Long long1) throws Exception;
 
     public List<Coach> findByCriteria(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)

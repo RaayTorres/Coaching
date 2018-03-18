@@ -235,7 +235,7 @@ public class EstadoLogic implements IEstadoLogic {
     }
 
     @Transactional(readOnly = true)
-    public Estado getEstado(Double idEstado) throws Exception {
+    public Estado getEstado(Long idEstado) throws Exception {
         log.debug("getting Estado instance");
 
         Estado entity = null;

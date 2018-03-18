@@ -18,17 +18,17 @@ import java.util.Date;
 public class ParametroDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final Logger log = LoggerFactory.getLogger(ParametroDTO.class);
-    private Double idParam;
+    private Long idParam;
     private Double numero;
     private String texto;
     private byte[] textoBlob;
     private String textoClob;
 
-    public Double getIdParam() {
+    public Long getIdParam() {
         return idParam;
     }
 
-    public void setIdParam(Double idParam) {
+    public void setIdParam(Long idParam) {
         this.idParam = idParam;
     }
 

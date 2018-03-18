@@ -232,7 +232,7 @@ public class ProcCoachingLogic implements IProcCoachingLogic {
     }
 
     @Transactional(readOnly = true)
-    public ProcCoaching getProcCoaching(Double idProc)
+    public ProcCoaching getProcCoaching(Long idProc)
         throws Exception {
         log.debug("getting ProcCoaching instance");
 

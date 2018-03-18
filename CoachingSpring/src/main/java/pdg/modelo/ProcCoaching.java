@@ -19,23 +19,23 @@ import javax.validation.constraints.*;
 @Entity
 @Table(name = "proc_coaching", schema = "public")
 public class ProcCoaching implements java.io.Serializable {
-    @NotNull
-    private Double idProc;
-    @NotNull
-    private Coach coach;
-    @NotNull
-    private Coachee coachee;
-    @NotNull
-    private RegContable regContable;
-    @NotNull
-    private Double idTpago;
-    private Set<SesCoaching> sesCoachings = new HashSet<SesCoaching>(0);
+	 @NotNull
+	    private Long idProc;
+	    @NotNull
+	    private Coach coach;
+	    @NotNull
+	    private Coachee coachee;
+	    @NotNull
+	    private RegContable regContable;
+	    @NotNull
+	    private Long idTpago;
+	    private Set<SesCoaching> sesCoachings = new HashSet<SesCoaching>(0);
 
     public ProcCoaching() {
     }
 
-    public ProcCoaching(Double idProc, Coach coach, Coachee coachee,
-        Double idTpago, RegContable regContable, Set<SesCoaching> sesCoachings) {
+    public ProcCoaching(Long idProc, Coach coach, Coachee coachee,
+    		Long idTpago, RegContable regContable, Set<SesCoaching> sesCoachings) {
         this.idProc = idProc;
         this.coach = coach;
         this.coachee = coachee;
@@ -46,11 +46,11 @@ public class ProcCoaching implements java.io.Serializable {
 
     @Id
     @Column(name = "id_proc", unique = true, nullable = false)
-    public Double getIdProc() {
+    public Long getIdProc() {
         return this.idProc;
     }
 
-    public void setIdProc(Double idProc) {
+    public void setIdProc(Long idProc) {
         this.idProc = idProc;
     }
 
@@ -85,11 +85,11 @@ public class ProcCoaching implements java.io.Serializable {
     }
 
     @Column(name = "id_tpago", nullable = false)
-    public Double getIdTpago() {
+    public Long getIdTpago() {
         return this.idTpago;
     }
 
-    public void setIdTpago(Double idTpago) {
+    public void setIdTpago(Long idTpago) {
         this.idTpago = idTpago;
     }
 

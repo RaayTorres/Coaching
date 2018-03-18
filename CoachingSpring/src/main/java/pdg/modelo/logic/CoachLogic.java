@@ -221,7 +221,7 @@ public class CoachLogic implements ICoachLogic {
     }
 
     @Transactional(readOnly = true)
-    public Coach getCoach(Double idCoach) throws Exception {
+    public Coach getCoach(Long idCoach) throws Exception {
         log.debug("getting Coach instance");
 
         Coach entity = null;

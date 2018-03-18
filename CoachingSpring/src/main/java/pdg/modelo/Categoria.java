@@ -21,10 +21,8 @@ import javax.validation.constraints.*;
 @Table(name = "categoria", schema = "public")
 public class Categoria implements java.io.Serializable {
   
-	   @NotNull
-	   @SequenceGenerator(name="categoria_idCat_GENERATOR", allocationSize = 1, sequenceName="seq_prueba")
-	   @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="categoria_idCat_GENERATOR")
-	  private Double idCat;
+	  @NotNull
+	    private Long idCat;
 	    @NotNull
 	    @NotEmpty
 	    @Size(max = 60)
@@ -39,10 +37,11 @@ public class Categoria implements java.io.Serializable {
 	    private String nombreCorto;
 	    private Set<Coach> coaches = new HashSet<Coach>(0);
 
+
     public Categoria() {
     }
 
-    public Categoria(Double idCat, String catNombre, Set<Coach> coaches,
+    public Categoria(Long idCat, String catNombre, Set<Coach> coaches,
         Double horaPagada, Double horaProbono, String nombreCorto) {
         this.idCat = idCat;
         this.catNombre = catNombre;
@@ -54,11 +53,11 @@ public class Categoria implements java.io.Serializable {
 
     @Id
     @Column(name = "id_cat", unique = true, nullable = false)
-    public Double getIdCat() {
+    public Long getIdCat() {
         return this.idCat;
     }
 
-    public void setIdCat(Double idCat) {
+    public void setIdCat(Long idCat) {
         this.idCat = idCat;
     }
 

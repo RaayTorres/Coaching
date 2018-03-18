@@ -18,49 +18,49 @@ import java.util.Date;
 public class ProcCoachingDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final Logger log = LoggerFactory.getLogger(ProcCoachingDTO.class);
-    private Double idProc;
-    private Double idTpago;
-    private Double idCoach_Coach;
-    private Double idCoachee_Coachee;
-    private Double idHis_RegContable;
+    private Long idProc;
+    private Long idTpago;
+    private Long idCoach_Coach;
+    private Long idCoachee_Coachee;
+    private Long idHis_RegContable;
 
-    public Double getIdProc() {
+    public Long getIdProc() {
         return idProc;
     }
 
-    public void setIdProc(Double idProc) {
+    public void setIdProc(Long idProc) {
         this.idProc = idProc;
     }
 
-    public Double getIdTpago() {
+    public Long getIdTpago() {
         return idTpago;
     }
 
-    public void setIdTpago(Double idTpago) {
+    public void setIdTpago(Long idTpago) {
         this.idTpago = idTpago;
     }
 
-    public Double getIdCoach_Coach() {
+    public Long getIdCoach_Coach() {
         return idCoach_Coach;
     }
 
-    public void setIdCoach_Coach(Double idCoach_Coach) {
+    public void setIdCoach_Coach(Long idCoach_Coach) {
         this.idCoach_Coach = idCoach_Coach;
     }
 
-    public Double getIdCoachee_Coachee() {
+    public Long getIdCoachee_Coachee() {
         return idCoachee_Coachee;
     }
 
-    public void setIdCoachee_Coachee(Double idCoachee_Coachee) {
+    public void setIdCoachee_Coachee(Long idCoachee_Coachee) {
         this.idCoachee_Coachee = idCoachee_Coachee;
     }
 
-    public Double getIdHis_RegContable() {
+    public Long getIdHis_RegContable() {
         return idHis_RegContable;
     }
 
-    public void setIdHis_RegContable(Double idHis_RegContable) {
+    public void setIdHis_RegContable(Long idHis_RegContable) {
         this.idHis_RegContable = idHis_RegContable;
     }
 }

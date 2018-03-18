@@ -16,13 +16,13 @@ import java.util.List;
 public interface Dao<T, PK extends Serializable> {
     void save(T newEntity) throws DaoException;
 
-    T findById(PK id);
+    T findById(Long idParam);
 
     void update(T entity) throws DaoException;
 
     void delete(T entity) throws DaoException;
 
-    void deleteById(PK id) throws DaoException;
+    void deleteById(Long long1) throws DaoException;
 
     void deleteByProperty(String tableName, String propertyName, Object value)
         throws DaoException;

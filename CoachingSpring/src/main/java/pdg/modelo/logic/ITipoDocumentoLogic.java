@@ -44,7 +44,7 @@ public interface ITipoDocumentoLogic {
          * Load an existing TipoDocumento entity
          *
          */
-    public TipoDocumento getTipoDocumento(Double idDoc)
+    public TipoDocumento getTipoDocumento(Long long1)
         throws Exception;
 
     public List<TipoDocumento> findByCriteria(Object[] variables,

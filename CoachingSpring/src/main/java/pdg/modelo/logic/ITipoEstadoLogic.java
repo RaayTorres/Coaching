@@ -41,7 +41,7 @@ public interface ITipoEstadoLogic {
          * Load an existing TipoEstado entity
          *
          */
-    public TipoEstado getTipoEstado(Double idTestado) throws Exception;
+    public TipoEstado getTipoEstado(Long long1) throws Exception;
 
     public List<TipoEstado> findByCriteria(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)

@@ -19,47 +19,47 @@ import javax.validation.constraints.*;
 @Entity
 @Table(name = "coachee", schema = "public")
 public class Coachee implements java.io.Serializable {
-    @NotNull
-    private Double idCoachee;
-    @NotNull
-    private Estado estado;
-    @NotNull
-    private TipoDocumento tipoDocumento;
-    @NotNull
-    @NotEmpty
-    @Size(max = 60)
-    private String apellido;
-    private Double celular;
-    @NotNull
-    @NotEmpty
-    @Size(max = 80)
-    private String correo;
-    @NotNull
-    @NotEmpty
-    @Size(max = 80)
-    private String direccion;
-    private byte[] foto;
-    private String hobbies;
-    @NotNull
-    @NotEmpty
-    @Size(max = 60)
-    private String identificacion;
-    @NotNull
-    @NotEmpty
-    @Size(max = 60)
-    private String nombre;
-    private Double telefono;
-    private Set<ProcCoaching> procCoachings = new HashSet<ProcCoaching>(0);
-    private Set<RegContable> regContables = new HashSet<RegContable>(0);
+	 @NotNull
+	    private Long idCoachee;
+	    @NotNull
+	    private Estado estado;
+	    @NotNull
+	    private TipoDocumento tipoDocumento;
+	    @NotNull
+	    @NotEmpty
+	    @Size(max = 60)
+	    private String apellido;
+	    private String celular;
+	    @NotNull
+	    @NotEmpty
+	    @Size(max = 80)
+	    private String correo;
+	    @NotNull
+	    @NotEmpty
+	    @Size(max = 80)
+	    private String direccion;
+	    private byte[] foto;
+	    private String hobbies;
+	    @NotNull
+	    @NotEmpty
+	    @Size(max = 60)
+	    private String identificacion;
+	    @NotNull
+	    @NotEmpty
+	    @Size(max = 60)
+	    private String nombre;
+	    private String telefono;
+	    private Set<ProcCoaching> procCoachings = new HashSet<ProcCoaching>(0);
+	    private Set<RegContable> regContables = new HashSet<RegContable>(0);
 
     public Coachee() {
     }
 
-    public Coachee(Double idCoachee, String apellido, Double celular,
+    public Coachee(Long idCoachee, String apellido, String celular,
         String correo, String direccion, Estado estado, byte[] foto,
         String hobbies, String identificacion, String nombre,
         Set<ProcCoaching> procCoachings, Set<RegContable> regContables,
-        Double telefono, TipoDocumento tipoDocumento) {
+        String telefono, TipoDocumento tipoDocumento) {
         this.idCoachee = idCoachee;
         this.estado = estado;
         this.tipoDocumento = tipoDocumento;
@@ -78,11 +78,11 @@ public class Coachee implements java.io.Serializable {
 
     @Id
     @Column(name = "id_coachee", unique = true, nullable = false)
-    public Double getIdCoachee() {
+    public Long getIdCoachee() {
         return this.idCoachee;
     }
 
-    public void setIdCoachee(Double idCoachee) {
+    public void setIdCoachee(Long idCoachee) {
         this.idCoachee = idCoachee;
     }
 
@@ -116,11 +116,11 @@ public class Coachee implements java.io.Serializable {
     }
 
     @Column(name = "celular")
-    public Double getCelular() {
+    public String getCelular() {
         return this.celular;
     }
 
-    public void setCelular(Double celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
@@ -179,11 +179,11 @@ public class Coachee implements java.io.Serializable {
     }
 
     @Column(name = "telefono")
-    public Double getTelefono() {
+    public String getTelefono() {
         return this.telefono;
     }
 
-    public void setTelefono(Double telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

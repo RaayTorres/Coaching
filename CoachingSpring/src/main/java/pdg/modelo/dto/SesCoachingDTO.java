@@ -23,12 +23,12 @@ public class SesCoachingDTO implements Serializable {
     private Date fecha;
     private String focoSesion;
     private Double hora;
-    private Double idHis;
-    private Double idSesi;
+    private Long idHis;
+    private Long idSesi;
     private String indicador;
     private String profundidad;
-    private Double idEstado_Estado;
-    private Double idProc_ProcCoaching;
+    private Long idEstado_Estado;
+    private Long idProc_ProcCoaching;
 
     public String getAccion() {
         return accion;
@@ -70,19 +70,19 @@ public class SesCoachingDTO implements Serializable {
         this.hora = hora;
     }
 
-    public Double getIdHis() {
+    public Long getIdHis() {
         return idHis;
     }
 
-    public void setIdHis(Double idHis) {
+    public void setIdHis(Long idHis) {
         this.idHis = idHis;
     }
 
-    public Double getIdSesi() {
+    public Long getIdSesi() {
         return idSesi;
     }
 
-    public void setIdSesi(Double idSesi) {
+    public void setIdSesi(Long idSesi) {
         this.idSesi = idSesi;
     }
 
@@ -102,19 +102,19 @@ public class SesCoachingDTO implements Serializable {
         this.profundidad = profundidad;
     }
 
-    public Double getIdEstado_Estado() {
+    public Long getIdEstado_Estado() {
         return idEstado_Estado;
     }
 
-    public void setIdEstado_Estado(Double idEstado_Estado) {
+    public void setIdEstado_Estado(Long idEstado_Estado) {
         this.idEstado_Estado = idEstado_Estado;
     }
 
-    public Double getIdProc_ProcCoaching() {
+    public Long getIdProc_ProcCoaching() {
         return idProc_ProcCoaching;
     }
 
-    public void setIdProc_ProcCoaching(Double idProc_ProcCoaching) {
+    public void setIdProc_ProcCoaching(Long idProc_ProcCoaching) {
         this.idProc_ProcCoaching = idProc_ProcCoaching;
     }
 }

@@ -68,7 +68,7 @@ public interface IBusinessDelegate {
 
     public void updateCategoria(Categoria entity) throws Exception;
 
-    public Categoria getCategoria(Double idCat) throws Exception;
+    public Categoria getCategoria(Long idCat) throws Exception;
 
     public List<Categoria> findByCriteriaInCategoria(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)
@@ -93,7 +93,7 @@ public interface IBusinessDelegate {
 
     public void updateCoach(Coach entity) throws Exception;
 
-    public Coach getCoach(Double idCoach) throws Exception;
+    public Coach getCoach(Long idCoach) throws Exception;
 
     public List<Coach> findByCriteriaInCoach(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)
@@ -117,7 +117,7 @@ public interface IBusinessDelegate {
 
     public void updateCoachee(Coachee entity) throws Exception;
 
-    public Coachee getCoachee(Double idCoachee) throws Exception;
+    public Coachee getCoachee(Long idCoachee) throws Exception;
 
     public List<Coachee> findByCriteriaInCoachee(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)
@@ -141,7 +141,7 @@ public interface IBusinessDelegate {
 
     public void updateEstado(Estado entity) throws Exception;
 
-    public Estado getEstado(Double idEstado) throws Exception;
+    public Estado getEstado(Long idEstado) throws Exception;
 
     public List<Estado> findByCriteriaInEstado(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)
@@ -165,7 +165,7 @@ public interface IBusinessDelegate {
 
     public void updateParametro(Parametro entity) throws Exception;
 
-    public Parametro getParametro(Double idParam) throws Exception;
+    public Parametro getParametro(Long idParam) throws Exception;
 
     public List<Parametro> findByCriteriaInParametro(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)
@@ -192,7 +192,7 @@ public interface IBusinessDelegate {
     public void updateProcCoaching(ProcCoaching entity)
         throws Exception;
 
-    public ProcCoaching getProcCoaching(Double idProc)
+    public ProcCoaching getProcCoaching(Long idProc)
         throws Exception;
 
     public List<ProcCoaching> findByCriteriaInProcCoaching(Object[] variables,
@@ -219,7 +219,7 @@ public interface IBusinessDelegate {
 
     public void updateRegContable(RegContable entity) throws Exception;
 
-    public RegContable getRegContable(Double idHis) throws Exception;
+    public RegContable getRegContable(Long idHis) throws Exception;
 
     public List<RegContable> findByCriteriaInRegContable(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)
@@ -244,7 +244,7 @@ public interface IBusinessDelegate {
 
     public void updateSesCoaching(SesCoaching entity) throws Exception;
 
-    public SesCoaching getSesCoaching(Double idSesi) throws Exception;
+    public SesCoaching getSesCoaching(Long idSesi) throws Exception;
 
     public List<SesCoaching> findByCriteriaInSesCoaching(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)
@@ -272,7 +272,7 @@ public interface IBusinessDelegate {
     public void updateTipoDocumento(TipoDocumento entity)
         throws Exception;
 
-    public TipoDocumento getTipoDocumento(Double idDoc)
+    public TipoDocumento getTipoDocumento(Long idDoc)
         throws Exception;
 
     public List<TipoDocumento> findByCriteriaInTipoDocumento(
@@ -299,7 +299,7 @@ public interface IBusinessDelegate {
 
     public void updateTipoEstado(TipoEstado entity) throws Exception;
 
-    public TipoEstado getTipoEstado(Double idTestado) throws Exception;
+    public TipoEstado getTipoEstado(Long idTestado) throws Exception;
 
     public List<TipoEstado> findByCriteriaInTipoEstado(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)

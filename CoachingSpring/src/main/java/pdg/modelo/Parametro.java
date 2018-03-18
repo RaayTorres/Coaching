@@ -18,16 +18,15 @@ import javax.validation.constraints.*;
 @Table(name = "parametro", schema = "public")
 public class Parametro implements java.io.Serializable {
     @NotNull
-    private Double idParam;
+    private Long idParam;
     private Double numero;
     private String texto;
     private byte[] textoBlob;
     private String textoClob;
-
     public Parametro() {
     }
 
-    public Parametro(Double idParam, Double numero, String texto,
+    public Parametro(Long idParam, Double numero, String texto,
         byte[] textoBlob, String textoClob) {
         this.idParam = idParam;
         this.numero = numero;
@@ -38,11 +37,11 @@ public class Parametro implements java.io.Serializable {
 
     @Id
     @Column(name = "id_param", unique = true, nullable = false)
-    public Double getIdParam() {
+    public Long getIdParam() {
         return this.idParam;
     }
 
-    public void setIdParam(Double idParam) {
+    public void setIdParam(Long idParam) {
         this.idParam = idParam;
     }
 

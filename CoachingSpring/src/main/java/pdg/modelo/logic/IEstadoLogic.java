@@ -41,7 +41,7 @@ public interface IEstadoLogic {
          * Load an existing Estado entity
          *
          */
-    public Estado getEstado(Double idEstado) throws Exception;
+    public Estado getEstado(Long long1) throws Exception;
 
     public List<Estado> findByCriteria(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)

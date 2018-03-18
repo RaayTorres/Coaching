@@ -41,7 +41,7 @@ public interface IParametroLogic {
          * Load an existing Parametro entity
          *
          */
-    public Parametro getParametro(Double idParam) throws Exception;
+    
 
     public List<Parametro> findByCriteria(Object[] variables,
         Object[] variablesBetween, Object[] variablesBetweenDates)

@@ -19,10 +19,10 @@ public class RegContableDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final Logger log = LoggerFactory.getLogger(RegContableDTO.class);
     private Date fechaPago;
-    private Double idHis;
+    private Long idHis;
     private String tipo;
     private Double valor;
-    private Double idCoachee_Coachee;
+    private Long idCoachee_Coachee;
 
     public Date getFechaPago() {
         return fechaPago;
@@ -32,11 +32,11 @@ public class RegContableDTO implements Serializable {
         this.fechaPago = fechaPago;
     }
 
-    public Double getIdHis() {
+    public Long getIdHis() {
         return idHis;
     }
 
-    public void setIdHis(Double idHis) {
+    public void setIdHis(Long idHis) {
         this.idHis = idHis;
     }
 
@@ -56,11 +56,11 @@ public class RegContableDTO implements Serializable {
         this.valor = valor;
     }
 
-    public Double getIdCoachee_Coachee() {
+    public Long getIdCoachee_Coachee() {
         return idCoachee_Coachee;
     }
 
-    public void setIdCoachee_Coachee(Double idCoachee_Coachee) {
+    public void setIdCoachee_Coachee(Long idCoachee_Coachee) {
         this.idCoachee_Coachee = idCoachee_Coachee;
     }
 }

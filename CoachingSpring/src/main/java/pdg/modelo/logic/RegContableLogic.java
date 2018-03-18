@@ -206,7 +206,7 @@ public class RegContableLogic implements IRegContableLogic {
     }
 
     @Transactional(readOnly = true)
-    public RegContable getRegContable(Double idHis) throws Exception {
+    public RegContable getRegContable(Long idHis) throws Exception {
         log.debug("getting RegContable instance");
 
         RegContable entity = null;

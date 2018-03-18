@@ -197,13 +197,13 @@ public class SesCoachingLogic implements ISesCoachingLogic {
     }
 
     @Transactional(readOnly = true)
-    public SesCoaching getSesCoaching(Double idSesi) throws Exception {
+    public SesCoaching getSesCoaching(Long long1) throws Exception {
         log.debug("getting SesCoaching instance");
 
         SesCoaching entity = null;
 
         try {
-            entity = sesCoachingDAO.findById(idSesi);
+            entity = sesCoachingDAO.findById(long1);
         } catch (Exception e) {
             log.error("get SesCoaching failed", e);
             throw new ZMessManager().new FindingException("SesCoaching");
@@ -410,4 +410,7 @@ public class SesCoachingLogic implements ISesCoachingLogic {
 
         return list;
     }
-}
+
+
+	}
+

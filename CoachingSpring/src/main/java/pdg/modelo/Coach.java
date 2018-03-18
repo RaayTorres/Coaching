@@ -19,57 +19,54 @@ import javax.validation.constraints.*;
 @Entity
 @Table(name = "coach", schema = "public")
 public class Coach implements java.io.Serializable {
-    @NotNull
-    private Double idCoach;
-   // @NotNull
-    private Categoria categoria;
-    @NotNull
-    private Estado estado;
-    @NotNull
-    private TipoDocumento tipoDocumento;
-    @NotNull
-    @NotEmpty
-    @Size(max = 60)
-    private String apellido;
-    private Double celular;
-    @NotNull
-    @NotEmpty
-    @Size(max = 60)
-    private String contrasena;
-    @NotNull
-    @NotEmpty
-    @Size(max = 80)
-    private String correo;
-    @NotNull
-    private Double horaPagada;
-    @NotNull
-    private Double horaProbono;
-    @NotNull
-    @NotEmpty
-    @Size(max = 60)
-    private String identificacion;
-    @NotNull
-    @NotEmpty
-    @Size(max = 60)
-    private String login;
-    @NotNull
-    @NotEmpty
-    @Size(max = 60)
-    private String nombre;
-    private Double telefono;
-    private Set<ProcCoaching> procCoachings = new HashSet<ProcCoaching>(0);
-
+	@NotNull
+	private Long idCoach;
+	@NotNull
+	private Categoria categoria;	
+	@NotNull
+	private TipoDocumento tipoDocumento;	
+	@NotNull
+	@NotEmpty
+	@Size(max=60)
+	private String apellido;	
+	private String celular;	
+	@NotNull
+	@NotEmpty
+	@Size(max=60)
+	private String contrasena;	
+	@NotNull
+	@NotEmpty
+	@Size(max=80)
+	private String correo;	
+	@NotNull
+	private Double horaPagada;	
+	@NotNull
+	private Double horaProbono;	
+	@NotNull
+	@NotEmpty
+	@Size(max=60)
+	private String identificacion;	
+	@NotNull
+	@NotEmpty
+	@Size(max=60)
+	private String login;	
+	@NotNull
+	@NotEmpty
+	@Size(max=60)
+	private String nombre;	
+	private String telefono;	
+	private Set<ProcCoaching> procCoachings = new HashSet<ProcCoaching>(0);	
     public Coach() {
     }
 
-    public Coach(Double idCoach, String apellido, Categoria categoria,
-        Double celular, String contrasena, String correo, Estado estado,
+    public Coach(Long idCoach, String apellido, Categoria categoria,
+    		String celular, String contrasena, String correo, 
         Double horaPagada, Double horaProbono, String identificacion,
         String login, String nombre, Set<ProcCoaching> procCoachings,
-        Double telefono, TipoDocumento tipoDocumento) {
+        String telefono, TipoDocumento tipoDocumento) {
         this.idCoach = idCoach;
         this.categoria = categoria;
-        this.estado = estado;
+      
         this.tipoDocumento = tipoDocumento;
         this.apellido = apellido;
         this.celular = celular;
@@ -86,16 +83,16 @@ public class Coach implements java.io.Serializable {
 
     @Id
     @Column(name = "id_coach", unique = true, nullable = false)
-    public Double getIdCoach() {
+    public Long getIdCoach() {
         return this.idCoach;
     }
 
-    public void setIdCoach(Double idCoach) {
+    public void setIdCoach(Long idCoach) {
         this.idCoach = idCoach;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "categoria_id_cat")
+    @JoinColumn(name = "id_cat")
     public Categoria getCategoria() {
         return this.categoria;
     }
@@ -104,18 +101,11 @@ public class Coach implements java.io.Serializable {
         this.categoria = categoria;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "estado_id_estado")
-    public Estado getEstado() {
-        return this.estado;
-    }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
+
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tipo_documento_id_doc")
+    @JoinColumn(name = "id_doc")
     public TipoDocumento getTipoDocumento() {
         return this.tipoDocumento;
     }
@@ -134,11 +124,11 @@ public class Coach implements java.io.Serializable {
     }
 
     @Column(name = "celular")
-    public Double getCelular() {
+    public String getCelular() {
         return this.celular;
     }
 
-    public void setCelular(Double celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
@@ -206,11 +196,11 @@ public class Coach implements java.io.Serializable {
     }
 
     @Column(name = "telefono")
-    public Double getTelefono() {
+    public String getTelefono() {
         return this.telefono;
     }
 
-    public void setTelefono(Double telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

@@ -48,7 +48,7 @@ public class JpaDaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
         entityManager.persist(newEntity);
     }
 
-    public T findById(PK id) {
+    public T findById(long id) {
         return (T) entityManager.find(entityClass, id);
     }
 
@@ -60,7 +60,7 @@ public class JpaDaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
         entityManager.remove(entity);
     }
 
-    public void deleteById(PK id) throws DaoException {
+    public void deleteById(long id) throws DaoException {
         T toRemove = findById(id);
         entityManager.remove(toRemove);
     }
@@ -201,4 +201,18 @@ public class JpaDaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
 	
   		return nue;
   	}
+
+	@Override
+	public T findById(Long idParam) {
+		   return (T) entityManager.find(entityClass, idParam);
+	}
+
+	@Override
+	public void deleteById(Long long1) throws DaoException {
+		 T toRemove = findById(long1);
+	        entityManager.remove(toRemove);
+		
+	}
+
+
 }

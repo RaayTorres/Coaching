@@ -18,14 +18,14 @@ import java.util.Date;
 public class TipoDocumentoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final Logger log = LoggerFactory.getLogger(TipoDocumentoDTO.class);
-    private Double idDoc;
+    private Long idDoc;
     private String tdocNombre;
 
-    public Double getIdDoc() {
+    public Long getIdDoc() {
         return idDoc;
     }
 
-    public void setIdDoc(Double idDoc) {
+    public void setIdDoc(Long idDoc) {
         this.idDoc = idDoc;
     }
 

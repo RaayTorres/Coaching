@@ -19,19 +19,19 @@ import javax.validation.constraints.*;
 @Entity
 @Table(name = "tipo_documento", schema = "public")
 public class TipoDocumento implements java.io.Serializable {
-    @NotNull
-    private Double idDoc;
-    @NotNull
-    @NotEmpty
-    @Size(max = 60)
-    private String tdocNombre;
-    private Set<Coachee> coachees = new HashSet<Coachee>(0);
-    private Set<Coach> coaches = new HashSet<Coach>(0);
+	 @NotNull
+	    private Long idDoc;
+	    @NotNull
+	    @NotEmpty
+	    @Size(max = 60)
+	    private String tdocNombre;
+	    private Set<Coachee> coachees = new HashSet<Coachee>(0);
+	    private Set<Coach> coaches = new HashSet<Coach>(0);
 
     public TipoDocumento() {
     }
 
-    public TipoDocumento(Double idDoc, Set<Coachee> coachees,
+    public TipoDocumento(Long idDoc, Set<Coachee> coachees,
         Set<Coach> coaches, String tdocNombre) {
         this.idDoc = idDoc;
         this.tdocNombre = tdocNombre;
@@ -41,11 +41,11 @@ public class TipoDocumento implements java.io.Serializable {
 
     @Id
     @Column(name = "id_doc", unique = true, nullable = false)
-    public Double getIdDoc() {
+    public Long getIdDoc() {
         return this.idDoc;
     }
 
-    public void setIdDoc(Double idDoc) {
+    public void setIdDoc(Long idDoc) {
         this.idDoc = idDoc;
     }
 

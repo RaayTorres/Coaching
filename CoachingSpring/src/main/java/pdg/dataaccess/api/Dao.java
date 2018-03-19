@@ -40,5 +40,5 @@ public interface Dao<T, PK extends Serializable> {
 
     List<T> findByProperty(String propertyName, Object value);
 
-	public Double genSecuencia();
+	public long genSecuencia();
 }

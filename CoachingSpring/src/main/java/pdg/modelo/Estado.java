@@ -53,7 +53,7 @@ public class Estado implements java.io.Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_testado")
+    @JoinColumn(name = "tipo_estado_id_testado")
     public TipoEstado getTipoEstado() {
         return this.tipoEstado;
     }

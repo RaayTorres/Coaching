@@ -21,7 +21,7 @@ import javax.validation.constraints.*;
 public class Coach implements java.io.Serializable {
 	@NotNull
 	private Long idCoach;
-	@NotNull
+	//@NotNull
 	private Categoria categoria;	
 	@NotNull
 	private TipoDocumento tipoDocumento;	
@@ -92,7 +92,7 @@ public class Coach implements java.io.Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cat")
+    @JoinColumn(name = "categoria_id_cat")
     public Categoria getCategoria() {
         return this.categoria;
     }
@@ -105,7 +105,7 @@ public class Coach implements java.io.Serializable {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_doc")
+    @JoinColumn(name = "tipo_documento_id_doc")
     public TipoDocumento getTipoDocumento() {
         return this.tipoDocumento;
     }

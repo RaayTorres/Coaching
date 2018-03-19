@@ -190,16 +190,17 @@ public class JpaDaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
     }
     
     
-    public Double genSecuencia() {
+    public long genSecuencia() {
   		// nameSquence= "seq_prueba";
     	
     	String enSt= entityClass.getName();
     	String[] parts = enSt.split(Pattern.quote("."));
     	
     	BigInteger nig= (BigInteger) entityManager.createNativeQuery("select nextval('seq_"+parts[2]+"')").getSingleResult();
-    	Double nue= new BigDecimal(nig).doubleValue();
-	
-  		return nue;
+    	//Double nue= new BigDecimal(nig).doubleValue();
+    	
+    	
+  		return nig.longValue();
   	}
 
 	@Override

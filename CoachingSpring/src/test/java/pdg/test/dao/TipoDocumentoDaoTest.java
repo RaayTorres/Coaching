@@ -53,7 +53,7 @@ public class TipoDocumentoDaoTest {
 		miTipoDocumento = new TipoDocumento();
 		miTipoDocumento.setIdDoc(tipoDocumento.genSecuencia());
 		
-		miTipoDocumento.setTdocNombre("Pasaporte Italiano");
+		miTipoDocumento.setTdocNombre("Pasaporte borrar");
 		
 		tipoDocumento.save(miTipoDocumento);
 	}
@@ -62,7 +62,7 @@ public class TipoDocumentoDaoTest {
 	@Transactional(readOnly = true)
 	public void bBuscarTest() {
 	
-		TipoDocumento nuevoTipo = tipoDocumento.findById(Double.parseDouble("1"));
+		TipoDocumento nuevoTipo = tipoDocumento.findById(1L);
 		
 		System.out.println(nuevoTipo.getTdocNombre() + "-------------------------------------------------------------------<");
 		
@@ -74,7 +74,7 @@ public class TipoDocumentoDaoTest {
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void cUpdateTest() throws DaoException {
 
-		TipoDocumento nuevoTipo = tipoDocumento.findById(Double.parseDouble("1"));
+		TipoDocumento nuevoTipo = tipoDocumento.findById(1L);
 		
 		nuevoTipo.setTdocNombre("pasaporte");
 		
@@ -89,7 +89,7 @@ public class TipoDocumentoDaoTest {
 	@Transactional(readOnly = true)
 	public void dEliminarTest() throws DaoException {
 	
-		TipoDocumento nuevoTipo = tipoDocumento.findById(Double.parseDouble("1"));
+		TipoDocumento nuevoTipo = tipoDocumento.findById(3L);
 		
 		tipoDocumento.delete(nuevoTipo);
 		

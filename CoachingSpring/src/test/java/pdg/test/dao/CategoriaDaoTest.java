@@ -39,119 +39,62 @@ public class CategoriaDaoTest {
 	
 	
 	
-	@Autowired
-	private ITipoEstadoDAO tipoDao;
-
-	@Test
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void addtest() {
-		
-//		TipoEstado tip = new TipoEstado();
-//		tip.setIdTestado(2.0);
-//		tip.setNombreTipoEstado("ave");
-//		try {
-//			tipoDao.save(tip);
-//		} catch (DaoException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			
-//		}
-		assertNotNull(categoriaDao);
-		
-		try {
-		
-		
-		Categoria cat= new Categoria();
-		
-		cat.setCatNombre("prueba");
-		cat.setHoraPagada(2.0);
-		cat.setHoraProbono(5.0);
-		cat.setIdCat(categoriaDao.genSecuencia());
-		cat.setNombreCorto("pru");
-		
-			categoriaDao.save(cat);
-		} catch (DaoException e) {
-		
-			e.printStackTrace();
-		}
-
-//		TiposDocumentos docs = tipo.findById(10L);
-//
-//		Clientes clientes= clienteDao.findById(codigoUser);
-//		assertNull("ya existe",clientes);
-//		clientes = new Clientes();
-//		clientes.setCliNombre("Luis");
-//		clientes.setCliId(codigoUser);
-//		clientes.setCliTelefono("31569882");
-//		clientes.setTiposDocumentos(docs);
-//		clientes.setCliDireccion("myHome");
-//		clientes.setCliMail("asd@asd.com");
-//
-//		clienteDao.save(clientes);		
-	}
-//
-	@Test
-	@Transactional(readOnly = true)
-	public void btest() {
 	
 
-		Categoria cat= categoriaDao.findById(1.0);	
-		log.info(cat.getCatNombre());
-		assertNotNull("no existe",cat);
-		
-	}
-//
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void ctest() {
+	public void aSaveTest() throws DaoException {
+
+		Categoria nuevaCategoria = new Categoria();
+		nuevaCategoria.setIdCat(categoriaDao.genSecuencia());
+		nuevaCategoria.setCatNombre("Categoria 2");
+		nuevaCategoria.setHoraPagada(Double.parseDouble("21"));
+		nuevaCategoria.setHoraProbono(Double.parseDouble("10"));
+		nuevaCategoria.setNombreCorto("C2");
+		categoriaDao.save(nuevaCategoria);
 		
-		Categoria cat= categoriaDao.findById(1.0);
-		cat.setNombreCorto("Tebio");
-		
-		try {
-			categoriaDao.update(cat);
-		} catch (DaoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie= clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clie);
-//
-//		clie.setCliNombre("Jorge");
-//		clienteDao.update(clie);
 	}
-//
-//
+
 	@Test
 	@Transactional(readOnly = true)
-	public void dtest() throws DaoException {
+	public void bBuscarTest() {
+	
+
+		Categoria nuevaCategoria = categoriaDao.findById(1L);
+		System.out.println(nuevaCategoria.getCatNombre());
+	
 		
-		Categoria cat= categoriaDao.findById(1.0);
-		categoriaDao.delete(cat);
-//		assertNotNull(clienteDao);
-//
-//		Clientes clie= clienteDao.findById(codigoUser);
-//		assertNotNull("ya existe",clienteDao);
-//
-//		clienteDao.delete(clie);	
-	}	
-//
-//
+	}
+
+	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+	public void cUpdateTest() throws DaoException {
+		
+		Categoria nuevaCategoria = categoriaDao.findById(1L);
+		nuevaCategoria.setCatNombre("Categoria 3");
+		categoriaDao.update(nuevaCategoria);
+	}
+
 	@Test
 	@Transactional(readOnly = true)
-	public void etest() {
-//		assertNotNull(clienteDao);
-//
-//		List<Clientes> losClientes = clienteDao.findAll();
-//		assertNotNull(losClientes);
-//
-//		for (Clientes lista : losClientes) {
-//			log.info("Nombre:" + lista.getCliNombre());
-//			log.info("Tipo Documento " + lista.getTiposDocumentos().getTdocNombre());
-//		}
-//
+	public void dDeleteTest() throws DaoException {
+		
+
+		Categoria nuevaCategoria = categoriaDao.findById(1L);
+		categoriaDao.delete(nuevaCategoria);
+
+	}	
+
+	@Test
+	@Transactional(readOnly = true)
+	public void eFindAllTest() {
+
+		List<Categoria> lasCategorias = categoriaDao.findAll();
+		
+		for (Categoria categoria : lasCategorias) {
+			
+			System.out.println(categoria.getCatNombre());
+		}
 	}	
 
 	

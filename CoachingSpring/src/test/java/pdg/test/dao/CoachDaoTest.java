@@ -54,18 +54,16 @@ public class CoachDaoTest {
 
 		Coach coach = new Coach();
 		coach.setIdCoach(coachDao.genSecuencia());
-		coach.setNombre("Altair");
-		coach.setApellido("Lbn-LaAhad");
-		coach.setCelular(Double.parseDouble("000011111"));
+		coach.setNombre("Ezio");
+		coach.setApellido("Auditore");
+		coach.setCelular("11122333");
 		coach.setCorreo("correo@hotmail.com");
 		coach.setHoraPagada(Double.parseDouble("10"));
 		coach.setHoraProbono(Double.parseDouble("10"));
 		coach.setLogin("Ezio");
 		coach.setContrasena("password");
 		coach.setIdentificacion("123456789");
-		Estado nuevoEstado = estadoDao.findById(Double.parseDouble("18"));
-		coach.setEstado(nuevoEstado);
-		TipoDocumento nuevoDocumento = tipoDocumentoDao.findById(Double.parseDouble("1"));
+		TipoDocumento nuevoDocumento = tipoDocumentoDao.findById(1L);
 		coach.setTipoDocumento(nuevoDocumento);
 		
 		coachDao.save(coach);
@@ -79,7 +77,7 @@ public class CoachDaoTest {
 	@Transactional(readOnly = true)
 	public void bBuscarTest() {
 	
-		Coach coach = coachDao.findById(Double.parseDouble("6"));
+		Coach coach = coachDao.findById(2L);
 		System.out.println(coach.getNombre() + " " + coach.getApellido());
 		
 		assertNotNull(coach);
@@ -90,7 +88,7 @@ public class CoachDaoTest {
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void cUpdateTest() throws DaoException {
 
-		Coach coach = coachDao.findById(Double.parseDouble("6"));
+		Coach coach = coachDao.findById(2L);
 		coach.setApellido("Firenze");
 		
 		coachDao.update(coach);
@@ -105,7 +103,7 @@ public class CoachDaoTest {
 	public void dDeleteTest() throws DaoException {
 	
 		
-		Coach coach = coachDao.findById(Double.parseDouble("6"));
+		Coach coach = coachDao.findById(2L);
 		coachDao.delete(coach);
 		
 		

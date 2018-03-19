@@ -22,7 +22,7 @@ public class SesCoachingDTO implements Serializable {
     private String compromiso;
     private Date fecha;
     private String focoSesion;
-    private Double hora;
+    private String hora;
     private Long idHis;
     private Long idSesi;
     private String indicador;
@@ -62,11 +62,11 @@ public class SesCoachingDTO implements Serializable {
         this.focoSesion = focoSesion;
     }
 
-    public Double getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Double hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 

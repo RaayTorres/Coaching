@@ -52,11 +52,11 @@ public class RegContableDaoTest {
 		
 		RegContable registro = new RegContable();
 		registro.setIdHis(registroDao.genSecuencia());
-		Coachee coa = coacheeDao.findById(Double.parseDouble("4"));
+		Coachee coa = coacheeDao.findById(2L);
 		registro.setCoachee(coa);
 		Date fecha = new Date();
 		registro.setFechaPago(fecha);
-		registro.setTipo("tipo 1");
+		registro.setTipo("tipo 2");
 		registro.setValor(Double.parseDouble("50000"));
 		
 		
@@ -67,7 +67,7 @@ public class RegContableDaoTest {
 	@Transactional(readOnly = true)
 	public void bBuscarTest() {
 	
-		RegContable nuevoRegistro = registroDao.findById(Double.parseDouble("3"));
+		RegContable nuevoRegistro = registroDao.findById(2L);
 		
 		System.out.println(nuevoRegistro.getCoachee().getNombre() + " "+ nuevoRegistro.getFechaPago());
 	}
@@ -77,7 +77,7 @@ public class RegContableDaoTest {
 	public void cUpdateTest() throws DaoException {
 
 		
-		RegContable nuevoRegistro = registroDao.findById(Double.parseDouble("3"));
+		RegContable nuevoRegistro = registroDao.findById(2L);
 		nuevoRegistro.setValor(Double.parseDouble("100000"));
 		registroDao.update(nuevoRegistro);
 	}
@@ -86,7 +86,7 @@ public class RegContableDaoTest {
 	@Transactional(readOnly = true)
 	public void dDeleteTest() throws DaoException {
 	
-		RegContable nuevoRegistro = registroDao.findById(Double.parseDouble("3"));
+		RegContable nuevoRegistro = registroDao.findById(2L);
 		registroDao.delete(nuevoRegistro);
 		
 	}	

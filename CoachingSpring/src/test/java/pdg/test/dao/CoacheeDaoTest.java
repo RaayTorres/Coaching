@@ -56,18 +56,18 @@ public class CoacheeDaoTest {
 		
 		Coachee coachee = new Coachee();
 		coachee.setIdCoachee(coacheeDao.genSecuencia());
-		coachee.setNombre("Jefry");
-		coachee.setApellido("Cardona");
-		coachee.setCelular(Double.parseDouble("000111222"));
+		coachee.setNombre("Esteban");
+		coachee.setApellido("Camacho");
+		coachee.setCelular("1234567");
 		coachee.setCorreo("tebannew@gmail.com");
 		coachee.setDireccion("Icesi");
-		Estado nuevoEstado = estadoDao.findById(Double.parseDouble("18"));
+		Estado nuevoEstado = estadoDao.findById(2L);
 		coachee.setEstado(nuevoEstado);
 		coachee.setHobbies("Deportes");
 		coachee.setIdentificacion("11112223333");
 		byte [] abc = new byte[20];
 		coachee.setFoto(abc);
-		TipoDocumento nuevoTipo = tipoDocumentoDao.findById(Double.parseDouble("1"));
+		TipoDocumento nuevoTipo = tipoDocumentoDao.findById(2L);
 		coachee.setTipoDocumento(nuevoTipo);
 		
 		
@@ -81,7 +81,7 @@ public class CoacheeDaoTest {
 	public void bBuscarTest() {
 
 		
-		Coachee nuevo= coacheeDao.findById(Double.parseDouble("4"));
+		Coachee nuevo= coacheeDao.findById(2L);
 		
 		
 		System.out.println(nuevo.getApellido());
@@ -93,7 +93,7 @@ public class CoacheeDaoTest {
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void cUpdateTest() throws DaoException {
 
-		Coachee nuevo= coacheeDao.findById(Double.parseDouble("4"));
+		Coachee nuevo= coacheeDao.findById(2L);
 		nuevo.setApellido("Chilito");
 		coacheeDao.update(nuevo);
 		
@@ -103,7 +103,7 @@ public class CoacheeDaoTest {
 	@Transactional(readOnly = true)
 	public void dDeleteTest() throws DaoException {
 
-		Coachee nuevo= coacheeDao.findById(Double.parseDouble("4"));
+		Coachee nuevo= coacheeDao.findById(2L);
 		
 		coacheeDao.delete(nuevo);
 		

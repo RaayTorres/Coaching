@@ -59,12 +59,12 @@ public class ProcCoachingDaoTest {
 		
 		ProcCoaching nuevoProceso = new ProcCoaching();
 		nuevoProceso.setIdProc(procesoDao.genSecuencia());
-		Coach nuevoCoach= coachDao.findById(Double.parseDouble("7"));
+		Coach nuevoCoach= coachDao.findById(2L);
 		nuevoProceso.setCoach(nuevoCoach);
-		Coachee nuevoCliente = coacheeDao.findById(Double.parseDouble("4"));
+		Coachee nuevoCliente = coacheeDao.findById(2L);
 		nuevoProceso.setCoachee(nuevoCliente);
-		nuevoProceso.setIdTpago(Double.parseDouble("3"));
-		RegContable nuevoRegistro = registroDao.findById(Double.parseDouble("2"));
+		nuevoProceso.setIdTpago(20L);
+		RegContable nuevoRegistro = registroDao.findById(2L);
 		nuevoProceso.setRegContable(nuevoRegistro);
 		
 		procesoDao.save(nuevoProceso);
@@ -76,7 +76,7 @@ public class ProcCoachingDaoTest {
 	@Transactional(readOnly = true)
 	public void bBuscarTest() {
 	
-		ProcCoaching nuevoProceso = procesoDao.findById(Double.parseDouble("1"));
+		ProcCoaching nuevoProceso = procesoDao.findById(2L);
 		System.out.println(nuevoProceso.getCoachee().getNombre());
 		
 	}
@@ -85,8 +85,8 @@ public class ProcCoachingDaoTest {
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void cUpdatTest() throws DaoException {
 
-		ProcCoaching nuevoProceso = procesoDao.findById(Double.parseDouble("1"));
-		nuevoProceso.setCoach(coachDao.findById(Double.parseDouble("8")));
+		ProcCoaching nuevoProceso = procesoDao.findById(2L);
+		nuevoProceso.setCoach(coachDao.findById(3L));
 		procesoDao.update(nuevoProceso);
 	}
 
@@ -94,7 +94,7 @@ public class ProcCoachingDaoTest {
 	@Transactional(readOnly = true)
 	public void dDeleteTest() throws DaoException {
 
-		ProcCoaching nuevoProceso = procesoDao.findById(Double.parseDouble("1"));
+		ProcCoaching nuevoProceso = procesoDao.findById(2L);
 		procesoDao.delete(nuevoProceso);
 		
 	}	

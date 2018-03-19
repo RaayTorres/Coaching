@@ -45,7 +45,7 @@ public class ParametroDaoTest {
 		Parametro nuevoParametro = new Parametro();
 		nuevoParametro.setIdParam(parametroDao.genSecuencia());
 		nuevoParametro.setNumero(Double.parseDouble("4000"));
-		nuevoParametro.setTexto("Euros");
+		nuevoParametro.setTexto("Pesos");
 		
 		parametroDao.save(nuevoParametro);
 		
@@ -57,7 +57,7 @@ public class ParametroDaoTest {
 	@Transactional(readOnly = true)
 	public void bBuscarTest() {
 			
-		Parametro nuevoParametro =  parametroDao.findById(Double.parseDouble("1"));
+		Parametro nuevoParametro =  parametroDao.findById(1L);
 		
 		System.out.println(nuevoParametro.getTexto());
 		
@@ -69,7 +69,7 @@ public class ParametroDaoTest {
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void cUpdateTest() throws DaoException {
 
-		Parametro nuevoParametro =  parametroDao.findById(Double.parseDouble("1"));
+		Parametro nuevoParametro =  parametroDao.findById(1L);
 		nuevoParametro.setTexto("Dolares");
 		
 		parametroDao.update(nuevoParametro);
@@ -82,7 +82,7 @@ public class ParametroDaoTest {
 	@Transactional(readOnly = true)
 	public void dDeleteTest() throws DaoException {
 
-		Parametro nuevoParametro =  parametroDao.findById(Double.parseDouble("1"));
+		Parametro nuevoParametro =  parametroDao.findById(1L);
 		
 		parametroDao.delete(nuevoParametro);
 		

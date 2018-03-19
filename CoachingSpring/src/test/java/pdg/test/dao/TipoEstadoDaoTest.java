@@ -60,7 +60,7 @@ public class TipoEstadoDaoTest {
 
 		assertNotNull("Tipo estado es null",tipoDao);
 
-		TipoEstado miTipoEstadi = tipoDao.findById(Double.parseDouble("1"));
+		TipoEstado miTipoEstadi = tipoDao.findById(1L);
 
 		System.out.println(miTipoEstadi.getNombreTipoEstado() + "<------------------------------------------------------------------------------------------------------");
 
@@ -74,8 +74,8 @@ public class TipoEstadoDaoTest {
 
 		assertNotNull("Tipo estado es null",tipoDao);
 
-		TipoEstado miTipoEstadi = tipoDao.findById(Double.parseDouble("2"));
-		miTipoEstadi.setNombreTipoEstado("2");
+		TipoEstado miTipoEstadi = tipoDao.findById(3L);
+		miTipoEstadi.setNombreTipoEstado("borrar");
 		
 		tipoDao.update(miTipoEstadi);
 		assertNotNull(miTipoEstadi);
@@ -89,7 +89,7 @@ public class TipoEstadoDaoTest {
 
 		assertNotNull("Tipo estado es null",tipoDao);
 
-		TipoEstado miTipoEstadi = tipoDao.findById(Double.parseDouble("4"));
+		TipoEstado miTipoEstadi = tipoDao.findById(3L);
 		
 		tipoDao.delete(miTipoEstadi);
 		

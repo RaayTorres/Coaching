@@ -27,7 +27,7 @@ public class SesCoaching implements java.io.Serializable {
 	    private String compromiso;
 	    private Date fecha;
 	    private String focoSesion;
-	    private Double hora;
+	    private String hora;
 	    @NotNull
 	    private Long idHis;
 	    private String indicador;
@@ -37,7 +37,7 @@ public class SesCoaching implements java.io.Serializable {
     }
 
     public SesCoaching(Long idSesi, String accion, String compromiso,
-        Estado estado, Date fecha, String focoSesion, Double hora,
+        Estado estado, Date fecha, String focoSesion, String hora,
         Long idHis, String indicador, ProcCoaching procCoaching,
         String profundidad) {
         this.idSesi = idSesi;
@@ -120,11 +120,11 @@ public class SesCoaching implements java.io.Serializable {
     }
 
     @Column(name = "hora")
-    public Double getHora() {
+    public String getHora() {
         return this.hora;
     }
 
-    public void setHora(Double hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 

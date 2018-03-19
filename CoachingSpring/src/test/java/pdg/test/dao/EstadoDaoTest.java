@@ -45,12 +45,12 @@ public class EstadoDaoTest {
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void aSaveTest() throws DaoException {
 
-		TipoEstado miTipo = tipoDao.findById(Double.parseDouble("2"));
+		TipoEstado miTipo = tipoDao.findById(2L);
 		//System.out.println(miTipo.getNombreTipoEstado());
 		Estado miEstado = new Estado();
 		miEstado.setIdEstado(estadoDao.genSecuencia());
 		miEstado.setTipoEstado(miTipo);
-		miEstado.setNombreEstado("Inactivo-borrar");
+		miEstado.setNombreEstado("Inactivo");
 		
 		estadoDao.save(miEstado);
 		
@@ -62,7 +62,7 @@ public class EstadoDaoTest {
 	public void bBuscarTest() {
 
 		
-		Estado miEstado = estadoDao.findById(Double.parseDouble("18"));
+		Estado miEstado = estadoDao.findById(2L);
 		
 		System.out.println(miEstado.getNombreEstado());
 		
@@ -74,7 +74,7 @@ public class EstadoDaoTest {
 	public void cUpdateTest() throws DaoException {
 
 		
-		Estado miEstado = estadoDao.findById(Double.parseDouble("16"));
+		Estado miEstado = estadoDao.findById(2L);
 		miEstado.setNombreEstado("Segunda prueba");
 		estadoDao.update(miEstado);
 		assertEquals("Segunda prueba", miEstado.getNombreEstado());
@@ -88,7 +88,7 @@ public class EstadoDaoTest {
 	public void dDeleteTest() throws DaoException {
 
 		
-		Estado miEstado = estadoDao.findById(Double.parseDouble("20"));
+		Estado miEstado = estadoDao.findById(2L);
 		
 		estadoDao.delete(miEstado);
 		

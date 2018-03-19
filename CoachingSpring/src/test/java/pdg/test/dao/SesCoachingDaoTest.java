@@ -57,18 +57,21 @@ public class SesCoachingDaoTest {
 		
 		SesCoaching sesion = new SesCoaching();
 		sesion.setIdSesi(sesionDao.genSecuencia());
-		sesion.setAccion("accion 2");
-		sesion.setCompromiso("compromiso 2");
-		Estado nuevoEstado = estadoDao.findById(Double.parseDouble("18"));
+		sesion.setAccion("accion 3");
+		sesion.setCompromiso("compromiso 3");
+		Estado nuevoEstado = estadoDao.findById(2L);
 		sesion.setEstado(nuevoEstado);
-		sesion.setFocoSesion("Foco Sesion 2");
-		sesion.setHora(Double.parseDouble("15"));
+		sesion.setFocoSesion("Foco Sesion 3");
+		
+		Date fecha = new Date();
+		String [] hora = fecha.toString().split(" ");
+		sesion.setHora(hora[3]);
 		sesion.setFecha(new Date());
-		sesion.setIndicador("indicador 2");
-		sesion.setProfundidad("profundidad 2");
-		ProcCoaching nuevoProceso = procesoDao.findById(Double.parseDouble("1"));
+		sesion.setIndicador("indicador 3");
+		sesion.setProfundidad("profundidad 3");
+		ProcCoaching nuevoProceso = procesoDao.findById(2L);
 		sesion.setProcCoaching(nuevoProceso);
-		sesion.setIdHis(Double.parseDouble("32"));
+		sesion.setIdHis(3L);
 	
 		sesionDao.save(sesion);
 		
@@ -79,7 +82,7 @@ public class SesCoachingDaoTest {
 	@Transactional(readOnly = true)
 	public void bBuscarTest() {
 
-		SesCoaching sesion = sesionDao.findById(Double.parseDouble("1"));
+		SesCoaching sesion = sesionDao.findById(2L);
 		
 		System.out.println(sesion.getCompromiso());
 		
@@ -89,7 +92,7 @@ public class SesCoachingDaoTest {
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void cUpdateTest() throws DaoException {
 
-		SesCoaching sesion = sesionDao.findById(Double.parseDouble("1"));
+		SesCoaching sesion = sesionDao.findById(2L);
 		sesion.setCompromiso("Compromiso completo");
 		sesionDao.update(sesion);
 		
@@ -101,7 +104,7 @@ public class SesCoachingDaoTest {
 	public void dDeleteTest() throws DaoException {
 	
 
-		SesCoaching sesion = sesionDao.findById(Double.parseDouble("1"));
+		SesCoaching sesion = sesionDao.findById(3L);
 		sesionDao.delete(sesion);
 	}	
 
@@ -119,5 +122,5 @@ public class SesCoachingDaoTest {
 		
 	}	
 
-	
+
 }

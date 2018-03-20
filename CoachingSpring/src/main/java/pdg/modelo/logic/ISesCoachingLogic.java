@@ -1,11 +1,12 @@
 package pdg.modelo.logic;
 
+import pdg.modelo.Estado;
 import pdg.modelo.SesCoaching;
 
 import pdg.modelo.dto.SesCoachingDTO;
 
 import java.math.BigDecimal;
-
+import java.math.BigInteger;
 import java.util.*;
 import java.util.Date;
 import java.util.List;
@@ -57,4 +58,7 @@ public interface ISesCoachingLogic {
 
     public void validateSesCoaching(SesCoaching sesCoaching)
         throws Exception;
+    
+
+	 List<SesCoaching> filtrarSesionPorEstado(Long esta); 
 }

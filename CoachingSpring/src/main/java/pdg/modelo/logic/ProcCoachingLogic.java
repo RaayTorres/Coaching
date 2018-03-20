@@ -64,6 +64,9 @@ public class ProcCoachingLogic implements IProcCoachingLogic {
     private ISesCoachingDAO sesCoachingDAO;
     
     @Autowired
+    private IEstadoDAO estadoDAo;
+    
+    @Autowired
     ISesCoachingLogic sesLogic;
   
     /**
@@ -147,7 +150,13 @@ public class ProcCoachingLogic implements IProcCoachingLogic {
             
             for (int i = 0; i < 10; i++) {
             	SesCoaching  newEntity= new SesCoaching();
+            	
+            	newEntity.setIdSesi(sesCoachingDAO.genSecuencia());
+            	newEntity.setProcCoaching(entity);
+            	newEntity.setEstado(estadoDAo.findById(2L));
+            	newEntity.setIdHis(entity.getRegContable().getIdHis());
 				sesLogic.saveSesCoaching(newEntity);
+				log.info("Creando sesion ");
 			}
             
             log.debug("save ProcCoaching successful");

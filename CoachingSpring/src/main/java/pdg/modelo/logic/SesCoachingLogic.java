@@ -25,7 +25,7 @@ import pdg.modelo.dto.SesCoachingDTO;
 import pdg.utilities.Utilities;
 
 import java.math.BigDecimal;
-
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -55,7 +55,8 @@ public class SesCoachingLogic implements ISesCoachingLogic {
     private ISesCoachingMapper sesCoachingMapper;
     @Autowired
     private Validator validator;
-
+    @Autowired
+    private IEstadoDAO estadoDao;
     /**
     * Logic injected by Spring that manages Estado entities
     *
@@ -410,6 +411,46 @@ public class SesCoachingLogic implements ISesCoachingLogic {
 
         return list;
     }
+
+	@Override
+	public List<SesCoaching> filtrarSesionPorEstado(Long esta) {
+		
+		
+		List<SesCoaching> sesion = sesCoachingDAO.filtrarSesionPorEstado(estadoDao.findById(esta).getIdEstado());
+		List<SesCoaching> listado= null;
+		SesCoaching ses = new SesCoaching();
+//		List<SesCoaching> otra= sesCoachingDAO.findAll();
+//		
+//		for (SesCoaching sesCoaching : otra) {
+//			if (sesCoaching.getEstado().getIdEstado()== esta ) {
+//				
+//				listado.add(sesCoaching);
+//			}
+//		}
+		
+//		int i = 0;
+//		for (SesCoaching sesCoaching : sesion) {
+//			
+//			SesCoaching ses = sesCoachingDAO.findById(sesCoaching.getIdSesi());
+//			
+//			//SesCoaching nueva = ses;
+//			
+//			
+//			listado.add(ses);
+//			log.info( ses.getIdSesi() + "+++++++++++++++++++++++++++++++++");
+			//log.info(sesionDao.findById(sesCoaching.longValue()) + "+++++++++++" + i);
+	//	}
+//		
+		for (int i = 0; i < sesion.size(); i++) {
+			if (sesion!=null) {
+				System.out.println(sesCoachingDAO.findById(sesion.get(i).getIdSesi()) + "++++++++++++++++++++++++++++++++++++++");
+				//ses = ;
+				listado.add(sesCoachingDAO.findById(sesion.get(i).getIdSesi()));
+			}
+			
+		}
+		return listado;
+	}
 
 
 	}

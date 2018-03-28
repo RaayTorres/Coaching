@@ -315,4 +315,9 @@ public interface IBusinessDelegate {
 
     public void validateTipoEstado(TipoEstado tipoEstado)
         throws Exception;
+    
+    
+    public Coachee validarCredencialesCoachee(String user,String password)throws Exception;
+    
+    public Coach validarCredencialesCoach(String login, String passwd)throws Exception;
 }

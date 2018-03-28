@@ -28,6 +28,7 @@ import pdg.modelo.Coachee;
 import pdg.modelo.Estado;
 import pdg.modelo.TipoDocumento;
 import pdg.modelo.TipoEstado;
+import pdg.presentation.businessDelegate.IBusinessDelegate;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
@@ -47,6 +48,11 @@ public class CoacheeDaoTest {
 	@Autowired
 	private ITipoDocumentoDAO tipoDocumentoDao;
 	
+	@Autowired
+	private IBusinessDelegate delegadoDeNegocio;
+	
+	
+	
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void aSaveTest() throws DaoException {
@@ -56,19 +62,20 @@ public class CoacheeDaoTest {
 		
 		Coachee coachee = new Coachee();
 		coachee.setIdCoachee(coacheeDao.genSecuencia());
-		coachee.setNombre("Esteban");
-		coachee.setApellido("Camacho");
+		coachee.setNombre("Leidy");
+		coachee.setApellido("Malagon");
 		coachee.setCelular("1234567");
 		coachee.setCorreo("tebannew@gmail.com");
 		coachee.setDireccion("Icesi");
 		Estado nuevoEstado = estadoDao.findById(2L);
 		coachee.setEstado(nuevoEstado);
 		coachee.setHobbies("Deportes");
-		coachee.setIdentificacion("11112223333");
+		coachee.setIdentificacion("190865212");
 		byte [] abc = new byte[20];
 		coachee.setFoto(abc);
 		TipoDocumento nuevoTipo = tipoDocumentoDao.findById(2L);
 		coachee.setTipoDocumento(nuevoTipo);
+		
 		
 		
 		coacheeDao.save(coachee);
@@ -121,7 +128,22 @@ public class CoacheeDaoTest {
 			System.out.println(coachee.getNombre() + " "+ coachee.getApellido());
 			
 		}
-	}	
+	}
+	
+	
+	@Test
+	@Transactional(readOnly = true)
+	public void fPrueba() throws Exception {
+		
+		String user = "190865212";
+		String pass = "Icesi";
+		//Coachee cliente = coacheeDao.consultarClientePorLogin(user);
+		Coachee cliente = delegadoDeNegocio.validarCredencialesCoachee(user, pass);
+		System.out.println("---------------------------------------------------------------------------------");
+		System.out.println(cliente.getNombre()+ "--------------------------------------------------------------------");
+		
+		
+	}
 
 	
 }

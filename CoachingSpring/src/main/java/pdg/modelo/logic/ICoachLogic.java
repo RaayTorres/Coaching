@@ -79,6 +79,8 @@ public interface ICoachLogic {
     
     public List<RegContable> historialDePagoDelosCoachee(Coach coach);
     
+    public Coach validarCredencialesCoach(String login, String passwd)throws Exception;
+    
 }
 
 

@@ -37,4 +37,12 @@ public class CoacheeDAO extends JpaDaoImpl<Coachee, Double>
     public static ICoacheeDAO getFromApplicationContext(ApplicationContext ctx) {
         return (ICoacheeDAO) ctx.getBean("CoacheeDAO");
     }
+    
+    public Coachee consultarClientePorLogin(String identificacion) {
+		
+    	
+		String consulta = "SELECT usu FROM Coachee usu WHERE usu.identificacion=:identificacion";
+		//return (Usuarios)entityManager.createQuery(jpql).setParameter("login", usuLogin).getSingleResult();
+		return (Coachee)entityManager.createQuery(consulta).setParameter("identificacion", identificacion).getSingleResult();
+	}
 }

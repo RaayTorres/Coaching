@@ -25,9 +25,11 @@ import pdg.dataaccess.dao.ITipoDocumentoDAO;
 import pdg.dataaccess.dao.ITipoEstadoDAO;
 import pdg.modelo.Categoria;
 import pdg.modelo.Coach;
+import pdg.modelo.Coachee;
 import pdg.modelo.Estado;
 import pdg.modelo.TipoDocumento;
 import pdg.modelo.TipoEstado;
+import pdg.presentation.businessDelegate.IBusinessDelegate;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
@@ -46,6 +48,9 @@ public class CoachDaoTest {
 	
 	@Autowired
 	private ICoachDAO coachDao;
+	
+	@Autowired
+	private IBusinessDelegate delegadoDeNegocio;
 
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
@@ -123,5 +128,24 @@ public class CoachDaoTest {
 		
 	}	
 
+	
+	@Test
+	@Transactional(readOnly = true)
+	public void fPrueba() throws Exception {
+	
+		
+		
+		String login = "Ezio";
+		String pass ="password";
+		
+//		Coach nuevoCoach = coachDao.consultarCoachPorLogin(login);
+//		System.out.println(nuevoCoach.getNombre()+" "+ nuevoCoach.getApellido());
+		
+		Coach nuevoCoach = delegadoDeNegocio.validarCredencialesCoach(login, pass);
+		System.out.println(nuevoCoach.getNombre()+" "+ nuevoCoach.getApellido());
+		
+		
+		
+	}
 	
 }

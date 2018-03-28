@@ -513,4 +513,22 @@ public class CoachLogic implements ICoachLogic {
     	return regs;
     	
     }
+
+	@Override
+	public Coach validarCredencialesCoach(String login, String passwd) throws Exception {
+		
+		if (login.trim().equals("") || passwd.trim().equals("")) {
+			throw new ZMessManager("La contraseña o el usuario no pueden estar vacios");
+		}
+
+		//Coachee nuevoCliente = coacheeDAO.consultarClientePorLogin(user);
+		Coach nuevoCoach = coachDAO.consultarCoachPorLogin(login);
+		
+		if (!nuevoCoach.getContrasena().equals(passwd)) {
+
+			throw new Exception("La contraseña no corresponde al usuario");
+		}
+
+		return nuevoCoach;
+	}
 }

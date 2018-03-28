@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import pdg.dataaccess.api.JpaDaoImpl;
 
 import pdg.modelo.Coach;
+import pdg.modelo.Coachee;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -36,4 +37,12 @@ public class CoachDAO extends JpaDaoImpl<Coach, Double> implements ICoachDAO {
     public static ICoachDAO getFromApplicationContext(ApplicationContext ctx) {
         return (ICoachDAO) ctx.getBean("CoachDAO");
     }
+
+	@Override
+	public Coach consultarCoachPorLogin(String login) {
+		
+		
+		String consulta = "SELECT usu FROM Coach usu WHERE usu.login=:login";
+		return (Coach)entityManager.createQuery(consulta).setParameter("login", login).getSingleResult();
+	}
 }

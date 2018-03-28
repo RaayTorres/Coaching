@@ -12,6 +12,8 @@ import pdg.utilities.*;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 
 @ViewScoped
@@ -57,12 +59,16 @@ public class LoginView {
 
             FacesUtils.getHttpSession(true)
                       .setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+            
+            ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
         } catch (AuthenticationException e) {
             FacesUtils.addErrorMessage("authfailed login or password");
 
             return "/login.xhtml";
         }
 
-        return "/XHTML/initialMenu.xhtml";
+        //return "/XHTML/initialMenu.xhtml";
+        System.out.println("Entre");
+        return "/XHTML/principalPrueba.xhtml";
     }
 }

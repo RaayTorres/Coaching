@@ -16,4 +16,7 @@ import java.util.Set;
 *
 */
 public interface ICoachDAO extends Dao<Coach, Double> {
+	
+	
+	public Coach consultarCoachPorLogin(String login);
 }

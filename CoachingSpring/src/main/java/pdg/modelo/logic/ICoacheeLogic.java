@@ -56,4 +56,6 @@ public interface ICoacheeLogic {
     public List<CoacheeDTO> getDataCoachee() throws Exception;
 
     public void validateCoachee(Coachee coachee) throws Exception;
+    
+    public Coachee validarCredenciales (String user, String password) throws Exception ;
 }

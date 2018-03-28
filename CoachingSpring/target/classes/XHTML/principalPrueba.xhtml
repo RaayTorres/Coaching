@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<h:head>
+
+</h:head>
+
+<h:body>
+
+<p:menubar>
+				<p:submenu label="Menu Coachee">
+					<p:menuitem value="Coachee" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/Coachee/tipoDocumento.xhtml" />
+				</p:submenu>
+				
+				<p:submenu label="Menu Coach">
+					<p:menuitem value="Coach" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/Coach/parametro.xhtml"/>
+				</p:submenu>
+							
+</p:menubar>
+
+
+
+						
+						
+</h:body>
+</html>

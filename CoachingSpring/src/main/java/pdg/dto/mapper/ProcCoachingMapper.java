@@ -58,8 +58,8 @@ public class ProcCoachingMapper implements IProcCoachingMapper {
             ProcCoachingDTO procCoachingDTO = new ProcCoachingDTO();
 
             procCoachingDTO.setIdProc(procCoaching.getIdProc());
-            procCoachingDTO.setIdTpago((procCoaching.getIdTpago() != null)
-                ? procCoaching.getIdTpago() : null);
+          //  procCoachingDTO.setIdTpago((procCoaching.getIdTpago() != null)
+           //     ? procCoaching.getIdTpago() : null);
             procCoachingDTO.setIdCoach_Coach((procCoaching.getCoach()
                                                           .getIdCoach() != null)
                 ? procCoaching.getCoach().getIdCoach() : null);
@@ -83,8 +83,8 @@ public class ProcCoachingMapper implements IProcCoachingMapper {
             ProcCoaching procCoaching = new ProcCoaching();
 
             procCoaching.setIdProc(procCoachingDTO.getIdProc());
-            procCoaching.setIdTpago((procCoachingDTO.getIdTpago() != null)
-                ? procCoachingDTO.getIdTpago() : null);
+        //    procCoaching.setIdTpago((procCoachingDTO.getIdTpago() != null)
+ //               ? procCoachingDTO.getIdTpago() : null);
 
             Coach coach = new Coach();
 

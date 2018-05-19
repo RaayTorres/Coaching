@@ -27,21 +27,26 @@ public class ProcCoaching implements java.io.Serializable {
 	    private Coachee coachee;
 	    @NotNull
 	    private RegContable regContable;
-	    @NotNull
-	    private Long idTpago;
+//	    @NotNull
+//	    private Long idTpago;
+//	    
+	    private String focoProceso;
+	    
+	    
 	    private Set<SesCoaching> sesCoachings = new HashSet<SesCoaching>(0);
 
     public ProcCoaching() {
     }
 
     public ProcCoaching(Long idProc, Coach coach, Coachee coachee,
-    		Long idTpago, RegContable regContable, Set<SesCoaching> sesCoachings) {
+    		Long idTpago, RegContable regContable, Set<SesCoaching> sesCoachings,  String focoProceso) {
         this.idProc = idProc;
         this.coach = coach;
         this.coachee = coachee;
         this.regContable = regContable;
-        this.idTpago = idTpago;
+      //  this.idTpago = idTpago;
         this.sesCoachings = sesCoachings;
+        this.focoProceso= focoProceso;
     }
 
     @Id
@@ -54,7 +59,7 @@ public class ProcCoaching implements java.io.Serializable {
         this.idProc = idProc;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "coach_id_coach")
     public Coach getCoach() {
         return this.coach;
@@ -64,7 +69,7 @@ public class ProcCoaching implements java.io.Serializable {
         this.coach = coach;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "coachee_id_coachee")
     public Coachee getCoachee() {
         return this.coachee;
@@ -84,14 +89,28 @@ public class ProcCoaching implements java.io.Serializable {
         this.regContable = regContable;
     }
 
-    @Column(name = "id_tpago", nullable = false)
-    public Long getIdTpago() {
-        return this.idTpago;
+//    @Column(name = "id_tpago", nullable = false)
+//    public Long getIdTpago() {
+//        return this.idTpago;
+//    }
+//
+//    public void setIdTpago(Long idTpago) {
+//        this.idTpago = idTpago;
+//    }
+    
+    
+    
+    //TODO Descomentar luego
+    @Column(name = "foco_proc")
+    public String getFocoProceso() {
+        return this.focoProceso;
     }
 
-    public void setIdTpago(Long idTpago) {
-        this.idTpago = idTpago;
+    public void setFocoProceso(String focoProceso) {
+        this.focoProceso = focoProceso;
     }
+    
+    
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "procCoaching")
     public Set<SesCoaching> getSesCoachings() {

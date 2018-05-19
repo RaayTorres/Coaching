@@ -48,7 +48,7 @@ public class CoachDaoTest {
 	
 	@Autowired
 	private ICoachDAO coachDao;
-	
+
 	@Autowired
 	private IBusinessDelegate delegadoDeNegocio;
 

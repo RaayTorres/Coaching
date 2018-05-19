@@ -47,9 +47,9 @@ public class RegContableMapper implements IRegContableMapper {
             regContableDTO.setFechaPago(regContable.getFechaPago());
             regContableDTO.setTipo((regContable.getTipo() != null)
                 ? regContable.getTipo() : null);
-            regContableDTO.setValor((regContable.getValor() != null)
-                ? regContable.getValor() : null);
-            regContableDTO.setIdCoachee_Coachee((regContable.getCoachee()
+//            regContableDTO.setValor((regContable.getValor() != null)
+//                ? regContable.getValor() : null);
+           regContableDTO.setIdCoachee_Coachee((regContable.getCoachee()
                                                             .getIdCoachee() != null)
                 ? regContable.getCoachee().getIdCoachee() : null);
 
@@ -69,8 +69,8 @@ public class RegContableMapper implements IRegContableMapper {
             regContable.setFechaPago(regContableDTO.getFechaPago());
             regContable.setTipo((regContableDTO.getTipo() != null)
                 ? regContableDTO.getTipo() : null);
-            regContable.setValor((regContableDTO.getValor() != null)
-                ? regContableDTO.getValor() : null);
+    //        regContable.setValor((regContableDTO.getValor() != null)
+       //         ? regContableDTO.getValor() : null);
 
             Coachee coachee = new Coachee();
 

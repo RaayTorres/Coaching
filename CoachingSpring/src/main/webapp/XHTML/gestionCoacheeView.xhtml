@@ -1,0 +1,96 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+
+
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+		<ui:define name="body">
+
+
+			<h:form style="width: 100%" enctype="multipart/form-data">
+				<p:growl id="msgs" showDetail="true" />
+
+
+				<h5 style="text-align: center; color: black">Gestión Clientes</h5>
+
+
+				<div align="right">
+					<p:commandButton id="btnSave" binding="#{coacheeView.btnRedirigir}"
+						value="Crear nuevo cliente"
+						action="#{coacheeView.actionRedirigir()}" />
+					<!--  Redireccionar a crear Coache-->
+					<p:commandButton id="btnRed"
+						binding="#{coacheeView.btnRedirigirMas}" value="Ver más"
+						action="#{coacheeView.actionRedirigirMas()}" />
+					<!--  Redireccionar a crear Coache-->
+
+				</div>
+				<!--  Hacer listener-->
+				<div class="divConsulta2">
+					<h:panelGrid columns="2" id="panelGrid"
+						style="text-align: center; color: black">
+						<h:outputText id="msgTelefono" value="Buscar" />
+
+
+					</h:panelGrid>
+
+
+					<p:dataScroller value="#{coacheeView.data}" var="c" chunkSize="4">
+
+
+						<h:panelGrid columns="2" style="width:100%">
+							<p:graphicImage value="#{coacheeView.filedownload}" width="200"
+								height="100" styleClass="content">
+								<f:param name="id" value="#{c.idCoachee}" />
+							</p:graphicImage>
+
+
+							<h:panelGrid columns="2" cellpadding="2">
+
+								<h:outputText value="Nombre:" />
+								<h:outputText value="#{c.nombre}" />
+
+								<h:outputText value="Celular" />
+								<h:outputText value="#{c.celular}" />
+
+								<p:commandButton id="btnRed"
+									binding="#{coacheeView.btnRedirigirMas}" value="Ver más"
+									action="#{coacheeView.actionRedirigirMas()}" ajax="false" >
+								<!--  Redireccionar a crear Coache-->
+								<f:setPropertyActionListener value="c" 
+								target="#{coacheeView.entity}"/>
+								</p:commandButton>
+								
+
+							</h:panelGrid>
+
+						</h:panelGrid>
+					</p:dataScroller>
+
+
+				</div>
+
+			</h:form>
+
+
+
+
+		</ui:define>
+
+	</ui:composition>
+
+
+
+
+
+</h:body>
+</html>

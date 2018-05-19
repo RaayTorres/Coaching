@@ -48,28 +48,28 @@ import javax.faces.event.ActionEvent;
 @ManagedBean
 @ViewScoped
 public class ProcCoachingView implements Serializable {
-//    private static final long serialVersionUID = 1L;
-//    private static final Logger log = LoggerFactory.getLogger(ProcCoachingView.class);
-//    private InputText txtIdTpago;
-//    private InputText txtIdCoach_Coach;
-//    private InputText txtIdCoachee_Coachee;
-//    private InputText txtIdHis_RegContable;
-//    private InputText txtIdProc;
-//    private CommandButton btnSave;
-//    private CommandButton btnModify;
-//    private CommandButton btnDelete;
-//    private CommandButton btnClear;
-//    private List<ProcCoachingDTO> data;
-//    private ProcCoachingDTO selectedProcCoaching;
-//    private ProcCoaching entity;
-//    private boolean showDialog;
-//    @ManagedProperty(value = "#{BusinessDelegatorView}")
-//    private IBusinessDelegate businessDelegatorView;
-//
-//    public ProcCoachingView() {
-//        super();
-//    }
-//
+    private static final long serialVersionUID = 1L;
+    private static final Logger log = LoggerFactory.getLogger(ProcCoachingView.class);
+    private InputText txtIdTpago;
+  //  private InputText txtIdCoach_Coach;
+    private InputText txtIdCoachee_Coachee;
+    private InputText txtIdHis_RegContable;
+    private InputText txtIdProc;
+    private CommandButton btnSave;
+    private CommandButton btnModify;
+    private CommandButton btnDelete;
+    private CommandButton btnClear;
+    private List<ProcCoaching> data;
+    private ProcCoachingDTO selectedProcCoaching;
+    private ProcCoaching entity;
+    private boolean showDialog;
+    @ManagedProperty(value = "#{BusinessDelegatorView}")
+    private IBusinessDelegate businessDelegatorView;
+
+    public ProcCoachingView() {
+        super();
+    }
+
 //    public String action_new() {
 //        action_clear();
 //        selectedProcCoaching = null;
@@ -117,42 +117,8 @@ public class ProcCoachingView implements Serializable {
 //
 //        return "";
 //    }
-//
-//    public void listener_txtId() {
-//        try {
-//            Double idProc = FacesUtils.checkDouble(txtIdProc);
-//            entity = (idProc != null)
-//                ? businessDelegatorView.getProcCoaching(idProc) : null;
-//        } catch (Exception e) {
-//            entity = null;
-//        }
-//
-//        if (entity == null) {
-//            txtIdTpago.setDisabled(false);
-//            txtIdCoach_Coach.setDisabled(false);
-//            txtIdCoachee_Coachee.setDisabled(false);
-//            txtIdHis_RegContable.setDisabled(false);
-//            txtIdProc.setDisabled(false);
-//            btnSave.setDisabled(false);
-//        } else {
-//            txtIdTpago.setValue(entity.getIdTpago());
-//            txtIdTpago.setDisabled(false);
-//            txtIdCoach_Coach.setValue(entity.getCoach().getIdCoach());
-//            txtIdCoach_Coach.setDisabled(false);
-//            txtIdCoachee_Coachee.setValue(entity.getCoachee().getIdCoachee());
-//            txtIdCoachee_Coachee.setDisabled(false);
-//            txtIdHis_RegContable.setValue(entity.getRegContable().getIdHis());
-//            txtIdHis_RegContable.setDisabled(false);
-//            txtIdProc.setValue(entity.getIdProc());
-//            txtIdProc.setDisabled(true);
-//            btnSave.setDisabled(false);
-//
-//            if (btnDelete != null) {
-//                btnDelete.setDisabled(false);
-//            }
-//        }
-//    }
-//
+
+    
 //    public String action_edit(ActionEvent evt) {
 //        selectedProcCoaching = (ProcCoachingDTO) (evt.getComponent()
 //                                                     .getAttributes()
@@ -172,106 +138,13 @@ public class ProcCoachingView implements Serializable {
 //
 //        return "";
 //    }
-//
-//    public String action_save() {
-//        try {
-//            if ((selectedProcCoaching == null) && (entity == null)) {
-//                action_create();
-//            } else {
-//                action_modify();
-//            }
-//
-//            data = null;
-//        } catch (Exception e) {
-//            FacesUtils.addErrorMessage(e.getMessage());
-//        }
-//
-//        return "";
-//    }
-//
-//    public String action_create() {
-//        try {
-//            entity = new ProcCoaching();
-//
-//            Double idProc = FacesUtils.checkDouble(txtIdProc);
-//
-//            entity.setIdProc(idProc);
-//            entity.setIdTpago(FacesUtils.checkDouble(txtIdTpago));
-//            entity.setCoach((FacesUtils.checkDouble(txtIdCoach_Coach) != null)
-//                ? businessDelegatorView.getCoach(FacesUtils.checkDouble(
-//                        txtIdCoach_Coach)) : null);
-//            entity.setCoachee((FacesUtils.checkDouble(txtIdCoachee_Coachee) != null)
-//                ? businessDelegatorView.getCoachee(FacesUtils.checkDouble(
-//                        txtIdCoachee_Coachee)) : null);
-//            entity.setRegContable((FacesUtils.checkDouble(txtIdHis_RegContable) != null)
-//                ? businessDelegatorView.getRegContable(FacesUtils.checkDouble(
-//                        txtIdHis_RegContable)) : null);
-//            businessDelegatorView.saveProcCoaching(entity);
-//            FacesUtils.addInfoMessage(ZMessManager.ENTITY_SUCCESFULLYSAVED);
-//            action_clear();
-//        } catch (Exception e) {
-//            entity = null;
-//            FacesUtils.addErrorMessage(e.getMessage());
-//        }
-//
-//        return "";
-//    }
-//
-//    public String action_modify() {
-//        try {
-//            if (entity == null) {
-//                Double idProc = new Double(selectedProcCoaching.getIdProc());
-//                entity = businessDelegatorView.getProcCoaching(idProc);
-//            }
-//
-//            entity.setIdTpago(FacesUtils.checkDouble(txtIdTpago));
-//            entity.setCoach((FacesUtils.checkDouble(txtIdCoach_Coach) != null)
-//                ? businessDelegatorView.getCoach(FacesUtils.checkDouble(
-//                        txtIdCoach_Coach)) : null);
-//            entity.setCoachee((FacesUtils.checkDouble(txtIdCoachee_Coachee) != null)
-//                ? businessDelegatorView.getCoachee(FacesUtils.checkDouble(
-//                        txtIdCoachee_Coachee)) : null);
-//            entity.setRegContable((FacesUtils.checkDouble(txtIdHis_RegContable) != null)
-//                ? businessDelegatorView.getRegContable(FacesUtils.checkDouble(
-//                        txtIdHis_RegContable)) : null);
-//            businessDelegatorView.updateProcCoaching(entity);
-//            FacesUtils.addInfoMessage(ZMessManager.ENTITY_SUCCESFULLYMODIFIED);
-//        } catch (Exception e) {
-//            data = null;
-//            FacesUtils.addErrorMessage(e.getMessage());
-//        }
-//
-//        return "";
-//    }
-//
-//    public String action_delete_datatable(ActionEvent evt) {
-//        try {
-//            selectedProcCoaching = (ProcCoachingDTO) (evt.getComponent()
-//                                                         .getAttributes()
-//                                                         .get("selectedProcCoaching"));
-//
-//            Double idProc = new Double(selectedProcCoaching.getIdProc());
-//            entity = businessDelegatorView.getProcCoaching(idProc);
-//            action_delete();
-//        } catch (Exception e) {
-//            FacesUtils.addErrorMessage(e.getMessage());
-//        }
-//
-//        return "";
-//    }
-//
-//    public String action_delete_master() {
-//        try {
-//            Double idProc = FacesUtils.checkDouble(txtIdProc);
-//            entity = businessDelegatorView.getProcCoaching(idProc);
-//            action_delete();
-//        } catch (Exception e) {
-//            FacesUtils.addErrorMessage(e.getMessage());
-//        }
-//
-//        return "";
-//    }
-//
+
+   
+
+    
+
+
+//    
 //    public void action_delete() throws Exception {
 //        try {
 //            businessDelegatorView.deleteProcCoaching(entity);
@@ -282,14 +155,14 @@ public class ProcCoachingView implements Serializable {
 //            throw e;
 //        }
 //    }
-//
+
 //    public String action_closeDialog() {
 //        setShowDialog(false);
 //        action_clear();
 //
 //        return "";
 //    }
-//
+
 //    public String action_modifyWitDTO(Double idProc, Double idTpago,
 //        Double idCoach_Coach, Double idCoachee_Coachee, Double idHis_RegContable)
 //        throws Exception {
@@ -305,15 +178,15 @@ public class ProcCoachingView implements Serializable {
 //
 //        return "";
 //    }
-//
-//    public InputText getTxtIdTpago() {
-//        return txtIdTpago;
-//    }
-//
-//    public void setTxtIdTpago(InputText txtIdTpago) {
-//        this.txtIdTpago = txtIdTpago;
-//    }
-//
+
+    public InputText getTxtIdTpago() {
+        return txtIdTpago;
+    }
+
+    public void setTxtIdTpago(InputText txtIdTpago) {
+        this.txtIdTpago = txtIdTpago;
+    }
+
 //    public InputText getTxtIdCoach_Coach() {
 //        return txtIdCoach_Coach;
 //    }
@@ -321,105 +194,138 @@ public class ProcCoachingView implements Serializable {
 //    public void setTxtIdCoach_Coach(InputText txtIdCoach_Coach) {
 //        this.txtIdCoach_Coach = txtIdCoach_Coach;
 //    }
-//
-//    public InputText getTxtIdCoachee_Coachee() {
-//        return txtIdCoachee_Coachee;
-//    }
-//
-//    public void setTxtIdCoachee_Coachee(InputText txtIdCoachee_Coachee) {
-//        this.txtIdCoachee_Coachee = txtIdCoachee_Coachee;
-//    }
-//
-//    public InputText getTxtIdHis_RegContable() {
-//        return txtIdHis_RegContable;
-//    }
-//
-//    public void setTxtIdHis_RegContable(InputText txtIdHis_RegContable) {
-//        this.txtIdHis_RegContable = txtIdHis_RegContable;
-//    }
-//
-//    public InputText getTxtIdProc() {
-//        return txtIdProc;
-//    }
-//
-//    public void setTxtIdProc(InputText txtIdProc) {
-//        this.txtIdProc = txtIdProc;
-//    }
-//
-//    public List<ProcCoachingDTO> getData() {
-//        try {
-//            if (data == null) {
-//                data = businessDelegatorView.getDataProcCoaching();
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        return data;
-//    }
-//
-//    public void setData(List<ProcCoachingDTO> procCoachingDTO) {
-//        this.data = procCoachingDTO;
-//    }
-//
-//    public ProcCoachingDTO getSelectedProcCoaching() {
-//        return selectedProcCoaching;
-//    }
-//
-//    public void setSelectedProcCoaching(ProcCoachingDTO procCoaching) {
-//        this.selectedProcCoaching = procCoaching;
-//    }
-//
-//    public CommandButton getBtnSave() {
-//        return btnSave;
-//    }
-//
-//    public void setBtnSave(CommandButton btnSave) {
-//        this.btnSave = btnSave;
-//    }
-//
-//    public CommandButton getBtnModify() {
-//        return btnModify;
-//    }
-//
-//    public void setBtnModify(CommandButton btnModify) {
-//        this.btnModify = btnModify;
-//    }
-//
-//    public CommandButton getBtnDelete() {
-//        return btnDelete;
-//    }
-//
-//    public void setBtnDelete(CommandButton btnDelete) {
-//        this.btnDelete = btnDelete;
-//    }
-//
-//    public CommandButton getBtnClear() {
-//        return btnClear;
-//    }
-//
-//    public void setBtnClear(CommandButton btnClear) {
-//        this.btnClear = btnClear;
-//    }
-//
-//    public TimeZone getTimeZone() {
-//        return java.util.TimeZone.getDefault();
-//    }
-//
-//    public IBusinessDelegate getBusinessDelegatorView() {
-//        return businessDelegatorView;
-//    }
-//
-//    public void setBusinessDelegatorView(
-//        IBusinessDelegate businessDelegatorView) {
-//        this.businessDelegatorView = businessDelegatorView;
-//    }
-//
-//    public boolean isShowDialog() {
-//        return showDialog;
-//    }
-//
-//    public void setShowDialog(boolean showDialog) {
-//        this.showDialog = showDialog;
-//    }
+
+    public InputText getTxtIdCoachee_Coachee() {
+        return txtIdCoachee_Coachee;
+    }
+
+    public void setTxtIdCoachee_Coachee(InputText txtIdCoachee_Coachee) {
+        this.txtIdCoachee_Coachee = txtIdCoachee_Coachee;
+    }
+
+    public InputText getTxtIdHis_RegContable() {
+        return txtIdHis_RegContable;
+    }
+
+    public void setTxtIdHis_RegContable(InputText txtIdHis_RegContable) {
+        this.txtIdHis_RegContable = txtIdHis_RegContable;
+    }
+
+    public InputText getTxtIdProc() {
+        return txtIdProc;
+    }
+
+    public void setTxtIdProc(InputText txtIdProc) {
+        this.txtIdProc = txtIdProc;
+    }
+
+    public List<ProcCoaching> getData() {
+        try {
+          	Coach coac= (Coach) FacesUtils.getfromSession("coach");
+            if (data == null) {
+                data =  businessDelegatorView.getProcCoaching(coac);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return data;
+    }
+
+    public void setData(List<ProcCoaching> procCoachingDTO) {
+        this.data = procCoachingDTO;
+    }
+    
+    public ProcCoachingDTO getSelectedProcCoaching() {
+        return selectedProcCoaching;
+    }
+
+    public void setSelectedProcCoaching(ProcCoachingDTO procCoaching) {
+        this.selectedProcCoaching = procCoaching;
+    }
+
+    public CommandButton getBtnSave() {
+        return btnSave;
+    }
+
+    public void setBtnSave(CommandButton btnSave) {
+        this.btnSave = btnSave;
+    }
+
+    public CommandButton getBtnModify() {
+        return btnModify;
+    }
+
+    public void setBtnModify(CommandButton btnModify) {
+        this.btnModify = btnModify;
+    }
+
+    public CommandButton getBtnDelete() {
+        return btnDelete;
+    }
+
+    public void setBtnDelete(CommandButton btnDelete) {
+        this.btnDelete = btnDelete;
+    }
+
+    public CommandButton getBtnClear() {
+        return btnClear;
+    }
+
+    public void setBtnClear(CommandButton btnClear) {
+        this.btnClear = btnClear;
+    }
+
+    public TimeZone getTimeZone() {
+        return java.util.TimeZone.getDefault();
+    }
+
+    public IBusinessDelegate getBusinessDelegatorView() {
+        return businessDelegatorView;
+    }
+
+    public void setBusinessDelegatorView(
+        IBusinessDelegate businessDelegatorView) {
+        this.businessDelegatorView = businessDelegatorView;
+    }
+
+    public boolean isShowDialog() {
+        return showDialog;
+    }
+
+    public void setShowDialog(boolean showDialog) {
+        this.showDialog = showDialog;
+    }
+    
+    
+    
+    
+    public String action_save() {
+    	
+    	Coach coac= (Coach) FacesUtils.getfromSession("coach");
+    	ProcCoaching pro = new ProcCoaching();
+    	RegContable reg= new RegContable();
+    	try {
+    		Coachee coachee= businessDelegatorView.getCoachee(FacesUtils.checkLong(txtIdCoachee_Coachee));
+    		
+    		reg.setCoachee(coachee);
+    		businessDelegatorView.saveRegContable(reg);
+    		
+			pro.setCoachee(coachee);
+			pro.setCoach(coac);
+			pro.setRegContable(reg);
+			
+			businessDelegatorView.saveProcCoaching(pro);
+		} catch (ZMessManager e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	
+    	
+    	return "";
+    }
 }

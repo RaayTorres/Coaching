@@ -1,6 +1,8 @@
 package pdg.modelo.logic;
 
+import pdg.modelo.Coachee;
 import pdg.modelo.Estado;
+import pdg.modelo.ProcCoaching;
 import pdg.modelo.SesCoaching;
 
 import pdg.modelo.dto.SesCoachingDTO;
@@ -60,5 +62,12 @@ public interface ISesCoachingLogic {
         throws Exception;
     
 
-	 List<SesCoaching> filtrarSesionPorEstado(Long esta); 
+	 public List<SesCoaching> filtrarSesionPorEstado(Long esta); 
+	 
+	 
+	 public List<SesCoaching> sesionesHoy();
+	 
+	 public List<Coachee> clientesSesionesHoy();
+	 
+	 public List<SesCoaching> sesionCompletas(ProcCoaching pro);
 }

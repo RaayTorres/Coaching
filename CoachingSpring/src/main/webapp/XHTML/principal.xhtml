@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+
+
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+		<ui:define name="body">
+
+<!-- LLenar las imagenes de las sesiones con otra cosa  -->
+			<h:form style="width: 100%" enctype="multipart/form-data">
+				<p:growl id="msgs" showDetail="true" />
+				<div class="divConsulta2">
+					<div
+						style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%">
+
+						<h5 style="text-align: center; color: black">Sesiones de hoy</h5>
+
+
+						<p:galleria value="#{coacheeView.sesHoy}" var="apt"
+							panelWidth="500" panelHeight="313" showCaption="true" 
+							rendered="true">
+								<p:graphicImage value="#{coacheeView.filedownload}" 
+								alt=" Hora: 
+								#{apt.hora} Foco
+								 Proceso: #{apt.focoSesion}"   title="#{apt.procCoaching.coachee.nombre} #{apt.procCoaching.coachee.apellido}" >
+									<f:param name="id" value="#{apt.procCoaching.coachee.idCoachee}" />
+								</p:graphicImage>
+
+						</p:galleria>
+										
+
+					</div>
+				</div>
+			</h:form>
+
+		</ui:define>
+
+	</ui:composition>
+
+
+</h:body>
+</html>

@@ -53,7 +53,10 @@ public interface IEstadoLogic {
 
     public Long findTotalNumberEstado() throws Exception;
 
-    public List<EstadoDTO> getDataEstado() throws Exception;
+    public Estado getEstadoSesion(int idEstado) throws Exception;
 
+    
+    public List<EstadoDTO> getDataEstado() throws Exception;
+    
     public void validateEstado(Estado estado) throws Exception;
 }

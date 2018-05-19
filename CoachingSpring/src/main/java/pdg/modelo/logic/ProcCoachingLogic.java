@@ -89,6 +89,11 @@ public class ProcCoachingLogic implements IProcCoachingLogic {
     */
     @Autowired
     IRegContableLogic logicRegContable3;
+    
+    
+    @Autowired
+    IEstadoLogic logicEstado;
+
 
     public void validateProcCoaching(ProcCoaching procCoaching)
         throws Exception {
@@ -114,13 +119,17 @@ public class ProcCoachingLogic implements IProcCoachingLogic {
     }
 
     @Transactional(readOnly = true)
-    public List<ProcCoaching> getProcCoaching() throws Exception {
+    public List<ProcCoaching> getProcCoaching(Coach id) throws Exception {
         log.debug("finding all ProcCoaching instances");
 
         List<ProcCoaching> list = new ArrayList<ProcCoaching>();
 
         try {
-            list = procCoachingDAO.findAll();
+        	for (ProcCoaching procCoaching : procCoachingDAO.findAll()) {
+				if (procCoaching.getCoach().getIdCoach() == id.getIdCoach()) {
+					list.add(procCoaching);
+				}
+			}
         } catch (Exception e) {
             log.error("finding all ProcCoaching failed", e);
             throw new ZMessManager().new GettingException(ZMessManager.ALL +
@@ -139,7 +148,7 @@ public class ProcCoachingLogic implements IProcCoachingLogic {
             if (entity == null) {
                 throw new ZMessManager().new NullEntityExcepcion("ProcCoaching");
             }
-
+entity.setIdProc(procCoachingDAO.genSecuencia());
             validateProcCoaching(entity);
 
             if (getProcCoaching(entity.getIdProc()) != null) {
@@ -150,13 +159,16 @@ public class ProcCoachingLogic implements IProcCoachingLogic {
             
             for (int i = 0; i < 10; i++) {
             	SesCoaching  newEntity= new SesCoaching();
+            	Long l = 1L;
             	
             	newEntity.setIdSesi(sesCoachingDAO.genSecuencia());
             	newEntity.setProcCoaching(entity);
-            	newEntity.setEstado(estadoDAo.findById(2L));
+            	newEntity.setEstado(logicEstado.getEstadoSesion(2));
             	newEntity.setIdHis(entity.getRegContable().getIdHis());
+            	newEntity.setNumSes(l);
 				sesLogic.saveSesCoaching(newEntity);
 				log.info("Creando sesion ");
+				l++;
 			}
             
             log.debug("save ProcCoaching successful");
@@ -466,5 +478,16 @@ R10.SE1: El sistema debe permitir visualizar y filtrar las sesiones en (activas 
  que tiene un coach y dentro de cada sesión mostrar la fecha en la que se realizará o realizó la sesión.
 
  */
+    
+    public int progresoProceso(ProcCoaching pro) {
+    	
+    	int sesiones=  pro.getSesCoachings().size();
+	
+		int progreso = (sesLogic.sesionCompletas(pro).size())/ sesiones;
+		
+    	
+    	
+    	return progreso;
+    }
     
 }

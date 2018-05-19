@@ -53,4 +53,13 @@ public class SesCoachingDAO extends JpaDaoImpl<SesCoaching, Double>
     	
   		return listado;
   	}
+    
+    public SesCoaching ultimaSesion(String esta){
+    	
+    	 SesCoaching listado=  	
+    	    	 (SesCoaching) entityManager.createNativeQuery("select ses from SES_COACHING ses where ses.estado.nombreEstado="
+    	    			 + esta+"and max(ses.fecha)").getSingleResult();
+    	    
+    	return listado;
+    }
 }

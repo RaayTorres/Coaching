@@ -27,9 +27,11 @@ import pdg.utilities.Utilities;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.SortedSet;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
@@ -417,7 +419,7 @@ public class SesCoachingLogic implements ISesCoachingLogic {
 		
 		
 		List<SesCoaching> sesion = sesCoachingDAO.filtrarSesionPorEstado(estadoDao.findById(esta).getIdEstado());
-		List<SesCoaching> listado= null;
+		List<SesCoaching> listado=  new ArrayList<SesCoaching>();
 		SesCoaching ses = new SesCoaching();
 //		List<SesCoaching> otra= sesCoachingDAO.findAll();
 //		
@@ -453,5 +455,53 @@ public class SesCoachingLogic implements ISesCoachingLogic {
 	}
 
 
+	
+	public List<SesCoaching> sesionesHoy() {
+		List<SesCoaching> sesiones= sesCoachingDAO.findAll() ;
+		List<SesCoaching> sesionesHoy= new ArrayList<SesCoaching>();
+		Date dat= new Date();
+		for (SesCoaching sesCoaching : sesiones) {
+			Date fecha =sesCoaching.getFecha();
+			if (fecha.getDay()==dat.getDay() && fecha.getMonth() == dat.getMonth()
+					&& fecha.getYear()== dat.getYear()) {
+				sesionesHoy.add(sesCoaching);
+			}
+		}
+		
+		return sesionesHoy;
+		
+	}
+	
+	
+	public List<Coachee> clientesSesionesHoy(){
+		
+		List<SesCoaching> sesiones= sesionesHoy();
+		List<Coachee> coachee= new ArrayList<Coachee>();
+		for (SesCoaching sesCoaching : sesiones) {
+			System.out.println(sesCoaching.getProcCoaching().getIdProc());
+			
+			coachee.add(sesCoaching.getProcCoaching().getCoachee());
+		}
+		
+		 return coachee;
+	}
+
+	public List<SesCoaching> sesionCompletas(ProcCoaching pro){
+		
+		List<SesCoaching> sesiones= (List<SesCoaching>) pro.getSesCoachings();
+		List<SesCoaching> sesiCom= new ArrayList<SesCoaching>();
+		for (SesCoaching sesCoaching : sesiones) {
+			if (sesCoaching.getEstado().getNombreEstado().trim().equalsIgnoreCase("completa")) {
+				sesiCom.add(sesCoaching);
+			}
+		}
+		
+		
+		return sesiCom;
+	}
+	
+	
+	
+	
 	}
 

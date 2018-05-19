@@ -21,7 +21,7 @@ import javax.validation.constraints.*;
 public class Coachee implements java.io.Serializable {
 	 @NotNull
 	    private Long idCoachee;
-	    @NotNull
+	   
 	    private Estado estado;
 	    @NotNull
 	    private TipoDocumento tipoDocumento;
@@ -49,6 +49,18 @@ public class Coachee implements java.io.Serializable {
 	    @Size(max = 60)
 	    private String nombre;
 	    private String telefono;
+	    
+	    //TODO Descomentar despues
+//		@NotNull
+//		@NotEmpty
+		@Size(max=60)
+		private String contrasena;	
+		@NotNull
+		@NotEmpty
+	@Size(max=60)
+		private String login;
+	    
+	    
 	    private Set<ProcCoaching> procCoachings = new HashSet<ProcCoaching>(0);
 	    private Set<RegContable> regContables = new HashSet<RegContable>(0);
 
@@ -59,7 +71,7 @@ public class Coachee implements java.io.Serializable {
         String correo, String direccion, Estado estado, byte[] foto,
         String hobbies, String identificacion, String nombre,
         Set<ProcCoaching> procCoachings, Set<RegContable> regContables,
-        String telefono, TipoDocumento tipoDocumento) {
+        String telefono, TipoDocumento tipoDocumento,String login, String contrasena) {
         this.idCoachee = idCoachee;
         this.estado = estado;
         this.tipoDocumento = tipoDocumento;
@@ -74,6 +86,8 @@ public class Coachee implements java.io.Serializable {
         this.telefono = telefono;
         this.procCoachings = procCoachings;
         this.regContables = regContables;
+        this.login = login;
+        this.contrasena = contrasena;
     }
 
     @Id
@@ -115,6 +129,27 @@ public class Coachee implements java.io.Serializable {
         this.apellido = apellido;
     }
 
+   //TODO descometnar despues 
+    @Column(name = "contrasena", nullable = false)
+    public String getContrasena() {
+        return this.contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    
+    //TODO descomentar despues
+    @Column(name = "login", nullable = false)
+    public String getLogin() {
+        return this.login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+    
     @Column(name = "celular")
     public String getCelular() {
         return this.celular;

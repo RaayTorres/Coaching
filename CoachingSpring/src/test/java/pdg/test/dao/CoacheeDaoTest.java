@@ -77,7 +77,6 @@ public class CoacheeDaoTest {
 		coachee.setTipoDocumento(nuevoTipo);
 		
 		
-		
 		coacheeDao.save(coachee);
 		
 
@@ -128,8 +127,8 @@ public class CoacheeDaoTest {
 			System.out.println(coachee.getNombre() + " "+ coachee.getApellido());
 			
 		}
-	}
-	
+	}	
+
 	
 	@Test
 	@Transactional(readOnly = true)

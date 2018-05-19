@@ -1,0 +1,88 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+
+
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+		<ui:define name="body">
+
+
+			<h:form style="width: 100%">
+				<p:growl id="msgs" showDetail="true" />
+				<div class="divConsulta2">
+					<div
+						style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%">
+
+						<h5 style="text-align: center; color: black">Crear Coachee</h5>
+
+	<p:panel id="pnlTiposDocumentos" header="Crear Coachee">
+	
+
+				<p:outputLabel id="oplTipoUsuario" value="Tipo Usuario:" />
+						<p:selectOneMenu id="somTipoUsuario"
+							binding="#{coacheeView.somTipoUsuario}">
+							<f:selectItems value="#{coacheeView.losTipoUsuarioItem}" />
+						</p:selectOneMenu>
+						<h:panelGrid columns="2" cellpadding="2">
+
+
+
+							<h:outputText value="Identificacion" />
+							<p:inputText id="txtIdentificacion"
+								binding="#{coacheeView.txtIdentificacion}" />
+
+
+							<h:outputText value="Nombre:" />
+							<p:inputText id="txtNombre" binding="#{coacheeView.txtNombre}" />
+
+							<h:outputText value="Apellido" />
+							<p:inputText id="txtApellido"
+								binding="#{coacheeView.txtApellido}" />
+
+							<h:outputText value="Telefono" />
+							<p:inputText id="txtTelefono"
+								binding="#{coacheeView.txtTelefono}" />
+
+							<h:outputText value="Celular" />
+							<p:inputText id="txtCelular" binding="#{coacheeView.txtCelular}" />
+
+							<h:outputText value="Correo" />
+							<p:inputText id="txtCorreo" binding="#{coacheeView.txtCorreo}" />
+
+							<h:outputText value="Direccion" />
+							<p:inputText id="txtDireccion"
+								binding="#{coacheeView.txtDireccion}" />
+
+							<h:outputText value="Pasatiempo" />
+							<p:inputText id="txtHobbies" binding="#{coacheeView.txtHobbies}" />
+
+
+
+
+						</h:panelGrid>
+</p:panel>
+						<p:commandButton id="btnSave" binding="#{coacheeView.btnSave}"
+							value="Save" action="#{coacheeView.actionSave()}" update="@form" />
+
+					</div>
+				</div>
+				
+				
+			</h:form>
+
+		</ui:define>
+
+	</ui:composition>
+
+
+</h:body>
+</html>

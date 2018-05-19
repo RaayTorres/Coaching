@@ -32,14 +32,27 @@ public class SesCoaching implements java.io.Serializable {
 	    private Long idHis;
 	    private String indicador;
 	    private String profundidad;
+	    
+	    private Long numSes;
+
+	    private Double precio;
+	    private boolean isEncuadre;
+	    
+	    private String valor;
+	    private String proposito;
+	    private String aprendizaje;
+	    private String cierre;
+	    
 
     public SesCoaching() {
     }
 
-    public SesCoaching(Long idSesi, String accion, String compromiso,
+    public SesCoaching(Long idSesi, String accion,Long numSes, String compromiso,
         Estado estado, Date fecha, String focoSesion, String hora,
         Long idHis, String indicador, ProcCoaching procCoaching,
-        String profundidad) {
+        String profundidad, Double precio,
+   boolean isEncuadre,String valor, String proposito,
+     String aprendizaje,String cierre ) {
         this.idSesi = idSesi;
         this.estado = estado;
         this.procCoaching = procCoaching;
@@ -51,6 +64,15 @@ public class SesCoaching implements java.io.Serializable {
         this.idHis = idHis;
         this.indicador = indicador;
         this.profundidad = profundidad;
+        
+        this.precio = precio;
+        this.isEncuadre = isEncuadre;
+        
+        this.numSes= numSes;
+        this.aprendizaje = aprendizaje;
+        this.valor = valor;
+        this.proposito = proposito;
+        this.cierre = cierre;
     }
 
     @Id
@@ -73,7 +95,7 @@ public class SesCoaching implements java.io.Serializable {
         this.estado = estado;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "proc_coaching_id_proc")
     public ProcCoaching getProcCoaching() {
         return this.procCoaching;
@@ -154,4 +176,80 @@ public class SesCoaching implements java.io.Serializable {
     public void setProfundidad(String profundidad) {
         this.profundidad = profundidad;
     }
+    
+    //TODO descomentar edspues
+    @Column(name = "precio")
+    public Double getPrecio() {
+        return this.precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+    
+    //
+     @Column(name = "isEncuadre")
+     public boolean getIsEncuadre() {
+         return this.isEncuadre;
+     }
+
+     public void setIsEncuadre(boolean isEncuadre) {
+         this.isEncuadre = isEncuadre;
+     }
+     
+     
+// valores del cliente
+    @Column(name = "valor")
+     public String getValor() {
+         return this.valor;
+     }
+
+     public void setValor(String valor) {
+         this.valor = valor;
+     }
+     
+       @Column(name = "proposito")
+     public String getProposito() {
+         return this.proposito;
+     }
+
+     public void setProposito(String proposito ) {
+         this.proposito  = proposito ;
+     }
+     
+       @Column(name = "aprendizaje")
+     public String getAprendizaje() {
+         return this.aprendizaje;
+     }
+
+     public void setAprendizaje(String aprendizaje ) {
+         this.aprendizaje  = aprendizaje ;
+     }
+     
+     
+       @Column(name = "cierre")
+     public String getCierre() {
+         return this.cierre;
+     }
+
+     public void setCierre(String cierre ) {
+         this.cierre  = cierre ;
+     }
+
+     
+     @Column(name = "num_Sesi")
+	public Long getNumSes() {
+		return numSes;
+	}
+
+	public void setNumSes(Long numSes) {
+		this.numSes = numSes;
+	}
+
+	public void setEncuadre(boolean isEncuadre) {
+		this.isEncuadre = isEncuadre;
+	}
+     
+     
+     
 }

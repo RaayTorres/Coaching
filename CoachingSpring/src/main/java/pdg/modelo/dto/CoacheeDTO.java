@@ -9,12 +9,15 @@ import java.sql.*;
 
 import java.util.Date;
 
+import javax.faces.bean.ApplicationScoped;
+
 
 /**
 * @author Zathura Code Generator http://zathuracode.org
 * www.zathuracode.org
 *
 */
+@ApplicationScoped
 public class CoacheeDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final Logger log = LoggerFactory.getLogger(CoacheeDTO.class);

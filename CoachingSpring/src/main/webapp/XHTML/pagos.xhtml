@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+
+
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+		<ui:define name="body">
+		
+
+		<h:form style="width: 100%">
+			<p:growl id="msgs" showDetail="true" />
+			<div class="divConsulta2">
+				<div
+					style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%">
+
+					<h5 style="text-align: center; color: black">Sesiones de hoy</h5>
+					
+					
+					
+					<p:dataTable id="asmPTable" var="apt"
+						value="prueba"
+						paginator="true" rows="4">
+						<f:facet name="header">rueba2</f:facet>
+
+						<p:column headerText="Id">
+							<h:outputText value="123" />
+						</p:column>
+						
+						</p:dataTable></div></div></h:form> </ui:define></ui:composition></h:body></html>

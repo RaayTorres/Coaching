@@ -448,4 +448,55 @@ public class EstadoLogic implements IEstadoLogic {
 
         return list;
     }
+
+    /**
+     * 
+     * @param idEstado id del estado 1 para completo , 2 para incompleta
+     * @return
+     * @throws Exception
+     */
+	@Override
+	public Estado getEstadoSesion(int idEstado) throws Exception {
+	
+		List<Estado> estadoSesion= getEstado();
+		List<Estado> sesion= new ArrayList<Estado>();
+		List<TipoEstado> tipoSesion= logicTipoEstado1.getTipoEstado();
+		
+		Estado est= new Estado();
+		
+		for (TipoEstado tipoEstado : tipoSesion) {
+			if (tipoEstado.getNombreTipoEstado().equalsIgnoreCase("sesion")) {
+				for (Estado ses : estadoSesion) {
+					
+					if (ses.getTipoEstado().getIdTestado() == tipoEstado.getIdTestado()) {
+						sesion.add(ses);
+						
+					}
+					
+				}
+			}
+		}
+		
+		switch (idEstado) {
+		case 1:
+			for (Estado tipoEstado : sesion) {
+				if (tipoEstado.getNombreEstado().equalsIgnoreCase("Completo")) {
+					est= tipoEstado;
+				}
+			}
+			break;
+	
+		default:
+			
+			for (Estado tipoEstado : sesion) {
+				if (tipoEstado.getNombreEstado().equalsIgnoreCase("Incompleto")) {
+					est= tipoEstado;
+				}
+			}
+			break;
+		}
+		
+		
+		return est;
+	}
 }

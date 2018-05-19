@@ -23,27 +23,37 @@ public class RegContable implements java.io.Serializable {
 	    private Long idHis;
 	    @NotNull
 	    private Coachee coachee;
-	    @NotNull
+	  //  @NotNull
 	    private Date fechaPago;
-	    @NotNull
-	    @NotEmpty
-	    @Size(max = 200)
+//	    @NotNull
+//	    @NotEmpty
+//	    @Size(max = 200)
 	    private String tipo;
-	    @NotNull
-	    private Double valor;
+	//    @NotNull
+	   // private Double valor;
+	    
+	    private Double credito;
+	    private Double debito;
+	    private Double saldo;
+	    
 	    private Set<ProcCoaching> procCoachings = new HashSet<ProcCoaching>(0);
 
     public RegContable() {
     }
 
     public RegContable(Long idHis, Coachee coachee, Date fechaPago,
-        Set<ProcCoaching> procCoachings, String tipo, Double valor) {
+        Set<ProcCoaching> procCoachings, String tipo,   Double credito,
+     Double debito,
+     Double saldo) {
         this.idHis = idHis;
         this.coachee = coachee;
         this.fechaPago = fechaPago;
         this.tipo = tipo;
-        this.valor = valor;
+     //   this.valor = valor;
         this.procCoachings = procCoachings;
+        this.credito = credito;
+        this.debito = debito;
+        this.saldo = saldo;
     }
 
     @Id
@@ -84,14 +94,47 @@ public class RegContable implements java.io.Serializable {
         this.tipo = tipo;
     }
 
-    @Column(name = "valor", nullable = false)
-    public Double getValor() {
-        return this.valor;
+//    @Column(name = "valor", nullable = false)
+//    public Double getValor() {
+//        return this.valor;
+//    }
+//
+//    public void setValor(Double valor) {
+//        this.valor = valor;
+//    }
+//    
+    //TODO descomentar despues
+    @Column(name = "debito", nullable = false)
+    public Double getDebito() {
+        return this.debito;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
+    public void setdebito(Double debito) {
+        this.debito = debito;
     }
+    
+  //TODO descomentar despues
+   @Column(name = "credito", nullable = false)
+    public Double getCredito() {
+        return this.credito;
+    }
+
+    public void setCredito(Double credito) {
+        this.credito = credito;
+    }
+    
+  //TODO descomentar despues 
+    @Column(name = "saldo", nullable = false)
+    public Double getSaldo() {
+        return this.saldo;
+    }
+
+    public void setSaldo(Double saldo) {
+        this.saldo = saldo;
+    }
+    
+    
+    
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "regContable")
     public Set<ProcCoaching> getProcCoachings() {
@@ -101,4 +144,11 @@ public class RegContable implements java.io.Serializable {
     public void setProcCoachings(Set<ProcCoaching> procCoachings) {
         this.procCoachings = procCoachings;
     }
+    
+    
+    
+    
+    
+    
+    
 }

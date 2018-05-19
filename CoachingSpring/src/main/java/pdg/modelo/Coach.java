@@ -32,10 +32,6 @@ public class Coach implements java.io.Serializable {
 	private String celular;	
 	@NotNull
 	@NotEmpty
-	@Size(max=60)
-	private String contrasena;	
-	@NotNull
-	@NotEmpty
 	@Size(max=80)
 	private String correo;	
 	@NotNull
@@ -49,12 +45,19 @@ public class Coach implements java.io.Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(max=60)
+	private String contrasena;	
+	@NotNull
+	@NotEmpty
+	@Size(max=60)
 	private String login;	
 	@NotNull
 	@NotEmpty
 	@Size(max=60)
 	private String nombre;	
 	private String telefono;	
+	
+	  private byte[] foto;
+	
 	private Set<ProcCoaching> procCoachings = new HashSet<ProcCoaching>(0);	
     public Coach() {
     }
@@ -63,7 +66,7 @@ public class Coach implements java.io.Serializable {
     		String celular, String contrasena, String correo, 
         Double horaPagada, Double horaProbono, String identificacion,
         String login, String nombre, Set<ProcCoaching> procCoachings,
-        String telefono, TipoDocumento tipoDocumento) {
+        String telefono, TipoDocumento tipoDocumento, byte[] foto) {
         this.idCoach = idCoach;
         this.categoria = categoria;
       
@@ -79,6 +82,7 @@ public class Coach implements java.io.Serializable {
         this.nombre = nombre;
         this.telefono = telefono;
         this.procCoachings = procCoachings;
+        this.foto = foto;
     }
 
     @Id
@@ -168,6 +172,17 @@ public class Coach implements java.io.Serializable {
         this.horaProbono = horaProbono;
     }
 
+    
+    //TODO descomentar despues 
+    @Column(name = "foto")
+    public byte[] getFoto() {
+        return this.foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+    
     @Column(name = "identificacion", nullable = false)
     public String getIdentificacion() {
         return this.identificacion;

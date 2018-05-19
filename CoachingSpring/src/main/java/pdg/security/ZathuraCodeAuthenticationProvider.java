@@ -34,9 +34,6 @@ public class ZathuraCodeAuthenticationProvider implements AuthenticationProvider
     /**
      * Security Implementation
      */
-	
-
-	
 	@Autowired
 	private IBusinessDelegate delegadoDeNegocio;
 	
@@ -46,7 +43,7 @@ public class ZathuraCodeAuthenticationProvider implements AuthenticationProvider
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
         String rol ="";
-        try {
+		try {
 			
         	Coachee cliente = delegadoDeNegocio.validarCredencialesCoachee(name, password);
         	//Coach nuevoCoach = delegadoDeNegocio.validarCredencialesCoach(name, password);
@@ -79,22 +76,22 @@ public class ZathuraCodeAuthenticationProvider implements AuthenticationProvider
 				if (nuevoCoach!=null) {
 					
 					rol="Coach";
-				}
+		}
 				
-	        	final List<GrantedAuthority> grantedAuths = new ArrayList<GrantedAuthority>();
+            final List<GrantedAuthority> grantedAuths = new ArrayList<GrantedAuthority>();
 	            grantedAuths.add(new SimpleGrantedAuthority("ROLE_" + rol));
 
-	            final UserDetails principal = new User(name, password, grantedAuths);
-	            final Authentication auth = new UsernamePasswordAuthenticationToken(principal,
-	                    password, grantedAuths);
+            final UserDetails principal = new User(name, password, grantedAuths);
+            final Authentication auth = new UsernamePasswordAuthenticationToken(principal,
+                    password, grantedAuths);
 
-	            return auth;
+            return auth;
 			} catch (Exception e2) {
 				// TODO: handle exception
 				e2.getMessage();
-			}
-		}
-        
+        }
+    }
+
         return null;
        // if (name.equals("admin") && password.equals("admin")) {
             

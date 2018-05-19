@@ -1,107 +1,53 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui"
-                template="/WEB-INF/template.xhtml">
-		 
-	<ui:define name="content">		
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
 
-		  			<h:form id="frm">								  		
-						
-						<p:panel id="panelDataTableProcCoaching" header="ProcCoachingData">
-							<p:growl id="men"/>				
-							<p:dataTable value="#{procCoachingView.data}" var="procCoaching"
-								paginator="true" rows="5">
-																										<p:column filterBy="#{procCoaching.idProc}" sortBy="#{procCoaching.idProc}" >
-										 <f:facet name="header">
-										<h:outputText value="idProc"/>
-										</f:facet>
-										 <h:outputText value="#{procCoaching.idProc}"/>
-										 </p:column>
-			                    																									
-										<p:column filterBy="#{procCoaching.idTpago}" sortBy="#{procCoaching.idTpago}" >
-										 <f:facet name="header">
-										<h:outputText value="IdTpago"/>
-										</f:facet>
-										 <h:outputText value="#{procCoaching.idTpago}"/>
-										</p:column>   
-			                    									
-										<p:column filterBy="#{procCoaching.idCoach_Coach}" sortBy="#{procCoaching.idCoach_Coach}" >
-										 <f:facet name="header">
-										<h:outputText value="IdCoach_Coach"/>
-										</f:facet>
-										 <h:outputText value="#{procCoaching.idCoach_Coach}"/>
-										</p:column>   
-			                    									
-										<p:column filterBy="#{procCoaching.idCoachee_Coachee}" sortBy="#{procCoaching.idCoachee_Coachee}" >
-										 <f:facet name="header">
-										<h:outputText value="IdCoachee_Coachee"/>
-										</f:facet>
-										 <h:outputText value="#{procCoaching.idCoachee_Coachee}"/>
-										</p:column>   
-			                    									
-										<p:column filterBy="#{procCoaching.idHis_RegContable}" sortBy="#{procCoaching.idHis_RegContable}" >
-										 <f:facet name="header">
-										<h:outputText value="IdHis_RegContable"/>
-										</f:facet>
-										 <h:outputText value="#{procCoaching.idHis_RegContable}"/>
-										</p:column>   
-			                    			                    
-								<p:column headerText="Options">
-									<p:commandButton id="btnEdit" icon="ui-icon-pencil"
-										update=":dialogProcCoaching"
-										actionListener="#{procCoachingView.action_edit}">
-										<f:attribute name="selectedProcCoaching" value="#{procCoaching}" />
-									</p:commandButton>
-									<p:commandButton id="btnDelete"									
-										title="Delete" actionListener="#{procCoachingView.action_delete_datatable}"
-										onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}"
-										icon="ui-icon-trash" update="@form">
-										<f:attribute name="selectedProcCoaching" value="#{procCoaching}" />
-									</p:commandButton>
-								</p:column>									                    
-							</p:dataTable>	
-						</p:panel>
-						<p:panel id="panelBoton">
-							<div align="center">
-								<p:commandButton id="btnNew" value="New"
-									action="#{procCoachingView.action_new()}" update=":dialogProcCoaching" />
-							</div>
-						</p:panel>						
-		   			</h:form>
-					<p:dialog id="dialogProcCoaching" appendTo="@(body)" draggable="true"
-						closable="false" visible="#{procCoachingView.showDialog}" resizable="false"
-						modal="true" width="500">
-						<h:form id="formDialog">
-							<p:messages id="msg" />
-							<p:panel id="panelProcCoaching" header="ProcCoaching">							
-							    <h:panelGrid columns="2" id="panelGrid" >
-																		 <h:outputText id="msgIdProc" value="IdProc"/>
-									 <p:inputText id="txtIdProc" binding="#{procCoachingView.txtIdProc}">
-									 <p:ajax update=":dialogProcCoaching" listener="#{procCoachingView.listener_txtId}"/>
-									 </p:inputText>	
-																											
-																		<h:outputText id="msgIdTpago" value=" IdTpago"/>
-									<p:inputText id="txtIdTpago" disabled="true" binding="#{procCoachingView.txtIdTpago}"/>
-																		<h:outputText id="msgIdCoach_Coach" value=" IdCoach_Coach"/>
-									<p:inputText id="txtIdCoach_Coach" disabled="true" binding="#{procCoachingView.txtIdCoach_Coach}"/>
-																		<h:outputText id="msgIdCoachee_Coachee" value=" IdCoachee_Coachee"/>
-									<p:inputText id="txtIdCoachee_Coachee" disabled="true" binding="#{procCoachingView.txtIdCoachee_Coachee}"/>
-																		<h:outputText id="msgIdHis_RegContable" value=" IdHis_RegContable"/>
-									<p:inputText id="txtIdHis_RegContable" disabled="true" binding="#{procCoachingView.txtIdHis_RegContable}"/>
-																		
-																    </h:panelGrid>
-							</p:panel>						   
-							<p:panel id="panelBotones">
-								<div align="center">					
-									<p:commandButton id="btnSave" binding="#{procCoachingView.btnSave}" value="Save" action="#{procCoachingView.action_save()}" update=":dialogProcCoaching :frm:panelDataTableProcCoaching" />
-									<p:commandButton id="btnClear" value="Clear" action="#{procCoachingView.action_clear()}" update=":dialogProcCoaching" />
-									<p:commandButton id="btnExit" value="Exit" action="#{procCoachingView.action_closeDialog()}" update=":dialogProcCoaching" />
-								</div>
-				</p:panel>
-			</h:form>
-		</p:dialog>
+	<ui:define name="content">
+
+		<h:form id="frm">
+
+			<p:dataTable var="proc" value="#{procCoachingView.data}">
+				<p:column headerText="Proceso">
+					<h:outputText value="Proceso Coaching #{proc.coach.nombre}" />
+				</p:column>
+
+				<p:column headerText="Cliente">
+					<h:outputText value="#{proc.coach.nombre} #{proc.coach.apellido}" />
+				</p:column>
+
+				<p:column headerText="Ultima sesión">
+					<h:outputText value="Metodo que de la ultima sesion" />
+				</p:column>
+
+				<p:column headerText="Fecha">
+					<h:outputText value="Fecha ultima sesion" />
+				</p:column>
+				
+				<p:column headerText="Progreso">
+					<h:outputText value="progreso" />
+				</p:column>
+				
+				<p:column headerText="Porcentaje">
+					<h:outputText value="porcentaje" />
+				</p:column>
+				
+			</p:dataTable>
+
+			<p:panel id="panelBotones">
+				<div align="center">
+					<h:outputText value="Identificacion" />
+							<p:inputText id="txtIdentificacion"
+								binding="#{procCoachingView.txtIdCoachee_Coachee}" />
+				
+					<p:commandButton id="btnSave" binding="#{procCoachingView.btnSave}"
+						value="Nuevo proceso" action="#{procCoachingView.action_save()}"
+						update="@form" />
+				</div>
+			</p:panel>
+		</h:form>
+		
 	</ui:define>
 </ui:composition>
 

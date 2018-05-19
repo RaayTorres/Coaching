@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+
+ 
+
+<f:view>
+		<ui:composition>
+	
+
+<h:form>
+
+<ul id="slide-out" class="side-nav fixed navMenu">
+					<li><div class="user-view">
+						
+							<a href="#!user"><img class="circle"
+								src="https://castingmundial.com/img/perfil/perfil.png" /></a>
+						</div></li>
+						
+    <p:menu toggleable="true">
+        <p:submenu label="">
+            <p:menuitem value="Clientes" action="#{PrincipalView.clientesAction}"   />
+            <p:menuitem value="Procesos" action="#{PrincipalView.procesosAction}"  />
+        </p:submenu>
+        <p:submenu label="">
+            <p:menuitem value="Pagos" action="#{PrincipalView.pagosAction}" />
+        </p:submenu>
+        <p:submenu label="">
+            <p:menuitem value="Perfil" action="#{PrincipalView.perfilAction}" />
+        </p:submenu>
+    </p:menu>
+</ul>
+
+ 	<a href="#" data-activates="slide-out" class="button-collapse"></a>
+ 
+</h:form>
+
+		</ui:composition>
+	</f:view>
+
+
+</h:body>
+</html>

@@ -1,5 +1,6 @@
 package pdg.modelo.logic;
 
+import pdg.modelo.Coach;
 import pdg.modelo.ProcCoaching;
 
 import pdg.modelo.dto.ProcCoachingDTO;
@@ -18,7 +19,7 @@ import java.util.Set;
 *
 */
 public interface IProcCoachingLogic {
-    public List<ProcCoaching> getProcCoaching() throws Exception;
+    public List<ProcCoaching> getProcCoaching(Coach id) throws Exception;
 
     /**
          * Save an new ProcCoaching entity
@@ -61,4 +62,7 @@ public interface IProcCoachingLogic {
 
     public void validateProcCoaching(ProcCoaching procCoaching)
         throws Exception;
+    
+    
+    public int progresoProceso(ProcCoaching pro);
 }

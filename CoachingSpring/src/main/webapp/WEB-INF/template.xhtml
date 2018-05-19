@@ -1,53 +1,216 @@
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
 
-    <h:head>
-        <f:facet name="first">
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        </f:facet>
-        <title>Zathuracode</title>
-    	<link href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    	<link href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/css/styles.css" rel="stylesheet"/>
-       <!-- Include all compiled plugins (below), or include individual files as needed -->
-	   <script src="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
-	   <script src="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/js/custom.js"></script>
-       
-    </h:head>
+	<title>.::Sistema De Coaching::.</title>
 
-    <h:body>        
-        <ui:include src="topbar.xhtml" />
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
+		rel="stylesheet"/>
+		<!-- Compiled and minified CSS -->
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
 
-        <ui:include src="menu.xhtml" />
+	<!-- Compiled and minified JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		rel="stylesheet" />
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"
+		media="screen,projection" />
 
-       
-            <ui:insert name="content">
-              
-            </ui:insert>
-            
-            <ui:include src="footer.xhtml" />
-        
-        
-        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>               
-		<p:dialog modal="true" widgetVar="statusDialog" header="Loading"  draggable="false" closable="false">  
-						<p:graphicImage value="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/images/ajaxloadingbar.gif" />   
-		</p:dialog>
-		<!-- Expired session -->
-		<p:idleMonitor onactive="PF('sessionTimeOutDialog').show();" timeout="#{session.maxInactiveInterval * 1000}" />
-		<p:dialog modal="true" widgetVar="sessionTimeOutDialog" header="Expired session"  draggable="false" closable="false">  
- 					<h:outputText value="The session is finished" />
-               	<input id="confirmBackToLogin" 
-               		type="button" 
-               		value="Sign in"
-                  	onclick="window.location='#{facesContext.externalContext.requestContextPath}/index.jsp';" />   
-		</p:dialog>
-   
-    
-        
-    </h:body>
 
+	<style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.campoTexto {
+	height: auto;
+}
+
+.itemsMenu {
+	color: black !important;
+	font-size: large !important;
+	float: unset!importan;
+		padding-left: 70px !important;
+	
+}
+
+.itemsMenu2 {
+	color: black !important;
+	font-size: large !important;
+	float: unset!importan;
+	padding-left: 70px !important;
+}
+
+
+
+
+.titulos {
+	color: black;
+	text-align: center;
+	font-size: 0.8em;
+}
+
+.idiomaLogout {
+	
+}
+
+panelgrid {
+	border: yes;
+}
+
+.buttonSuperior {
+	margin: 3 5px 0 5px;
+	float: right !important;
+	height: 80%;
+	align-items: Right;
+}
+
+.espacio {
+	height: 100px;
+}
+
+.selecOneMenu {
+	border: hidden !important;
+	text-align: center;
+	background: rgba(204, 204, 204, 0) !important;
+	font-family: 'Open Sans', sans-serif;
+}
+
+body {
+	background-color: #f4f6fa;
+	background-repeat: no-repeat;
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	background-repeat: no-repeat;
+}
+
+.portada {
+	font-family: 'Open Sans Condensed', sans-serif !important;
+	font-size: 1.5em !important;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 20px;
+
+}
+
+.prueba2 {
+	background-color: #c4c4c4;
+	width: 100%;
+}
+
+.banner {
+	width: 20% !important;
+	height: 5% !important;
+	background-color: black !important;
+	border: ridge !important;
+	color: black;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	float: right;
+	margin-bottom: 10px;
+}
+
+.image {
+	float: left !important;
+	height: 10%;
+	width: 95%;
+	padding-left: 5px;
+	padding-bottom: 100px;
+}
+
+.navMenu {
+	width: 18% !important;
+	background-color: white !important;
+	border: ridge !important;
+	float: left !important;
+}
+
+.divPrincipal {
+	width: 75% !important;
+	background-color: white !important;
+	border: ridge !important;
+	float: Right !important;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/*
+		justify-content: space-around;
+		*/
+	height: 100%;
+}
+
+.divConsulta1 {
+	width: 50% !important;
+	background-color: white !important;
+	border: ridge !important;
+	float: Right !important;
+	display: flex;
+	flex-direction: column;
+	align-items: Right;
+	/* justify-content: space-around; */
+	height: auto;
+	margin-top: 5%;
+	 margin-right: 28%;
+    margin-bottom: 5%;
+}
+
+.divConsulta2 {
+	width: 50% !important;
+	background-color: white !important;
+	border: ridge !important;
+	float: Right !important;
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	/* justify-content: space-around; */
+	height: auto;
+	margin-top: 2%;
+	 margin-right: 28%;
+    margin-bottom: 5%;
+	
+	
+}
+
+.menu {
+	width: 100% !important;
+	background-color: white !important;
+	border: none !important;
+	float: left !important;
+	font-size: 0.8em !important;
+}
+
+.menu2 {
+	width: 90% !important;
+	background-color: white !important;
+	border: none !important;
+	float: left !important;
+	font-size: 1em !important;
+}
+
+.footerr {
+	width: 82% !important;
+	float: right;
+}
+</style>
+
+
+
+
+</h:head>
+<h:body>
+	<ui:insert name="header">
+		<ui:include src="superior.xhtml" />
+	</ui:insert>
+
+	<ui:insert name="body" />
+
+	<!--<ui:insert name="footer">
+		<ui:include src="footer.xhtml" />
+	</ui:insert>  -->
+</h:body>
 </html>

@@ -1,5 +1,9 @@
 package pdg.presentation.view;
 
+import org.primefaces.model.menu.DefaultMenuItem;
+import org.primefaces.model.menu.DefaultMenuModel;
+import org.primefaces.model.menu.DefaultSubMenu;
+import org.primefaces.model.menu.MenuModel;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -21,6 +25,8 @@ import javax.servlet.http.HttpSession;
 public class LoginView {
     private String userId;
     private String password;
+  
+    
     @ManagedProperty(value = "#{authenticationManager}")
     private AuthenticationManager authenticationManager = null;
 
@@ -67,8 +73,11 @@ public class LoginView {
             return "/login.xhtml";
         }
 
-        //return "/XHTML/initialMenu.xhtml";
-        System.out.println("Entre");
-        return "/XHTML/principalPrueba.xhtml";
+        return "/XHTML/principal.xhtml";
     }
+
+
+    
+    
+	
 }

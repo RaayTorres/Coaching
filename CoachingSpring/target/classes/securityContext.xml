@@ -10,6 +10,8 @@
         <intercept-url pattern="/" access="permitAll" />
                <intercept-url pattern="/login.xhtml" access="permitAll" />
         <intercept-url pattern="/XHTML/*" access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')" />
+         <intercept-url pattern="/Coachee/*" access="hasRole('ROLE_Coachee')" />
+        <intercept-url pattern="/Coach/*" access="hasRole('ROLE_Coach')" />
 	    <form-login login-page="/login.xhtml" authentication-failure-url="/login.xhtml?authfailed=true" default-target-url="/XHTML/initialMenu.xhtml" always-use-default-target="false"  />
 				
 		<logout invalidate-session="true" logout-success-url="/login.xhtml?loggedout=true" logout-url="/j_spring_security_logout" delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE" />

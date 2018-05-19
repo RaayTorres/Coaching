@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">		
+
+		  			<h:form id="frm">								  		
+						
+			
+			
+							<h:panelGrid columns="2" style="width:100%"	 						>
+								<p:graphicImage value="#{coacheeView.imgVerMas}" width="200"
+									height="100" styleClass="content"  >
+								
+								</p:graphicImage>
+								
+										<h:outputText value="Nombre:" />
+										<h:outputText value="#{coacheeView.entity.nombre}" />
+
+											<h:outputText value="Apellido" />
+										<h:outputText value="#{coacheeView.entity.apellido}" />
+										
+										<h:outputText value="Celular" />
+										<h:outputText value="#{coacheeView.entity.celular}" />
+								
+												<h:outputText value="Telefono" />
+										<h:outputText value="#{coacheeView.entity.telefono}" />
+								
+			<!-- Editar y el progreso  -->
+
+										<h:outputText value="Direccion" />
+										<h:outputText value="#{coacheeView.entity.direccion}" />
+								
+			<h:outputText value="Pasatiempos" />
+										<h:outputText value="#{coacheeView.entity.hobbies}" />
+										
+										</h:panelGrid>
+								
+			</h:form>
+		
+	</ui:define>
+</ui:composition>
+

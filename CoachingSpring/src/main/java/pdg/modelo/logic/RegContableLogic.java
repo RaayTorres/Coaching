@@ -120,12 +120,12 @@ public class RegContableLogic implements IRegContableLogic {
                 throw new ZMessManager().new NullEntityExcepcion("RegContable");
             }
 
+            entity.setIdHis(regContableDAO.genSecuencia());
             validateRegContable(entity);
 
             if (getRegContable(entity.getIdHis()) != null) {
                 throw new ZMessManager(ZMessManager.ENTITY_WITHSAMEKEY);
             }
-
             regContableDAO.save(entity);
             log.debug("save RegContable successful");
         } catch (Exception e) {

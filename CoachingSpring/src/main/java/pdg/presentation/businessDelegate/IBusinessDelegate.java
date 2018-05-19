@@ -182,7 +182,7 @@ public interface IBusinessDelegate {
     public void validateParametro(Parametro parametro)
         throws Exception;
 
-    public List<ProcCoaching> getProcCoaching() throws Exception;
+    public List<ProcCoaching> getProcCoaching(Coach id) throws Exception;
 
     public void saveProcCoaching(ProcCoaching entity) throws Exception;
 
@@ -317,7 +317,14 @@ public interface IBusinessDelegate {
         throws Exception;
     
     
-    public Coachee validarCredencialesCoachee(String user,String password)throws Exception;
-    
-    public Coach validarCredencialesCoach(String login, String passwd)throws Exception;
+    public List<SesCoaching> sesionesHoy();
+	 
+	 public List<Coachee> clientesSesionesHoy();
+	 
+	 public Estado getEstadoSesion(int idEstado) throws Exception ;
+
+	  public Coachee validarCredencialesCoachee(String user,String password)throws Exception;
+	    
+	    public Coach validarCredencialesCoach(String login, String passwd)throws Exception;
+
 }

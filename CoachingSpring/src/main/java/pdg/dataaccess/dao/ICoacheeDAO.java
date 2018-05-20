@@ -18,4 +18,6 @@ import java.util.Set;
 public interface ICoacheeDAO extends Dao<Coachee, Double> {
 	
 	public Coachee consultarClientePorLogin(String identificacion);
+	
+	public Coachee consultarClientePorLoginReal (String login);
 }

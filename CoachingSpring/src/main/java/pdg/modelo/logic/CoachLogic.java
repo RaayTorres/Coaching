@@ -141,6 +141,16 @@ public class CoachLogic implements ICoachLogic {
                 throw new ZMessManager(ZMessManager.ENTITY_WITHSAMEKEY);
             }
 
+          
+            List<Coach> miLista = coachDAO.findAll();
+            
+            for (Coach coach : miLista) {
+				
+            	if (coach.getLogin().equals(entity.getLogin())) {
+					throw new Exception("El login ya esta en uso, seleccione otro");
+				}
+			}
+            
             coachDAO.save(entity);
             log.debug("save Coach successful");
         } catch (Exception e) {

@@ -45,4 +45,12 @@ public class CoacheeDAO extends JpaDaoImpl<Coachee, Double>
 		//return (Usuarios)entityManager.createQuery(jpql).setParameter("login", usuLogin).getSingleResult();
 		return (Coachee)entityManager.createQuery(consulta).setParameter("identificacion", identificacion).getSingleResult();
 	}
+
+	@Override
+	public Coachee consultarClientePorLoginReal(String login) {
+		
+		String consulta = "SELECT usu FROM Coachee usu WHERE usu.login=:login";
+		
+		return (Coachee)entityManager.createQuery(consulta).setParameter("login", login).getSingleResult();
+	}
 }

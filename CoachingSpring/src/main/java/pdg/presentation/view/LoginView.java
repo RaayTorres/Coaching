@@ -59,7 +59,11 @@ public class LoginView {
         try {
             Authentication request = new UsernamePasswordAuthenticationToken(this.getUserId(),
                     this.getPassword());
+            
+            System.out.println(request.getCredentials().toString() + "-----------------------------------------------");
+            
             Authentication result = authenticationManager.authenticate(request);
+            
             SecurityContext securityContext = SecurityContextHolder.getContext();
             securityContext.setAuthentication(result);
 

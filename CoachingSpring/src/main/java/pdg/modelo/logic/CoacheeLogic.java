@@ -142,6 +142,15 @@ public class CoacheeLogic implements ICoacheeLogic {
                 throw new ZMessManager(ZMessManager.ENTITY_WITHSAMEKEY);
             }
 
+            List<Coachee> nuevaLista = coacheeDAO.findAll();
+            for (Coachee coachee : nuevaLista) {
+				
+            	if (coachee.getLogin().equals(entity.getLogin())) {
+					
+            		throw new Exception("El login ya esta en uso, por favor escoja otro");
+				}
+			}
+            
             coacheeDAO.save(entity);
             log.debug("save Coachee successful");
         } catch (Exception e) {
@@ -452,9 +461,9 @@ public class CoacheeLogic implements ICoacheeLogic {
 			throw new ZMessManager("Password or username must not be blank spaces");
 		}
 
-		Coachee nuevoCliente = coacheeDAO.consultarClientePorLogin(user);
-
-		if (!nuevoCliente.getDireccion().equals(password)) {
+		//Coachee nuevoCliente = coacheeDAO.consultarClientePorLogin(user);
+		Coachee nuevoCliente = coacheeDAO.consultarClientePorLoginReal(user);
+		if (!nuevoCliente.getContrasena().equals(password)) {
 
 			throw new Exception("La contraseña no corresponde al usuario");
 		}

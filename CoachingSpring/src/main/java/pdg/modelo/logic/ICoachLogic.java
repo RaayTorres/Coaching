@@ -75,7 +75,7 @@ public interface ICoachLogic {
     
     public String horasFaltantesAscenso(Coach coach);
     
-    public List<Coachee> coacheeDelCoach(Coach coach);
+    public Set<Coachee>  coacheeDelCoach(Coach coach);
     
     public List<RegContable> historialDePagoDelosCoachee(Coach coach);
     

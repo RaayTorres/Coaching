@@ -28,6 +28,7 @@ import java.math.BigDecimal;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -496,10 +497,10 @@ public class CoachLogic implements ICoachLogic {
     }
     
     
-    public List<Coachee> coacheeDelCoach(Coach coach){
+    public Set<Coachee> coacheeDelCoach(Coach coach){
     	
-    	List<Coachee> coachees = null;
-    	List<ProcCoaching> procc= (List<ProcCoaching>) coach.getProcCoachings();
+    	Set<Coachee> coachees = new HashSet<>();
+    	Set<ProcCoaching> procc= coach.getProcCoachings();
     	
     	for (ProcCoaching procCoaching : procc) {
 		coachees.add(procCoaching.getCoachee());
@@ -541,4 +542,8 @@ public class CoachLogic implements ICoachLogic {
 
 		return nuevoCoach;
 	}
+	
+	
+	
+
 }

@@ -219,7 +219,7 @@ public class Coach implements java.io.Serializable {
         this.telefono = telefono;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "coach")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "coach")
     public Set<ProcCoaching> getProcCoachings() {
         return this.procCoachings;
     }

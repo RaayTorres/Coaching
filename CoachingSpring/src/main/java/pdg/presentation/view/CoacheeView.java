@@ -78,7 +78,7 @@ public class CoacheeView implements Serializable {
 	private CommandButton btnModify;
 	private CommandButton btnDelete;
 	private CommandButton btnClear;
-	private List<CoacheeDTO> data;
+	private  Set<Coachee>  data;
 	private CoacheeDTO selectedCoachee;
 	private Coachee entity;
 	private boolean showDialog;
@@ -180,11 +180,12 @@ public class CoacheeView implements Serializable {
 		this.txtIdCoachee = txtIdCoachee;
 	}
 
-	public List<CoacheeDTO> getData() {
+	public  Set<Coachee>  getData() {
 		try{
+			Coach coach= (Coach)FacesUtils.getfromSession("coach");
 			if(data==null){
 
-				data = businessDelegatorView.getDataCoachee();
+				data = businessDelegatorView.coacheeDelCoach(coach);
 
 
 			}	
@@ -194,7 +195,7 @@ public class CoacheeView implements Serializable {
 		}
 		return data;
 	}
-	public void setData(List<CoacheeDTO> coacheeDTO){
+	public void setData( Set<Coachee>  coacheeDTO){
 		this.data=coacheeDTO;
 	}
 

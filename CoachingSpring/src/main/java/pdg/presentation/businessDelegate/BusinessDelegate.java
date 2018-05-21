@@ -721,5 +721,11 @@ public class BusinessDelegate implements IBusinessDelegate {
 	
 		return coacheeLogic.consultarClienteByIdentificacion(identificacion);
 	}
+
+	@Override
+	public  Set<Coachee>  coacheeDelCoach(Coach coach) {
+		// TODO Auto-generated method stub
+		return coachLogic.coacheeDelCoach(coach);
+	}
 	
 }

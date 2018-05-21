@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import pdg.dataaccess.api.JpaDaoImpl;
-
+import pdg.modelo.Coach;
 import pdg.modelo.Coachee;
 
 import javax.persistence.EntityManager;
@@ -53,4 +53,6 @@ public class CoacheeDAO extends JpaDaoImpl<Coachee, Double>
 		
 		return (Coachee)entityManager.createQuery(consulta).setParameter("login", login).getSingleResult();
 	}
-}
+	
+	
+	}

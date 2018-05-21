@@ -306,7 +306,7 @@ public class ProcCoachingView implements Serializable {
     	ProcCoaching pro = new ProcCoaching();
     	RegContable reg= new RegContable();
     	try {
-    		Coachee coachee= businessDelegatorView.getCoachee(FacesUtils.checkLong(txtIdCoachee_Coachee));
+    		Coachee coachee= businessDelegatorView.consultarClienteByIdentificacion((FacesUtils.checkString(txtIdCoachee_Coachee)));
     		
     		reg.setCoachee(coachee);
     		businessDelegatorView.saveRegContable(reg);

@@ -58,4 +58,6 @@ public interface ICoacheeLogic {
     public void validateCoachee(Coachee coachee) throws Exception;
     
     public Coachee validarCredenciales (String user, String password) throws Exception ;
+
+	Coachee consultarClienteByIdentificacion(String identificacion);
 }

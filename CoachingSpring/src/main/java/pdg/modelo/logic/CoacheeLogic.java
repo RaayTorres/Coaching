@@ -472,4 +472,11 @@ public class CoacheeLogic implements ICoacheeLogic {
 
 
 	}
+	
+	@Override public Coachee consultarClienteByIdentificacion(String identificacion) {
+		// TODO Auto-generated method stub 
+		return coacheeDAO.consultarClientePorLogin(identificacion); 
+		}
+		
+	
 }

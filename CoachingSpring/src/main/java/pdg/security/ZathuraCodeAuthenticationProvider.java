@@ -18,6 +18,7 @@ import pdg.modelo.Coach;
 import pdg.modelo.Coachee;
 import pdg.modelo.logic.ICoacheeLogic;
 import pdg.presentation.businessDelegate.IBusinessDelegate;
+import pdg.utilities.FacesUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +73,7 @@ public class ZathuraCodeAuthenticationProvider implements AuthenticationProvider
 			try {
 				Coach nuevoCoach = delegadoDeNegocio.validarCredencialesCoach(name, password);
 				
-	        	
+	        	FacesUtils.putinSession("coach", nuevoCoach);
 				if (nuevoCoach!=null) {
 					
 					rol="Coach";

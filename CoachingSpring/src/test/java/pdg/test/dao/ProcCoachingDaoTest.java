@@ -63,7 +63,7 @@ public class ProcCoachingDaoTest {
 		nuevoProceso.setCoach(nuevoCoach);
 		Coachee nuevoCliente = coacheeDao.findById(2L);
 		nuevoProceso.setCoachee(nuevoCliente);
-		nuevoProceso.setIdTpago(20L);
+		//nuevoProceso.setIdTpago(20L);
 		RegContable nuevoRegistro = registroDao.findById(2L);
 		nuevoProceso.setRegContable(nuevoRegistro);
 		

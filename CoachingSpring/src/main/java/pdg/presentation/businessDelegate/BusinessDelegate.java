@@ -715,5 +715,11 @@ public class BusinessDelegate implements IBusinessDelegate {
 		
 		return coachLogic.validarCredencialesCoach(login, passwd);
 	}
+
+	@Override
+	public Coachee consultarClienteByIdentificacion(String identificacion) {
+	
+		return coacheeLogic.consultarClienteByIdentificacion(identificacion);
+	}
 	
 }

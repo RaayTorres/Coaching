@@ -1,54 +1,83 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui"
-                template="/WEB-INF/template.xhtml">
-		 
-	<ui:define name="content">	
-			<h:form id="formDialog">
-				<p:messages id="msg" />
-				<p:growl id="men"/>
-					<p:panel id="panelSesCoaching" header="SesCoaching">							
-						<h:panelGrid columns="2" id="panelGrid" >
-												 	<h:outputText id="msgIdSesi" value="IdSesi"/>
-						 	<p:inputText id="txtIdSesi" binding="#{sesCoachingView.txtIdSesi}">
-						 		<p:ajax update="panelSesCoaching,msg,panelBotones" listener="#{sesCoachingView.listener_txtId}"/>
-						 	</p:inputText>	
-																		
-													<h:outputText id="msgAccion" value=" Accion"/>
-							<p:inputText id="txtAccion" disabled="true" binding="#{sesCoachingView.txtAccion}"/>
-													<h:outputText id="msgCompromiso" value=" Compromiso"/>
-							<p:inputText id="txtCompromiso" disabled="true" binding="#{sesCoachingView.txtCompromiso}"/>
-													<h:outputText id="msgFocoSesion" value=" FocoSesion"/>
-							<p:inputText id="txtFocoSesion" disabled="true" binding="#{sesCoachingView.txtFocoSesion}"/>
-													<h:outputText id="msgHora" value=" Hora"/>
-							<p:inputText id="txtHora" disabled="true" binding="#{sesCoachingView.txtHora}"/>
-													<h:outputText id="msgIdHis" value=" IdHis"/>
-							<p:inputText id="txtIdHis" disabled="true" binding="#{sesCoachingView.txtIdHis}"/>
-													<h:outputText id="msgIndicador" value=" Indicador"/>
-							<p:inputText id="txtIndicador" disabled="true" binding="#{sesCoachingView.txtIndicador}"/>
-													<h:outputText id="msgProfundidad" value=" Profundidad"/>
-							<p:inputText id="txtProfundidad" disabled="true" binding="#{sesCoachingView.txtProfundidad}"/>
-													<h:outputText id="msgIdEstado_Estado" value=" IdEstado_Estado"/>
-							<p:inputText id="txtIdEstado_Estado" disabled="true" binding="#{sesCoachingView.txtIdEstado_Estado}"/>
-													<h:outputText id="msgIdProc_ProcCoaching" value=" IdProc_ProcCoaching"/>
-							<p:inputText id="txtIdProc_ProcCoaching" disabled="true" binding="#{sesCoachingView.txtIdProc_ProcCoaching}"/>
-												
-																				<h:outputText id="msgFecha" value=" Fecha"/>
-														<p:calendar showOn="button" navigator="true" locale="en" 
-							binding="#{sesCoachingView.txtFecha}" >
-								<p:ajax event="dateSelect" listener="#{sesCoachingView.listener_txtFecha}" />
-							</p:calendar>
-																	   </h:panelGrid>
-				</p:panel>
-	   			<p:panel id="panelBotones">
-					<div align="center">					
-						<p:commandButton id="btnSave" binding="#{sesCoachingView.btnSave}" disabled="true" value="Save" action="#{sesCoachingView.action_save()}" update="panelSesCoaching,msg,panelBotones" />
-						<p:commandButton id="btnDelete" binding="#{sesCoachingView.btnDelete}" disabled="true" value="Delete" action="#{sesCoachingView.action_delete_master()}" onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}" update="panelSesCoaching,msg,panelBotones" />
-						<p:commandButton id="btnClear" value="Clear" action="#{sesCoachingView.action_clear()}" update="panelSesCoaching,msg,panelBotones" />
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="content">
+		
+
+
+
+			<h:form style="width: 100%">
+				<p:growl id="msgs" showDetail="true" />
+				<div class="divConsulta2">
+					<div
+						style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%">
+
+						<h5 style="text-align: center; color: black">Crear Coachee</h5>
+
+
+
+						<p:panel id="panelCoachee" menuTitle="prueba">
+
+
+							<p:dataTable var="apt" value="#{sesCoachingView.data}">
+
+
+								<p:column headerText="Sesión número">
+									<h:outputText value="#{apt.accion}" />
+
+								</p:column>
+
+								<p:column headerText="Tipo">
+									<h:outputText value="#{apt.hora}" />
+
+								</p:column>
+
+								<p:column headerText="Porcentaje">
+									<h:outputText value="#{apt.compromiso}" />
+
+								</p:column>
+
+
+								<p:column headerText="Pago Registrado">
+									<h:outputText value="#{apt.focoSesion}" />
+
+								</p:column>
+							</p:dataTable>
+							<h:panelGrid columns="1" id="panelGrid">
+
+								<div align="center">
+									<p:commandButton id="btnSave" binding="#{coacheeView.btnSave}"
+										value="Agregar Sesión" />
+								</div>
+
+
+							</h:panelGrid>
+						</p:panel>
+
 					</div>
-				</p:panel>			
+				</div>
 			</h:form>
-  </ui:define>
+
+
+			<p:panel id="panelBotones">
+				<div align="center">
+					<p:commandButton id="btnSave" binding="#{sesCoachingView.btnSave}"
+						disabled="true" value="Save"
+						action="#{sesCoachingView.action_save()}"
+						update="panelSesCoaching,msg,panelBotones" />
+					<p:commandButton id="btnDelete"
+						binding="#{sesCoachingView.btnDelete}" disabled="true"
+						value="Delete" action="#{sesCoachingView.action_delete_master()}"
+						onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}"
+						update="panelSesCoaching,msg,panelBotones" />
+					<p:commandButton id="btnClear" value="Clear"
+						action="#{sesCoachingView.action_clear()}"
+						update="panelSesCoaching,msg,panelBotones" />
+				</div>
+			</p:panel>
+		</h:form>
+	</ui:define>
 </ui:composition>

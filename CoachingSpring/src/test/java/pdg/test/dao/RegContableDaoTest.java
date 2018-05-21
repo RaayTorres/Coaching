@@ -57,7 +57,7 @@ public class RegContableDaoTest {
 		Date fecha = new Date();
 		registro.setFechaPago(fecha);
 		registro.setTipo("tipo 2");
-		registro.setValor(Double.parseDouble("50000"));
+		//registro.setValor(Double.parseDouble("50000"));
 		
 		
 		registroDao.save(registro);
@@ -78,7 +78,7 @@ public class RegContableDaoTest {
 
 		
 		RegContable nuevoRegistro = registroDao.findById(2L);
-		nuevoRegistro.setValor(Double.parseDouble("100000"));
+	//	nuevoRegistro.setValor(Double.parseDouble("100000"));
 		registroDao.update(nuevoRegistro);
 	}
 
@@ -99,7 +99,7 @@ public class RegContableDaoTest {
 		
 		for (RegContable regContable : losRegistros) {
 			
-			System.out.println( regContable.getValor());
+			//System.out.println( regContable.getValor());
 		}
 	}	
 

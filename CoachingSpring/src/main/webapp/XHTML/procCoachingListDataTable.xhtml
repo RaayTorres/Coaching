@@ -1,12 +1,28 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:define name="content">
+<h:head>
 
-		<h:form id="frm">
+</h:head>
+
+<h:body>
+
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+		<ui:define name="body">
+
+
+			<h:form style="width: 100%">
+				<p:growl id="msgs" showDetail="true" />
+				<div class="divConsulta2">
+					<div
+						style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%">
+
+						<h5 style="text-align: center; color: black">Coach</h5>
+
 
 			<p:dataTable var="proc" value="#{procCoachingView.data}">
 				<p:column headerText="Proceso">
@@ -46,8 +62,14 @@
 						update="@form" />
 				</div>
 			</p:panel>
-		</h:form>
-		
-	</ui:define>
-</ui:composition>
+	
+					</div>
+				</div>
+
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
 

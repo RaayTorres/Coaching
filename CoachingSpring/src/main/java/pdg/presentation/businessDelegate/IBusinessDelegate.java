@@ -326,5 +326,7 @@ public interface IBusinessDelegate {
 	  public Coachee validarCredencialesCoachee(String user,String password)throws Exception;
 	    
 	    public Coach validarCredencialesCoach(String login, String passwd)throws Exception;
+	    
+	    Coachee consultarClienteByIdentificacion(String identificacion);
 
 }

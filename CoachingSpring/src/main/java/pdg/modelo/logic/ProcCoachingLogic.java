@@ -159,16 +159,16 @@ entity.setIdProc(procCoachingDAO.genSecuencia());
             
             for (int i = 0; i < 10; i++) {
             	SesCoaching  newEntity= new SesCoaching();
-            	Long l = 1L;
+            	Long l = 0L;
             	
             	newEntity.setIdSesi(sesCoachingDAO.genSecuencia());
             	newEntity.setProcCoaching(entity);
             	newEntity.setEstado(logicEstado.getEstadoSesion(2));
             	newEntity.setIdHis(entity.getRegContable().getIdHis());
+            	l++;
             	newEntity.setNumSes(l);
 				sesLogic.saveSesCoaching(newEntity);
 				log.info("Creando sesion ");
-				l++;
 			}
             
             log.debug("save ProcCoaching successful");

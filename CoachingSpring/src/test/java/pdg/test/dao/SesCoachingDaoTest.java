@@ -114,9 +114,9 @@ public class SesCoachingDaoTest {
 		
 		List<SesCoaching> sesion = sesionDao.findAll();
 			
-		for (SesCoaching sesCoaching : sesion) {
+		//for (SesCoaching sesCoaching : sesion) {
 		
-			System.out.println(sesCoaching.getCompromiso());
+		//	System.out.println(sesCoaching.getCompromiso());
 	}	
 
 	
@@ -125,14 +125,14 @@ public class SesCoachingDaoTest {
 	@Transactional(readOnly = true)
 	public void cleintessesionestest() {
 
-		List<Coachee> sesi = sesion.clientesSesionesHoy();
+	//	List<Coachee> sesi = sesion.clientesSesionesHoy();
 		
-		System.out.println("prueba antes" + sesi.size() + new Date());
+//		System.out.println("prueba antes" + sesi.size() + new Date());
 		
-	for (Coachee coachee : sesi) {
+//	for (Coachee coachee : sesi) {
 		
-		System.out.println(coachee.getApellido() + "prueba");
-	}
+//.out.println(coachee.getApellido() + "prueba");
+	//}
 		
 	}	
 	

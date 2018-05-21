@@ -416,8 +416,10 @@ public class CoacheeView implements Serializable {
 
 
 	public List<SesCoaching> getSesHoy() {
+		
+		Coach co =(Coach) FacesUtils.getfromSession("coach");
 		if (sesHoy== null) {
-			sesHoy= businessDelegatorView.sesionesHoy();
+			sesHoy= businessDelegatorView.sesionesHoy(co);
 		}
 
 		return sesHoy;
@@ -428,8 +430,11 @@ public class CoacheeView implements Serializable {
 	}
 
 	public List<Coachee> getClientesHoy() {
+		
+		Coach co =(Coach) FacesUtils.getfromSession("coach");
+
 		if (clientesHoy== null) {
-			clientesHoy= businessDelegatorView.clientesSesionesHoy();
+			clientesHoy= businessDelegatorView.clientesSesionesHoy(co);
 		}
 
 		return clientesHoy;

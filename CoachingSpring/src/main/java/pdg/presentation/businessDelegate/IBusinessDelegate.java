@@ -317,9 +317,9 @@ public interface IBusinessDelegate {
         throws Exception;
     
     
-    public List<SesCoaching> sesionesHoy();
+    public List<SesCoaching> sesionesHoy(Coach coc);
 	 
-	 public List<Coachee> clientesSesionesHoy();
+	 public List<Coachee> clientesSesionesHoy(Coach coc);
 	 
 	 public Estado getEstadoSesion(int idEstado) throws Exception ;
 

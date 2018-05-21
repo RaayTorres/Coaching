@@ -683,15 +683,15 @@ public class BusinessDelegate implements IBusinessDelegate {
     }
 
 	@Override
-	public List<SesCoaching> sesionesHoy() {
+	public List<SesCoaching> sesionesHoy(Coach coc) {
 		
-		return sesCoachingLogic.sesionesHoy();
+		return sesCoachingLogic.sesionesHoy(coc);
 	}
 
 	@Override
-	public List<Coachee> clientesSesionesHoy() {
+	public List<Coachee> clientesSesionesHoy(Coach coc) {
 		
-		return sesCoachingLogic.clientesSesionesHoy();
+		return sesCoachingLogic.clientesSesionesHoy(coc);
 	}
 
 	

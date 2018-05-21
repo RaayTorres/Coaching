@@ -458,15 +458,22 @@ public class SesCoachingLogic implements ISesCoachingLogic {
 
 
 
-	public List<SesCoaching> sesionesHoy() {
+	public List<SesCoaching> sesionesHoy(Coach coc) {
 		List<SesCoaching> sesiones= sesCoachingDAO.findAll() ;
 		List<SesCoaching> sesionesHoy= new ArrayList<SesCoaching>();
 		Date dat= new Date();
+		
+		
+		
 		for (SesCoaching sesCoaching : sesiones) {
 			Date fecha =sesCoaching.getFecha();
+			if (coc.getIdCoach() == sesCoaching.getProcCoaching().getCoach().getIdCoach()) {
+				
+			
 			if (fecha.getDay()==dat.getDay() && fecha.getMonth() == dat.getMonth()
 					&& fecha.getYear()== dat.getYear()) {
 				sesionesHoy.add(sesCoaching);
+			}
 			}
 		}
 
@@ -475,9 +482,9 @@ public class SesCoachingLogic implements ISesCoachingLogic {
 	}
 
 
-	public List<Coachee> clientesSesionesHoy(){
+	public List<Coachee> clientesSesionesHoy(Coach coc){
 
-		List<SesCoaching> sesiones= sesionesHoy();
+		List<SesCoaching> sesiones= sesionesHoy(coc);
 		List<Coachee> coachee= new ArrayList<Coachee>();
 		for (SesCoaching sesCoaching : sesiones) {
 			System.out.println(sesCoaching.getProcCoaching().getIdProc());

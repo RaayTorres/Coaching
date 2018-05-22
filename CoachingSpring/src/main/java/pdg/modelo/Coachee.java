@@ -231,7 +231,7 @@ public class Coachee implements java.io.Serializable {
         this.procCoachings = procCoachings;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "coachee")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "coachee")
     public Set<RegContable> getRegContables() {
         return this.regContables;
     }

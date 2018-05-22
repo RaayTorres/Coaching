@@ -29,6 +29,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
@@ -495,10 +496,10 @@ public class SesCoachingLogic implements ISesCoachingLogic {
 		return coachee;
 	}
 
-	public List<SesCoaching> sesionCompletas(ProcCoaching pro){
+	public Set<SesCoaching> sesionCompletas(ProcCoaching pro){
 
-		List<SesCoaching> sesiones= (List<SesCoaching>) pro.getSesCoachings();
-		List<SesCoaching> sesiCom= new ArrayList<SesCoaching>();
+		Set<SesCoaching> sesiones=  pro.getSesCoachings();
+		Set<SesCoaching> sesiCom= new HashSet<SesCoaching>();
 		for (SesCoaching sesCoaching : sesiones) {
 			if (sesCoaching.getEstado().getNombreEstado().trim().equalsIgnoreCase("completa")) {
 				sesiCom.add(sesCoaching);

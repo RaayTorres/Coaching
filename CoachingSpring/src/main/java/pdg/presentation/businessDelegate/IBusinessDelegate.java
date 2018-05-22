@@ -330,5 +330,7 @@ public interface IBusinessDelegate {
 	    Coachee consultarClienteByIdentificacion(String identificacion);
 	    
 	    public  Set<Coachee>  coacheeDelCoach(Coach coach);
+	    
+	    public int progresoProceso( Coach coach, Coachee client);
 
 }

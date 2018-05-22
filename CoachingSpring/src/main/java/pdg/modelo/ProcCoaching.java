@@ -100,7 +100,7 @@ public class ProcCoaching implements java.io.Serializable {
     
     
     
-    //TODO Descomentar luego
+  
     @Column(name = "foco_proc")
     public String getFocoProceso() {
         return this.focoProceso;
@@ -112,7 +112,7 @@ public class ProcCoaching implements java.io.Serializable {
     
     
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "procCoaching")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "procCoaching")
     public Set<SesCoaching> getSesCoachings() {
         return this.sesCoachings;
     }

@@ -70,5 +70,5 @@ public interface ISesCoachingLogic {
 	 
 	 public List<Coachee> clientesSesionesHoy(Coach coc);
 	 
-	 public List<SesCoaching> sesionCompletas(ProcCoaching pro);
+	 public Set<SesCoaching> sesionCompletas(ProcCoaching pro);
 }

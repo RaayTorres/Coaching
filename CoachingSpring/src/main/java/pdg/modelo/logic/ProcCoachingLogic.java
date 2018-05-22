@@ -479,11 +479,19 @@ R10.SE1: El sistema debe permitir visualizar y filtrar las sesiones en (activas 
 
  */
     
-    public int progresoProceso(ProcCoaching pro) {
+    public int progresoProceso( Coach coach, Coachee client) {
     	
-    	int sesiones=  pro.getSesCoachings().size();
-	
-		int progreso = (sesLogic.sesionCompletas(pro).size())/ sesiones;
+    	int progreso = 0;
+    	Set<ProcCoaching> proces= client.getProcCoachings();
+    	for (ProcCoaching procCoaching : proces) {
+			if (procCoaching.getCoach().getIdCoach()== coach.getIdCoach()) {
+		    	
+		    	int sesiones=  procCoaching.getSesCoachings().size();
+			
+				 progreso = (sesLogic.sesionCompletas(procCoaching).size())/ sesiones;
+			}
+		}
+
 		
     	
     	

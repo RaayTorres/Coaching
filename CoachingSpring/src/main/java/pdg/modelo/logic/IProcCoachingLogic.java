@@ -1,6 +1,7 @@
 package pdg.modelo.logic;
 
 import pdg.modelo.Coach;
+import pdg.modelo.Coachee;
 import pdg.modelo.ProcCoaching;
 
 import pdg.modelo.dto.ProcCoachingDTO;
@@ -64,5 +65,5 @@ public interface IProcCoachingLogic {
         throws Exception;
     
     
-    public int progresoProceso(ProcCoaching pro);
+    public int progresoProceso(Coach coach, Coachee client);
 }

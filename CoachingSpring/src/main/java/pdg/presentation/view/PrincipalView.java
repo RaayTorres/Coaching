@@ -33,19 +33,6 @@ public class PrincipalView {
 	}
 	
 	
-	 private List<String> images;
-     
-	    @PostConstruct
-	    public void init() {
-	        images = new ArrayList<String>();
-	        for (int i = 1; i <= 12; i++) {
-	            images.add("icon" + i + ".png");
-	        }
-	    }
-	 
-	    public List<String> getImages() {
-	        return images;
-	    }
 	
 	 
 	}

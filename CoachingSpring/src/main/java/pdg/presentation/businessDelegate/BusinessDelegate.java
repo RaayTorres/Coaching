@@ -724,8 +724,13 @@ public class BusinessDelegate implements IBusinessDelegate {
 
 	@Override
 	public  Set<Coachee>  coacheeDelCoach(Coach coach) {
-		// TODO Auto-generated method stub
+		
 		return coachLogic.coacheeDelCoach(coach);
+	}
+
+	@Override
+	public int progresoProceso(Coach coach, Coachee client) {
+		return   procCoachingLogic.progresoProceso( coach,  client) ;
 	}
 	
 }

@@ -74,6 +74,10 @@ public class CoacheeView implements Serializable {
 	private InputText txtIdEstado_Estado;
 	private InputText txtIdDoc_TipoDocumento;
 	private InputText txtIdCoachee;
+	
+	private int txtProgreso;
+	
+	
 	private CommandButton btnSave;
 	private CommandButton btnModify;
 	private CommandButton btnDelete;
@@ -180,6 +184,24 @@ public class CoacheeView implements Serializable {
 		this.txtIdCoachee = txtIdCoachee;
 	}
 
+	
+	public int getTxtProgreso() {
+		
+		//TODO PROGRESO
+		
+		Coach coach= (Coach) FacesUtils.getfromSession("coach");
+		
+		Coachee client= (Coachee) FacesUtils.getfromSession("coachee");
+		
+		txtProgreso= businessDelegatorView.progresoProceso(coach, client); 
+		
+		return txtProgreso;
+	}
+	public void setTxtProgreso(int txtFoto) {
+		this.txtProgreso = txtFoto;
+	}
+	
+	
 	public  Set<Coachee>  getData() {
 		try{
 			Coach coach= (Coach)FacesUtils.getfromSession("coach");
@@ -474,12 +496,16 @@ public class CoacheeView implements Serializable {
 
 
 
-	public String actionRedirigirMas() {
+	public String actionRedirigirMas() throws Exception {
 		// Recuerde ingresar el Coachee en las sesion como coachee
 		//	Coachee ch=new Coachee();
-		// FacesUtils.putinSession("coachee", entity);
+		
+		
+		Coachee ent= entity;
+		 FacesUtils.putinSession("coachee", ent);
 
 		return "/XHTML/verMasCoachee.xhtml";
+	//	return "/XHTML/crearCoachee.xhtml";
 
 	}
 
@@ -488,7 +514,7 @@ public class CoacheeView implements Serializable {
 		try {
 			entity = new Coachee();
 
-
+			
 			entity.setApellido(FacesUtils.checkString(txtApellido));
 			entity.setCelular(txtCelular.getValue().toString());
 			entity.setCorreo(FacesUtils.checkString(txtCorreo));
@@ -516,6 +542,82 @@ public class CoacheeView implements Serializable {
 	}
 
 
+	
+	
+	 public String action_modify() {
+	        try {
+	      //    Coach enti=	(Coach) FacesUtils.getfromSession("coach");
+	//
+	    
+	            
+	        	entity.setApellido(FacesUtils.checkString(txtApellido));
+				entity.setCelular(txtCelular.getValue().toString());
+				entity.setCorreo(FacesUtils.checkString(txtCorreo));
+				entity.setDireccion(txtDireccion.getValue().toString());
+
+				entity.setHobbies(FacesUtils.checkString(txtHobbies));
+				entity.setIdentificacion(FacesUtils.checkString(txtIdentificacion));
+				entity.setNombre(FacesUtils.checkString(txtNombre));
+				entity.setTelefono(FacesUtils.checkString(txtTelefono));
+				//businessDelegatorView.getEstado(1L)
+				//entity.setEstado(businessDelegatorView.getEstado(2L));
+				//entity.setTipoDocumento(businessDelegatorView.getTipoDocumento(1L));
+				//entity.setLogin(FacesUtils.checkString(txtIdentificacion));
+
+	       //     System.out.println("JOder tio");
+	            businessDelegatorView.updateCoachee(entity);
+	            
+	            txtApellido.setDisabled(true);
+	            txtCelular.setDisabled(true);
+	     //       txtContrasena.setDisabled(true);
+	            txtCorreo.setDisabled(true);
+	            txtDireccion.setDisabled(true);
+	            txtHobbies.setDisabled(true);
+	            txtIdentificacion.setDisabled(true);
+	            txtNombre.setDisabled(true);
+	            txtTelefono.setDisabled(true);
+	            
+	     //       txtLogin.setDisabled(true);
+	           
+	            btnModify.setDisabled(true);
+	            btnClear.setDisabled(false);
+	            
+	          FacesUtils.addInfoMessage(ZMessManager.ENTITY_SUCCESFULLYMODIFIED);
+	        } catch (Exception e) {
+	            data = null;
+	            FacesUtils.addErrorMessage(e.getMessage());
+	        }
+
+	        return "";
+	    }
+	
+	 
+	  public String edit() {
+
+		  Coach coach= (Coach) FacesUtils.getfromSession("coach");
+			
+			Coachee client= (Coachee) FacesUtils.getfromSession("coachee");
+			
+		System.out.println(businessDelegatorView.progresoProceso(coach, client)); 
+		//   System.out.println(  coach.getApellido()+
+		     
+		   //  client.getApellido()+"");
+          txtApellido.setDisabled(false);
+          txtCelular.setDisabled(false);
+   //       txtContrasena.setDisabled(true);
+          txtCorreo.setDisabled(false);
+          txtDireccion.setDisabled(false);
+          txtHobbies.setDisabled(false);
+          txtIdentificacion.setDisabled(false);
+          txtNombre.setDisabled(false);
+          txtTelefono.setDisabled(false);
+		  
+            btnModify.setDisabled(false);
+            btnClear.setDisabled(true);
+
+            return "";
+    }
+	 
 
 	public DefaultStreamedContent getImgVerMas() {
 		//EvalReport miPlan = getEvalReport();

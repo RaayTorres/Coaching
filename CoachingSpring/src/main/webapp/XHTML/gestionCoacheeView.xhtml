@@ -65,6 +65,15 @@
 								target="#{coacheeView.entity}"/>
 								</p:commandButton>
 								
+								
+									<p:commandButton id="btnSave" binding="#{procCoachingView.btnSave}"
+						value="Nuevo proceso" action="#{procCoachingView.action_save()}"
+						update="@form" >
+						
+						<f:setPropertyActionListener value="#{c}" 
+								target="#{procCoachingView.entity}"/>
+						
+						</p:commandButton>
 
 							</h:panelGrid>
 

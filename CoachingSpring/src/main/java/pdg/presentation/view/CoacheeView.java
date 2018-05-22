@@ -290,10 +290,12 @@ public class CoacheeView implements Serializable {
 		this.filedownload = filedownload;
 	}
 
+	
+	//cargar imagen
 	public void upload(FileUploadEvent event) {
 
 		UploadedFile file = event.getFile();
-
+Coachee coach= (Coachee)FacesUtils.getfromSession("coachee");
 		try {
 
 
@@ -302,7 +304,7 @@ public class CoacheeView implements Serializable {
 
 				byte[] arch = file.getContents();
 
-				Coachee ent= businessDelegatorView.getCoachee(9L);
+				Coachee ent= businessDelegatorView.getCoachee(coach.getIdCoachee());
 				//	Coachee ent= businessDelegatorView.getCoachee(10L);
 				//	Coachee ent= businessDelegatorView.getCoachee(1L);
 				//	Coachee ent= businessDelegatorView.getCoachee(6L);
@@ -350,7 +352,7 @@ public class CoacheeView implements Serializable {
 	}
 
 
-
+//mostrar imagen
 	public DefaultStreamedContent getFiledownload() {
 		//EvalReport miPlan = getEvalReport();
 		try {

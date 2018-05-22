@@ -61,7 +61,7 @@ public class ProcCoachingView implements Serializable {
     private CommandButton btnClear;
     private List<ProcCoaching> data;
     private ProcCoachingDTO selectedProcCoaching;
-    private ProcCoaching entity;
+    private Coachee entity;
     private boolean showDialog;
     @ManagedProperty(value = "#{BusinessDelegatorView}")
     private IBusinessDelegate businessDelegatorView;
@@ -300,13 +300,24 @@ public class ProcCoachingView implements Serializable {
     
     
     
-    public String action_save() {
+    public Coachee getEntity() {
+		return entity;
+	}
+
+	public void setEntity(Coachee entity) {
+		this.entity = entity;
+	}
+
+	public String action_save() {
     	
     	Coach coac= (Coach) FacesUtils.getfromSession("coach");
+    	
+    	Coachee ch= getEntity();
+
     	ProcCoaching pro = new ProcCoaching();
     	RegContable reg= new RegContable();
     	try {
-    		Coachee coachee= businessDelegatorView.consultarClienteByIdentificacion((FacesUtils.checkString(txtIdCoachee_Coachee)));
+    		Coachee coachee= businessDelegatorView.consultarClienteByIdentificacion(ch.getIdentificacion());
     		
     		reg.setCoachee(coachee);
     		businessDelegatorView.saveRegContable(reg);

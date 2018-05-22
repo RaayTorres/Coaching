@@ -43,7 +43,7 @@
 				</p:panel>
 	   			<p:panel id="panelBotones">
 					<div align="center">					
-						<p:commandButton id="btnSave" binding="#{coacheeView.btnSave}" disabled="true" value="Save" action="#{coacheeView.action_save()}" update="panelCoachee,msg,panelBotones" />
+						<p:commandButton id="btnSave" binding="#{coacheeView.btnSave}" disabled="true" value="Guardar" action="#{coacheeView.action_save()}" update="panelCoachee,msg,panelBotones" />
 						<p:commandButton id="btnDelete" binding="#{coacheeView.btnDelete}" disabled="true" value="Delete" action="#{coacheeView.action_delete_master()}" onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}" update="panelCoachee,msg,panelBotones" />
 						<p:commandButton id="btnClear" value="Clear" action="#{coacheeView.action_clear()}" update="panelCoachee,msg,panelBotones" />
 					</div>

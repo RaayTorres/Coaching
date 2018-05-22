@@ -27,12 +27,7 @@
 					<p:commandButton id="btnSave" binding="#{coacheeView.btnRedirigir}"
 						value="Crear nuevo cliente"
 						action="#{coacheeView.actionRedirigir()}" />
-					<!--  Redireccionar a crear Coache-->
-					<p:commandButton id="btnRed"
-						binding="#{coacheeView.btnRedirigirMas}" value="Ver más"
-						action="#{coacheeView.actionRedirigirMas()}" />
-					<!--  Redireccionar a crear Coache-->
-
+			
 				</div>
 				<!--  Hacer listener-->
 				<div class="divConsulta2">
@@ -66,7 +61,7 @@
 									binding="#{coacheeView.btnRedirigirMas}" value="Ver más"
 									action="#{coacheeView.actionRedirigirMas()}" ajax="false" >
 								<!--  Redireccionar a crear Coache-->
-								<f:setPropertyActionListener value="c" 
+								<f:setPropertyActionListener value="#{c}" 
 								target="#{coacheeView.entity}"/>
 								</p:commandButton>
 								

@@ -1,46 +1,99 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui"
-                template="/WEB-INF/template.xhtml">
-		 
-	<ui:define name="content">		
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-		  			<h:form id="frm">								  		
-						
-			
-			
-							<h:panelGrid columns="2" style="width:100%"	 						>
-								<p:graphicImage value="#{coacheeView.imgVerMas}" width="200"
-									height="100" styleClass="content"  >
-								
-								</p:graphicImage>
-								
-										<h:outputText value="Nombre:" />
-										<h:outputText value="#{coacheeView.entity.nombre}" />
+<h:head>
 
-											<h:outputText value="Apellido" />
-										<h:outputText value="#{coacheeView.entity.apellido}" />
-										
-										<h:outputText value="Celular" />
-										<h:outputText value="#{coacheeView.entity.celular}" />
-								
-												<h:outputText value="Telefono" />
-										<h:outputText value="#{coacheeView.entity.telefono}" />
-								
-			<!-- Editar y el progreso  -->
+</h:head>
 
-										<h:outputText value="Direccion" />
-										<h:outputText value="#{coacheeView.entity.direccion}" />
-								
-			<h:outputText value="Pasatiempos" />
-										<h:outputText value="#{coacheeView.entity.hobbies}" />
-										
-										</h:panelGrid>
-								
-			</h:form>
+<h:body>
+
+
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+		<ui:define name="body">
+
+
+			<h:form style="width: 100%">
+				<p:growl id="msgs" showDetail="true" />
+				<div class="divConsulta2">
+					<div
+						style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%">
+
+						<h5 style="text-align: center; color: black">Crear Coachee</h5>
+
+	<p:panel id="pnlTiposDocumentos" header="Coachee">
+	
+	<p:graphicImage value="#{coacheeView.imgVerMas}" width="200"
+		height="100" styleClass="content">
+
+	</p:graphicImage>
+    <h:panelGrid columns="2" style="width:100%">
+
+	<h:outputText value="Identificacion:" />
+	<p:inputText binding="#{coacheeView.txtIdentificacion}" value="#{coacheeView.entity.identificacion}"  disabled="true"/>
+
+
+	<h:outputText value="Nombre:" />
+	<p:inputText binding="#{coacheeView.txtNombre}" value="#{coacheeView.entity.nombre}"  disabled="true"/>
+
+	<h:outputText value="Apellido" />
+	<p:inputText binding="#{coacheeView.txtApellido}" value="#{coacheeView.entity.apellido}"  disabled="true" />
+
+	<h:outputText value="Celular" />
+	<p:inputText binding="#{coacheeView.txtCelular}" value="#{coacheeView.entity.celular}"  disabled="true" />
+
+	<h:outputText value="Telefono" />
+	<p:inputText binding="#{coacheeView.txtTelefono}" value="#{coacheeView.entity.telefono}"  disabled="true" />
+
+	<h:outputText value="Correo" />
+	<p:inputText binding="#{coacheeView.txtCorreo}" value="#{coacheeView.entity.correo}"  disabled="true"/>
+
+	<h:outputText value="Direccion" />
+	<p:inputText binding="#{coacheeView.txtDireccion}" value="#{coacheeView.entity.direccion}"  disabled="true"/>
+
+	<h:outputText value="Pasatiempos" />
+	<p:inputTextarea rows="6" cols="33"   binding="#{coacheeView.txtHobbies}" value="#{coacheeView.entity.hobbies}" disabled="true"/>
+
+
+	<h:outputText value="Ultima sesion" />
+	<p:inputText value= "Ultima sesion"/>
+
+
+	<h:outputText value="Progreso" />
+			    <p:progressBar value="#{coacheeView.txtProgreso}" labelTemplate="{value}%" displayOnly="true"   />
+	
+
+</h:panelGrid>
 		
-	</ui:define>
-</ui:composition>
+		
+		
+		
+</p:panel>
+					<p:panel id="panelBotones">
+							<div align="center">
+								<p:commandButton id="btnSave" binding="#{coacheeView.btnModify}"
+									disabled="true" value="Guardar Cambios"
+									action="#{coacheeView.action_modify()}"
+									update="@form" />
+								<p:commandButton id="btnEdit" binding="#{coacheeView.btnClear}"
+									 value="Editar" action="#{coacheeView.edit()}"
+									update="@form" disabled="false"/>
 
+							</div>
+						</p:panel>
+					</div>
+				</div>
+				
+				
+			</h:form>
+
+		</ui:define>
+
+	</ui:composition>
+
+
+</h:body>
+</html>

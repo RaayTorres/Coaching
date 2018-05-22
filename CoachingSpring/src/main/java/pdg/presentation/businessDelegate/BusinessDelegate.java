@@ -729,8 +729,10 @@ public class BusinessDelegate implements IBusinessDelegate {
 	}
 
 	@Override
-	public int progresoProceso(Coach coach, Coachee client) {
+	public int progresoProceso(long coach, long client) throws Exception {
 		return   procCoachingLogic.progresoProceso( coach,  client) ;
 	}
+
+	
 	
 }

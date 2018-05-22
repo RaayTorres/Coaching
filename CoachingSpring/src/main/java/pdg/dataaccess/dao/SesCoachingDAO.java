@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 
 /**
@@ -54,12 +55,20 @@ public class SesCoachingDAO extends JpaDaoImpl<SesCoaching, Double>
   		return listado;
   	}
     
-    public SesCoaching ultimaSesion(String esta){
+    public List<SesCoaching> sesionesCompletasCoachee(long idCoache, long idCoach){
     	
-    	 SesCoaching listado=  	
-    	    	 (SesCoaching) entityManager.createNativeQuery("select ses from SES_COACHING ses where ses.estado.nombreEstado="
-    	    			 + esta+"and max(ses.fecha)").getSingleResult();
+    	
+    	
+    	Query listado=  
+    	    	   entityManager.createNativeQuery("select ses from SES_COACHING ses where"
+    	    //	   		+ "ses.procCoaching.coach.idCoach=:idCoach")
+    	    	  		+ " ses.procCoaching.coachee.idCoachee=5");
+    	    	  	//	+ "and ses.estado_id_estado=2");
+    	
+    //	listado.setParameter("idCoach",idCoach);
+   // 	listado.setParameter("idCoache", idCoache);
+    	
     	    
-    	return listado;
+    	return listado.getResultList();
     }
 }

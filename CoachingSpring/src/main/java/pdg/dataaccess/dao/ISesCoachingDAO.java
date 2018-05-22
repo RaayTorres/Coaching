@@ -18,4 +18,5 @@ import java.util.Set;
 public interface ISesCoachingDAO extends Dao<SesCoaching, Double> {
 	
 	 List<SesCoaching> filtrarSesionPorEstado(Long esta); 
+	 List<SesCoaching> sesionesCompletasCoachee(long idCoachee, long idCoach);
 }

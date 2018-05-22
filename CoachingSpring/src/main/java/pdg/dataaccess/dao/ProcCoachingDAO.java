@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 import pdg.dataaccess.api.JpaDaoImpl;
 
 import pdg.modelo.ProcCoaching;
+import pdg.modelo.SesCoaching;
+
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -38,4 +41,25 @@ public class ProcCoachingDAO extends JpaDaoImpl<ProcCoaching, Double>
         ApplicationContext ctx) {
         return (IProcCoachingDAO) ctx.getBean("ProcCoachingDAO");
     }
+    
+    public SesCoaching ultimaSesion(String esta){
+    	
+   	 SesCoaching listado=  	
+   	    	 (SesCoaching) entityManager.createNativeQuery("select ses from SES_COACHING ses where ses.estado.nombreEstado="
+   	    			 + esta+"and max(ses.fecha)").getSingleResult();
+   	    
+   	return listado;
+   }
+    
+    public List<SesCoaching> sesionesProcesoCoachee(long idCoachee, long idCoach){
+    	
+    	List<SesCoaching>  listado=  	
+    	    	  (List<SesCoaching>) entityManager.createNativeQuery("select ses from SES_COACHING ses where ses.procCoaching.coach.idCoach=idCoach "
+    	    	  		+ "and ses.procCoaching.coachee.idCoachee=idCoachee "
+    	    	  		+ "and ses.estado_id_estado=Completo").getResultList();
+    	    
+    	return listado;
+    }
+    
+    
 }

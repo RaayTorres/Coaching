@@ -424,28 +424,7 @@ public class SesCoachingLogic implements ISesCoachingLogic {
 		List<SesCoaching> sesion = sesCoachingDAO.filtrarSesionPorEstado(estadoDao.findById(esta).getIdEstado());
 		List<SesCoaching> listado=  new ArrayList<SesCoaching>();
 		SesCoaching ses = new SesCoaching();
-		//		List<SesCoaching> otra= sesCoachingDAO.findAll();
-		//		
-		//		for (SesCoaching sesCoaching : otra) {
-		//			if (sesCoaching.getEstado().getIdEstado()== esta ) {
-		//				
-		//				listado.add(sesCoaching);
-		//			}
-		//		}
-
-		//		int i = 0;
-		//		for (SesCoaching sesCoaching : sesion) {
-		//			
-		//			SesCoaching ses = sesCoachingDAO.findById(sesCoaching.getIdSesi());
-		//			
-		//			//SesCoaching nueva = ses;
-		//			
-		//			
-		//			listado.add(ses);
-		//			log.info( ses.getIdSesi() + "+++++++++++++++++++++++++++++++++");
-		//log.info(sesionDao.findById(sesCoaching.longValue()) + "+++++++++++" + i);
-		//	}
-		//		
+			
 		for (int i = 0; i < sesion.size(); i++) {
 			if (sesion!=null) {
 				System.out.println(sesCoachingDAO.findById(sesion.get(i).getIdSesi()) + "++++++++++++++++++++++++++++++++++++++");

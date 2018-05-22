@@ -193,7 +193,7 @@ public class CoacheeView implements Serializable {
 		
 		Coachee client= (Coachee) FacesUtils.getfromSession("coachee");
 		
-		txtProgreso= businessDelegatorView.progresoProceso(coach, client); 
+		//txtProgreso= businessDelegatorView.progresoProceso(coach, client); 
 		
 		return txtProgreso;
 	}
@@ -598,7 +598,12 @@ public class CoacheeView implements Serializable {
 			
 			Coachee client= (Coachee) FacesUtils.getfromSession("coachee");
 			
-		System.out.println(businessDelegatorView.progresoProceso(coach, client)); 
+		try {
+			System.out.println(businessDelegatorView.progresoProceso(coach.getIdCoach(), client.getIdCoachee()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		//   System.out.println(  coach.getApellido()+
 		     
 		   //  client.getApellido()+"");

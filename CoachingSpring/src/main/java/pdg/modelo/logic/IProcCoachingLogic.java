@@ -65,5 +65,5 @@ public interface IProcCoachingLogic {
         throws Exception;
     
     
-    public int progresoProceso(Coach coach, Coachee client);
+    public int progresoProceso(long coach, long client) throws Exception;
 }

@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,15 +21,23 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pdg.dataaccess.api.DaoException;
 import pdg.dataaccess.dao.ICategoriaDAO;
+import pdg.dataaccess.dao.ICoachDAO;
+import pdg.dataaccess.dao.ICoacheeDAO;
 import pdg.dataaccess.dao.IEstadoDAO;
 import pdg.dataaccess.dao.IProcCoachingDAO;
 import pdg.dataaccess.dao.ISesCoachingDAO;
 import pdg.dataaccess.dao.ITipoEstadoDAO;
 import pdg.modelo.Categoria;
+import pdg.modelo.Coach;
+import pdg.modelo.Coachee;
 import pdg.modelo.Estado;
 import pdg.modelo.ProcCoaching;
 import pdg.modelo.SesCoaching;
 import pdg.modelo.TipoEstado;
+import pdg.modelo.logic.ICoachLogic;
+import pdg.modelo.logic.ICoacheeLogic;
+import pdg.modelo.logic.IProcCoachingLogic;
+import pdg.modelo.logic.ISesCoachingLogic;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
@@ -49,6 +58,18 @@ public class SesCoachingDaoTest {
 	
 	@Autowired
 	private IProcCoachingDAO procesoDao;
+	
+	
+	@Autowired
+	private ICoachLogic coach;
+	
+	
+	@Autowired
+	private ICoacheeLogic coachee;
+	
+
+	@Autowired
+	private IProcCoachingLogic proc;
 	
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
@@ -111,8 +132,30 @@ public class SesCoachingDaoTest {
 	@Test
 	@Transactional(readOnly = true)
 	public void etest() {
+	try {
+		Coach coac= coach.getCoach(1L);
+		Coachee	client = coachee.getCoachee(5L);
+//		List<SesCoaching> pro = procesoDao.sesionesProcesoCoachee(client.getIdCoachee(), coac.getIdCoach(), 2L);
+//List<SesCoaching> totas= procesoDao.sesionesTotalesProcesoCoachee(client.getIdCoachee(), coac.getIdCoach());
+//Double p = (double) (pro.size())/(totas.size());
+//System.out.println(pro.size()/totas.size());
+//System.out.println(pro.size() + "----------" + totas.size());
+//	System.out.println(p);
+		//proc.progresoProceso(coac.getIdCoach(), client.getIdCoachee());
+		//List<SesCoaching> sesion = sesionDao.filtrarSesionPorEstado(2L,5L);
+		System.out.println(		proc.progresoProceso(coac.getIdCoach(), client.getIdCoachee()) + "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		
-		List<SesCoaching> sesion = sesionDao.findAll();
+//		for (SesCoaching sesCoaching : sesion) {
+//			System.out.println( sesCoaching + "-----------------------------------------------------------");
+//		}
+//		for (SesCoaching sesCoaching : sesion) {
+//			System.out.println(sesCoaching.getNumSes());
+//		}
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		
 			
 		//for (SesCoaching sesCoaching : sesion) {
 		

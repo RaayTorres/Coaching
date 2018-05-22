@@ -16,8 +16,11 @@ import pdg.dataaccess.dao.ICoachDAO;
 import pdg.dataaccess.dao.IEstadoDAO;
 import pdg.dataaccess.dao.ITipoDocumentoDAO;
 import pdg.modelo.Coach;
+import pdg.modelo.Coachee;
 import pdg.modelo.TipoDocumento;
 import pdg.modelo.logic.ICoachLogic;
+import pdg.modelo.logic.ICoacheeLogic;
+import pdg.modelo.logic.IProcCoachingLogic;
 import pdg.presentation.businessDelegate.IBusinessDelegate;
 import pdg.test.dao.CoachDaoTest;
 
@@ -42,6 +45,12 @@ private Logger log= LoggerFactory.getLogger(CoachDaoTest.class);
 	@Autowired
 	private ICoachLogic coachLogic;
 
+	@Autowired
+	private ICoacheeLogic coacheeLogic;
+
+	@Autowired
+	private IProcCoachingLogic proc;
+	
 	@Autowired
 	private IBusinessDelegate delegadoDeNegocio;
 
@@ -75,5 +84,29 @@ private Logger log= LoggerFactory.getLogger(CoachDaoTest.class);
 		
 		
 	}
+	
+	
+	
+	
+	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+	public void progresoTest()  {
+		
+Coachee client;
+try {
+	Coach coach= coachLogic.getCoach(1L);
+	client = coacheeLogic.getCoachee(5L);
+	int o =proc.progresoProceso(coach.getIdCoach(), client.getIdCoachee());
+	
+	System.out.println(o + "");
+} catch (Exception e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+
+		
+		
+	}
+	
 	
 }

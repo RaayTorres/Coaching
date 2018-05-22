@@ -48,11 +48,16 @@ public class SesCoachingDAO extends JpaDaoImpl<SesCoaching, Double>
     public List<SesCoaching> filtrarSesionPorEstado(Long esta) {
   		// nameSquence= "seq_prueba";
     List<SesCoaching> listado=  	
-    	 entityManager.createNativeQuery("select * from SES_COACHING ses where ses.estado_id_estado=" + esta).getResultList();
+   	 entityManager.createNativeQuery("select * from SES_COACHING ses, PROC_COACHING proc where  ses.estado_id_estado=" + esta).getResultList();
     	//Double nue= new BigDecimal(nig).doubleValue();
     	
-    	
-  		return listado;
+//   Query listado= 	entityManager.createNamedQuery("select * from SES_COACHING ses where ses.idCoachee=:coachee and ses.idEstado=:esta");
+   
+  // listado.setParameter("coachee", coachee);
+  // listado.setParameter("esta", esta);
+  	
+    
+    return listado;
   	}
     
     public List<SesCoaching> sesionesCompletasCoachee(long idCoache, long idCoach){

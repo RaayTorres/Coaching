@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.sql.*;
 import org.primefaces.component.inputtext.InputText;
+import org.primefaces.component.inputtextarea.InputTextarea;
 import org.primefaces.component.selectonemenu.SelectOneMenu;
 import org.primefaces.component.calendar.*;
 import org.primefaces.component.commandbutton.CommandButton;
@@ -67,7 +68,7 @@ public class CoacheeView implements Serializable {
 	private InputText txtCorreo;
 	private InputText txtDireccion;
 	private InputText txtFoto;
-	private InputText txtHobbies;
+	private InputTextarea txtHobbies;
 	private InputText txtIdentificacion;
 	private InputText txtNombre;
 	private InputText txtTelefono;
@@ -75,7 +76,7 @@ public class CoacheeView implements Serializable {
 	private InputText txtIdDoc_TipoDocumento;
 	private InputText txtIdCoachee;
 	
-	private int txtProgreso;
+	private Integer txtProgreso;
 	
 	
 	private CommandButton btnSave;
@@ -141,10 +142,10 @@ public class CoacheeView implements Serializable {
 	public void setTxtFoto(InputText txtFoto) {
 		this.txtFoto = txtFoto;
 	}
-	public InputText getTxtHobbies() {
+	public InputTextarea getTxtHobbies() {
 		return txtHobbies;
 	}
-	public void setTxtHobbies(InputText txtHobbies) {
+	public void setTxtHobbies(InputTextarea txtHobbies) {
 		this.txtHobbies = txtHobbies;
 	}
 	public InputText getTxtIdentificacion() {
@@ -185,7 +186,7 @@ public class CoacheeView implements Serializable {
 	}
 
 	
-	public int getTxtProgreso() {
+	public Integer getTxtProgreso() {
 		
 		//TODO PROGRESO
 		
@@ -193,11 +194,19 @@ public class CoacheeView implements Serializable {
 		
 		Coachee client= (Coachee) FacesUtils.getfromSession("coachee");
 		
-		//txtProgreso= businessDelegatorView.progresoProceso(coach, client); 
+		try {
 		
+			txtProgreso= (businessDelegatorView.progresoProceso(coach.getIdCoach(), client.getIdCoachee()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			
+			e.printStackTrace();
+		} 
+//		
 		return txtProgreso;
 	}
-	public void setTxtProgreso(int txtFoto) {
+	public void setTxtProgreso(Integer txtFoto) {
 		this.txtProgreso = txtFoto;
 	}
 	
@@ -595,11 +604,12 @@ public class CoacheeView implements Serializable {
 	  public String edit() {
 
 		  Coach coach= (Coach) FacesUtils.getfromSession("coach");
-			
+//			
 			Coachee client= (Coachee) FacesUtils.getfromSession("coachee");
-			
+//			
 		try {
-			System.out.println(businessDelegatorView.progresoProceso(coach.getIdCoach(), client.getIdCoachee()));
+			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" + 
+		businessDelegatorView.progresoProceso(coach.getIdCoach(), client.getIdCoachee()));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

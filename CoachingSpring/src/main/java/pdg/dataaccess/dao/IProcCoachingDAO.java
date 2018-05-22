@@ -3,6 +3,7 @@ package pdg.dataaccess.dao;
 import pdg.dataaccess.api.Dao;
 
 import pdg.modelo.ProcCoaching;
+import pdg.modelo.SesCoaching;
 
 import java.math.BigDecimal;
 
@@ -16,4 +17,8 @@ import java.util.Set;
 *
 */
 public interface IProcCoachingDAO extends Dao<ProcCoaching, Double> {
+	
+	public List<SesCoaching> sesionesProcesoCoachee(long idCoachee, long idCoach, long esta);
+	
+	 public List<SesCoaching> sesionesTotalesProcesoCoachee(long idCoachee, long idCoach);
 }

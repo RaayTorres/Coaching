@@ -481,22 +481,25 @@ R10.SE1: El sistema debe permitir visualizar y filtrar las sesiones en (activas 
     
     public int progresoProceso( long coach, long client) throws Exception {
     	
-    	int progreso = 0;
-    	Coachee cliente= logicCoachee2.getCoachee(client);
-    	Set<ProcCoaching> proces= cliente.getProcCoachings();
-    	for (ProcCoaching procCoaching : proces) {
-			if (procCoaching.getCoach().getIdCoach()== coach) {
-		    	
-		    	int sesiones=  procCoaching.getSesCoachings().size();
-			
-				 progreso = (sesLogic.sesionCompletas(procCoaching).size())/ sesiones;
-			}
-		}
-
+    	double progreso = 0;
+    	//Coachee cliente= logicCoachee2.getCoachee(client);
+    	
+    	List<SesCoaching> pro = procCoachingDAO.sesionesProcesoCoachee(client, coach, 2L);
+    	List<SesCoaching> totas= procCoachingDAO.sesionesTotalesProcesoCoachee(client, coach);
+    	Double p = (double) (pro.size())/(totas.size());
+    	
+	
+//	
+//	System.out.println(num + "-------------------------------------------");
+//	System.out.println(den + "-------------------------------------------");
+//			
+//		 progreso = ((num)/(den)) * 100;
+//			
+		
 		
     	
     	
-    	return progreso;
+    	return (int) (p*100);
     }
     
 }

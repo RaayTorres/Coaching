@@ -17,6 +17,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 
 /**
@@ -51,15 +52,30 @@ public class ProcCoachingDAO extends JpaDaoImpl<ProcCoaching, Double>
    	return listado;
    }
     
-    public List<SesCoaching> sesionesProcesoCoachee(long idCoachee, long idCoach){
+    public List<SesCoaching> sesionesProcesoCoachee(long idCoachee, long idCoach, long esta){
     	
-    	List<SesCoaching>  listado=  	
-    	    	  (List<SesCoaching>) entityManager.createNativeQuery("select ses from SES_COACHING ses where ses.procCoaching.coach.idCoach=idCoach "
-    	    	  		+ "and ses.procCoaching.coachee.idCoachee=idCoachee "
-    	    	  		+ "and ses.estado_id_estado=Completo").getResultList();
+    	Query  listado=  	
+    	    	  (Query) entityManager.createQuery("select ses from SesCoaching ses where ses.procCoaching.coach.idCoach=:idCoach "
+		  		+ "and ses.procCoaching.coachee.idCoachee=:idCoachee "
+		  		+ "and ses.estado.idEstado=:Completo");
+    	listado.setParameter("idCoachee", idCoachee);
+    	listado.setParameter("idCoach", idCoach);
+    	listado.setParameter("Completo", esta);
+
     	    
-    	return listado;
+    	return listado.getResultList();
     }
     
     
+   public List<SesCoaching> sesionesTotalesProcesoCoachee(long idCoachee, long idCoach){
+    	
+    	Query  listado=  	
+    	    	  (Query) entityManager.createQuery("select ses from SesCoaching ses where ses.procCoaching.coach.idCoach=:idCoach "
+		  		+ "and ses.procCoaching.coachee.idCoachee=:idCoachee");
+    	listado.setParameter("idCoachee", idCoachee);
+    	listado.setParameter("idCoach", idCoach);
+    	//listado.setParameter("Completo", esta);
+    	return listado.getResultList();
+    
+   }
 }

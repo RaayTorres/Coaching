@@ -26,11 +26,11 @@
 
 			<p:dataTable var="proc" value="#{procCoachingView.data}">
 				<p:column headerText="Proceso">
-					<h:outputText value="Proceso Coaching #{proc.coach.nombre}" />
+					<h:outputText value="Proceso Coaching #{proc.coachee.nombre}" />
 				</p:column>
 
 				<p:column headerText="Cliente">
-					<h:outputText value="#{proc.coach.nombre} #{proc.coach.apellido}" />
+					<h:outputText value="#{proc.coachee.nombre} #{proc.coachee.apellido}" />
 				</p:column>
 
 				<p:column headerText="Ultima sesión">

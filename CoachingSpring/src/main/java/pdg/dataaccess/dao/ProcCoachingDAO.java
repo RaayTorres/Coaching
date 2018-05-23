@@ -78,4 +78,14 @@ public class ProcCoachingDAO extends JpaDaoImpl<ProcCoaching, Double>
     	return listado.getResultList();
     
    }
+   
+   public List<SesCoaching> sesionesTotalesProcesoCoacheeUnico(long idCoachee, long idCoach, long proc){
+		Query  listado=  	
+  	    	  (Query) entityManager.createQuery("select ses from SesCoaching ses where ses.procCoaching.coach.idCoach=:idCoach "
+		  		+ "and ses.procCoaching.coachee.idCoachee=:idCoachee "+ "and ses.procCoaching.idProc=:proc");
+  	listado.setParameter("idCoachee", idCoachee);
+  	listado.setParameter("idCoach", idCoach);
+  	listado.setParameter("proc", proc);
+  	return listado.getResultList();
+   }
 }

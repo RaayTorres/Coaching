@@ -21,4 +21,6 @@ public interface IProcCoachingDAO extends Dao<ProcCoaching, Double> {
 	public List<SesCoaching> sesionesProcesoCoachee(long idCoachee, long idCoach, long esta);
 	
 	 public List<SesCoaching> sesionesTotalesProcesoCoachee(long idCoachee, long idCoach);
+	 
+	 public List<SesCoaching> sesionesTotalesProcesoCoacheeUnico(long idCoachee, long idCoach, long proc);
 }

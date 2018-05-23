@@ -38,6 +38,8 @@ public class SesCoaching implements java.io.Serializable {
 	    private Double precio;
 	    private boolean isEncuadre;
 	    
+	    private String tipoSes;
+	    
 	    private String valor;
 	    private String proposito;
 	    private String aprendizaje;
@@ -52,7 +54,7 @@ public class SesCoaching implements java.io.Serializable {
         Long idHis, String indicador, ProcCoaching procCoaching,
         String profundidad, Double precio,
    boolean isEncuadre,String valor, String proposito,
-     String aprendizaje,String cierre ) {
+     String aprendizaje,String cierre,String tipoSes ) {
         this.idSesi = idSesi;
         this.estado = estado;
         this.procCoaching = procCoaching;
@@ -64,6 +66,7 @@ public class SesCoaching implements java.io.Serializable {
         this.idHis = idHis;
         this.indicador = indicador;
         this.profundidad = profundidad;
+        this.tipoSes= tipoSes;
         
         this.precio = precio;
         this.isEncuadre = isEncuadre;
@@ -250,6 +253,14 @@ public class SesCoaching implements java.io.Serializable {
 		this.isEncuadre = isEncuadre;
 	}
      
-     
+	//Tipo de la sesion. pro-bono o pagada
+	  @Column(name = "tipo_ses")
+	    public String getTipoSes() {
+	        return this.tipoSes;
+	    }
+
+	    public void setTipoSes(String tipoSes) {
+	        this.tipoSes = tipoSes;
+	    }
      
 }

@@ -334,5 +334,6 @@ public interface IBusinessDelegate {
 	  //  public int progresoProceso( Coach coach, Coachee client);
 
 		int progresoProceso(long coach, long client) throws Exception;
+		public List<SesCoaching> sesionesCoachee(long coach, long client, long proc);
 
 }

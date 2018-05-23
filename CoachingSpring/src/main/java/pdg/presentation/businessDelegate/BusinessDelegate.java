@@ -733,6 +733,12 @@ public class BusinessDelegate implements IBusinessDelegate {
 		return   procCoachingLogic.progresoProceso( coach,  client) ;
 	}
 
+	@Override
+	public List<SesCoaching> sesionesCoachee(long coach, long client, long proc) {
+	
+		return procCoachingLogic.sesionesCoachee(coach, client, proc);
+	}
+
 	
 	
 }

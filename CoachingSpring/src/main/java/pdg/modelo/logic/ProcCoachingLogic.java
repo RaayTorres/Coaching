@@ -157,9 +157,9 @@ entity.setIdProc(procCoachingDAO.genSecuencia());
 
             procCoachingDAO.save(entity);
             
+            Long l = 0L;
             for (int i = 0; i < 10; i++) {
             	SesCoaching  newEntity= new SesCoaching();
-            	Long l = 0L;
             	
             	newEntity.setIdSesi(sesCoachingDAO.genSecuencia());
             	newEntity.setProcCoaching(entity);
@@ -501,5 +501,11 @@ R10.SE1: El sistema debe permitir visualizar y filtrar las sesiones en (activas 
     	
     	return (int) (p*100);
     }
+
+	@Override
+	public List<SesCoaching> sesionesCoachee(long coach, long client, long proc) {
+		//
+		return procCoachingDAO.sesionesTotalesProcesoCoacheeUnico(client, coach,proc);
+	}
     
 }

@@ -5,7 +5,7 @@ import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
 
 import org.primefaces.event.RowEditEvent;
-
+import org.primefaces.model.ScheduleModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,7 +65,11 @@ public class SesCoachingView implements Serializable {
     private CommandButton btnModify;
     private CommandButton btnDelete;
     private CommandButton btnClear;
-    private List<SesCoachingDTO> data;
+    
+    private List<SesCoaching> data;
+    
+    private ScheduleModel eventModel;
+    
     private SesCoachingDTO selectedSesCoaching;
     private SesCoaching entity;
     private boolean showDialog;
@@ -247,6 +251,9 @@ public class SesCoachingView implements Serializable {
         return "";
     }
 
+    
+    
+    
 //    public String action_save() {
 //        try {
 //            if ((selectedSesCoaching == null) && (entity == null)) {
@@ -367,7 +374,15 @@ public class SesCoachingView implements Serializable {
 //        }
 //    }
 
-    public String action_closeDialog() {
+    public ScheduleModel getEventModel() {
+		return eventModel;
+	}
+
+	public void setEventModel(ScheduleModel eventModel) {
+		this.eventModel = eventModel;
+	}
+
+	public String action_closeDialog() {
         setShowDialog(false);
         action_clear();
 
@@ -487,10 +502,17 @@ public class SesCoachingView implements Serializable {
         this.txtIdSesi = txtIdSesi;
     }
 
-    public List<SesCoachingDTO> getData() {
+    public List<SesCoaching> getData() {
         try {
+        	ProcCoaching pro= (ProcCoaching) FacesUtils.getfromSession("proc");
+        	Coach co= (Coach) FacesUtils.getfromSession("coach");
+        	Coachee ch= (Coachee) FacesUtils.getfromSession("coachee");
+
+        	
+        	
+        	System.out.println(pro.getIdProc());
             if (data == null) {
-                data = businessDelegatorView.getDataSesCoaching();
+                data = businessDelegatorView.sesionesCoachee(co.getIdCoach(), ch.getIdCoachee(), pro.getIdProc());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -499,7 +521,7 @@ public class SesCoachingView implements Serializable {
         return data;
     }
 
-    public void setData(List<SesCoachingDTO> sesCoachingDTO) {
+    public void setData(List<SesCoaching> sesCoachingDTO) {
         this.data = sesCoachingDTO;
     }
 

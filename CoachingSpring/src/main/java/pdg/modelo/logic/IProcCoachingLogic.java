@@ -3,7 +3,7 @@ package pdg.modelo.logic;
 import pdg.modelo.Coach;
 import pdg.modelo.Coachee;
 import pdg.modelo.ProcCoaching;
-
+import pdg.modelo.SesCoaching;
 import pdg.modelo.dto.ProcCoachingDTO;
 
 import java.math.BigDecimal;
@@ -66,4 +66,7 @@ public interface IProcCoachingLogic {
     
     
     public int progresoProceso(long coach, long client) throws Exception;
+    
+    
+    public List<SesCoaching> sesionesCoachee(long coach, long client,  long proc) ;
 }

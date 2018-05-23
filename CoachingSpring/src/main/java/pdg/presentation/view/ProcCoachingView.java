@@ -327,16 +327,16 @@ public class ProcCoachingView implements Serializable {
 			pro.setRegContable(reg);
 			
 			businessDelegatorView.saveProcCoaching(pro);
+			
+			FacesUtils.putinSession("proc", pro);
 		} catch (ZMessManager e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	
     	
     	
-    	return "";
+    	return "/XHTML/agendarCitasSesion.xhtml";
     }
 }

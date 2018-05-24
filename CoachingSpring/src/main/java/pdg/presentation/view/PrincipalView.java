@@ -26,7 +26,7 @@ public class PrincipalView {
 		return "/XHTML/coach.xhtml";
 	}
 	public String pagosAction() {
-		return "/XHTML/principal.xhtml";
+		return "/XHTML/agendarSesion.xhtml";
 	}
 	public String procesosAction() {
 		return "/XHTML/procCoachingListDataTable.xhtml";

@@ -5,6 +5,12 @@ import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
 
 import org.primefaces.event.RowEditEvent;
+import org.primefaces.event.ScheduleEntryMoveEvent;
+import org.primefaces.event.ScheduleEntryResizeEvent;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.model.DefaultScheduleEvent;
+import org.primefaces.model.DefaultScheduleModel;
+import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -388,6 +394,10 @@ public class SesCoachingView implements Serializable {
 
         return "";
     }
+	
+
+    private ScheduleEvent event = new DefaultScheduleEvent();
+ 
 
 //    public String action_modifyWitDTO(String accion, String compromiso,
 //        Date fecha, String focoSesion, Double hora, Double idHis,
@@ -502,6 +512,14 @@ public class SesCoachingView implements Serializable {
         this.txtIdSesi = txtIdSesi;
     }
 
+    public ScheduleEvent getEvent() {
+        return event;
+    }
+ 
+    public void setEvent(ScheduleEvent event) {
+        this.event = event;
+    }
+    
     public List<SesCoaching> getData() {
         try {
         	ProcCoaching pro= (ProcCoaching) FacesUtils.getfromSession("proc");
@@ -587,7 +605,38 @@ public class SesCoachingView implements Serializable {
     }
     
     
-    
+    public void addEvent(ActionEvent actionEvent) {
+        if(event.getId() == null)
+            eventModel.addEvent(event);
+        else
+            eventModel.updateEvent(event);
+         
+        event = new DefaultScheduleEvent();
+    }
+     
+    public void onEventSelect(SelectEvent selectEvent) {
+        event = (ScheduleEvent) selectEvent.getObject();
+    }
+     
+    public void onDateSelect(SelectEvent selectEvent) {
+        event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
+    }
+     
+    public void onEventMove(ScheduleEntryMoveEvent event) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
+         
+        addMessage(message);
+    }
+     
+    public void onEventResize(ScheduleEntryResizeEvent event) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event resized", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
+         
+        addMessage(message);
+    }
+     
+    private void addMessage(FacesMessage message) {
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 //    <h:form id="formDialog">
 //	<p:messages id="msg" />
 //	<p:growl id="men" />

@@ -80,7 +80,7 @@ public class SesCoachingDaoTest {
 		sesion.setIdSesi(sesionDao.genSecuencia());
 		sesion.setAccion("accion 3");
 		sesion.setCompromiso("compromiso 3");
-		Estado nuevoEstado = estadoDao.findById(2L);
+		Estado nuevoEstado = estadoDao.findById(1L);
 		sesion.setEstado(nuevoEstado);
 		sesion.setFocoSesion("Foco Sesion 3");
 		
@@ -90,7 +90,7 @@ public class SesCoachingDaoTest {
 		sesion.setFecha(new Date());
 		sesion.setIndicador("indicador 3");
 		sesion.setProfundidad("profundidad 3");
-		ProcCoaching nuevoProceso = procesoDao.findById(2L);
+		ProcCoaching nuevoProceso = procesoDao.findById(5L);
 		sesion.setProcCoaching(nuevoProceso);
 		sesion.setIdHis(3L);
 	

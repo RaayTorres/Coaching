@@ -59,13 +59,15 @@ public class ProcCoachingDaoTest {
 		
 		ProcCoaching nuevoProceso = new ProcCoaching();
 		nuevoProceso.setIdProc(procesoDao.genSecuencia());
-		Coach nuevoCoach= coachDao.findById(2L);
+		Coach nuevoCoach= coachDao.findById(1L);
 		nuevoProceso.setCoach(nuevoCoach);
-		Coachee nuevoCliente = coacheeDao.findById(2L);
+		Coachee nuevoCliente = coacheeDao.findById(1L);
 		nuevoProceso.setCoachee(nuevoCliente);
 		//nuevoProceso.setIdTpago(20L);
 		RegContable nuevoRegistro = registroDao.findById(2L);
 		nuevoProceso.setRegContable(nuevoRegistro);
+		nuevoProceso.setFocoProceso("nuevo foco");
+		
 		
 		procesoDao.save(nuevoProceso);
 	

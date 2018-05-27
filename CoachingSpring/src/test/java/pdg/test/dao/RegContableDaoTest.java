@@ -52,11 +52,15 @@ public class RegContableDaoTest {
 		
 		RegContable registro = new RegContable();
 		registro.setIdHis(registroDao.genSecuencia());
-		Coachee coa = coacheeDao.findById(2L);
+		Coachee coa = coacheeDao.findById(1L);
 		registro.setCoachee(coa);
 		Date fecha = new Date();
 		registro.setFechaPago(fecha);
 		registro.setTipo("tipo 2");
+		registro.setCredito(Double.parseDouble("10000"));
+		registro.setdebito(Double.parseDouble("1000"));
+		registro.setSaldo(Double.parseDouble("500"));
+		
 		//registro.setValor(Double.parseDouble("50000"));
 		
 		

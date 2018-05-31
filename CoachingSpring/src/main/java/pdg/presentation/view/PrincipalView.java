@@ -19,19 +19,28 @@ public class PrincipalView {
 
 
 	public String clientesAction() {
+		System.out.println("clientesAction");
 		return "/XHTML/gestionCoacheeView.xhtml";
+		
 	}
 	
 	public String perfilAction() {
+		System.out.println("perfilAction");
 		return "/XHTML/coach.xhtml";
 	}
 	public String pagosAction() {
+		System.out.println("PagosAction");
 		return "/XHTML/agendarSesion.xhtml";
 	}
 	public String procesosAction() {
+		System.out.println("ProcesosAction");
 		return "/XHTML/procCoachingListDataTable.xhtml";
 	}
 	
+	public String sesionesAction() {
+		System.out.println("SesionesAction");
+		return "/XHTML/principalFinal.xhtml";
+	}
 	
 	
 	 

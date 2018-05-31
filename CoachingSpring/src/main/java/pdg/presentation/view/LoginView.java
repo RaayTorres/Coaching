@@ -79,7 +79,9 @@ public class LoginView {
             return "/login.xhtml";
         }
 
-        return "/XHTML/principal.xhtml";
+       //return "/XHTML/principal.xhtml";
+        //System.out.println("/XHTML/principalFinal.xhtml");
+        return "/XHTML/principalFinal.xhtml";
     }
 
 

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Ventana principal</title>
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css" />
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+		integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+		crossorigin="anonymous" />
+
+	<link
+		href="https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC|Montserrat|Open+Sans|Oswald|Roboto+Condensed|Roboto+Slab|Slabo+27px"
+		rel="stylesheet" />
+	<link rel="stylesheet" href="style3.css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		rel="stylesheet" />
+
+</h:head>
+<h:body>
+
+	<div class="container">
+		<div class="row">
+
+			<center>
+
+				<div id="cuadro" class="col-2">
+					<div class="container">
+						<center>
+							<img
+								src="http://emdr-es.org/wp-content/uploads/2016/07/Persona-leyendo-%C3%ADcono.jpg"
+								style="width: 20%; hight: 20%; margin-top: 2%;" alt=""
+								class="circle responsive-img" />
+						</center>
+					</div>
+					<br />
+
+
+					<div>
+
+						<center>
+							<p:commandButton id="boton1" value="Perfil"
+								styleClass="btn btn-info" actionListener="#{PrincipalView.perfilAction()}" />
+							<p:commandButton id="boton2" value="Procesos"
+								styleClass="btn btn-info" action="#{PrincipalView.procesosAction()}"/>
+							<p:commandButton id="boton3" value="Pagos"
+								styleClass="btn btn-info" action="#{PrincipalView.pagosAction()}" />
+							<p:commandButton id="boton4" value="Clientes"
+								styleClass="btn btn-info" action="#{PrincipalView.clientesAction()}" />
+
+							<p:commandButton id="boton5" value="Sesiones"
+								styleClass="btn btn-info" action="#{PrincipalView.sesionesAction()}" />
+						</center>
+					</div>
+
+
+				</div>
+			</center>
+			<br />
+
+			<div class="row" id="cuadro2">
+				<div class="col-10">
+
+
+
+					<h5 style="text-align: center; color: black"><STRONG>Sesiones de hoy</STRONG></h5>
+
+					<center>
+					
+					<p:galleria value="#{coacheeView.sesHoy}" var="apt"
+							 showCaption="true" >
+								<p:graphicImage value="#{coacheeView.filedownload}" 
+								alt=" Hora: 
+								#{apt.hora} Foco
+								 Proceso: #{apt.focoSesion}"   title="#{apt.procCoaching.coachee.nombre} #{apt.procCoaching.coachee.apellido}" >
+									<f:param name="id" value="#{apt.procCoaching.coachee.idCoachee}" />
+								</p:graphicImage>
+
+						</p:galleria>
+					
+					
+					</center>
+
+
+				</div>
+				
+				<br />
+			</div>
+
+		</div>
+	</div>
+
+
+
+	
+
+
+	<!-- Compiled and minified JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</h:body>
+</html>

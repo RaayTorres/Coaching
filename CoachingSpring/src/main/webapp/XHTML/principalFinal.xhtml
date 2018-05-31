@@ -22,15 +22,57 @@
 	<link rel="stylesheet" href="style3.css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 		rel="stylesheet" />
+		
+		<h:outputStylesheet library="css" name="style3.css"/>
+
+
+<style>
+
+.ui-priority-primary{
+      background: grey darken-2;
+ }
+ 
+ .btn, .btn-large, .btn-small {
+    text-decoration: none;
+    /* color: #fff; */
+    background-color: #26a69a;
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+}
+
+</style>
 
 </h:head>
+
+<style>
+
+.ui-priority-primary{
+      background: grey darken-2;
+ }
+ 
+  .btn, .btn-large, .btn-small {
+    text-decoration: none;
+     color:  #333333;
+    background-color: #26a69a;
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+}
+
+</style>
 <h:body>
 
 	<div class="container">
 		<div class="row">
-
-			<center>
+		<h:form>
 			<p:growl id="msgGrowl" autoUpdate="true" showDetail="false" />
+			<center>
+			
 				<div id="cuadro" class="col-2">
 					<div class="container">
 						<center>
@@ -46,18 +88,20 @@
 					<div>
 
 						<center>
-							<p:commandButton action="#{PrincipalView.perfilAction()}" id="boton1" value="Perfil"
-								styleClass="ui-priority-primary" 
+						
+							
+							<p:commandButton  action="#{PrincipalView.perfilAction}" id="boton1" value="Perfil"
+								styleClass="btn"  
 								 update="msgGrowl"/>
 							<p:commandButton id="boton2" value="Procesos"
-								styleClass="ui-priority-primary" action="#{PrincipalView.procesosAction()}" update="msgGrowl"/>
+								styleClass="waves-effect waves-light btn" action="#{PrincipalView.procesosAction}" update="msgGrowl"/>
 							<p:commandButton id="boton3" value="Pagos"
-								styleClass="ui-priority-primary" action="#{PrincipalView.pagosAction()}"  update="msgGrowl"/>
-							<p:commandButton id="boton4" value="Clientes"
-								styleClass="ui-priority-primary" action="#{PrincipalView.clientesAction()}"  update="msgGrowl"/>
+								styleClass="waves-effect waves-light btn" action="#{PrincipalView.pagosAction}"  update="msgGrowl"/>
+							<p:commandButton  id="boton4" value="Clientes"
+								styleClass="waves-effect waves-light btn" action="#{PrincipalView.clientesAction}"  update="msgGrowl"/>
 
 							<p:commandButton id="boton5" value="Sesiones"
-								styleClass="ui-priority-primary" actionListener="#{PrincipalView.sesionesAction()}" update="msgGrowl"/>
+								styleClass="waves-effect waves-light btn " actionListener="#{PrincipalView.sesionesAction}" update="msgGrowl"/>
 						</center>
 					</div>
 
@@ -94,7 +138,7 @@
 				
 				<br />
 			</div>
-
+</h:form>
 		</div>
 	</div>
 

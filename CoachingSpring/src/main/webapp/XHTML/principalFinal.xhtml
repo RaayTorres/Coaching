@@ -30,7 +30,7 @@
 		<div class="row">
 
 			<center>
-
+			<p:growl id="msgGrowl" autoUpdate="true" showDetail="false" />
 				<div id="cuadro" class="col-2">
 					<div class="container">
 						<center>
@@ -46,17 +46,18 @@
 					<div>
 
 						<center>
-							<p:commandButton id="boton1" value="Perfil"
-								styleClass="btn btn-info" actionListener="#{PrincipalView.perfilAction()}" />
+							<p:commandButton action="#{PrincipalView.perfilAction()}" id="boton1" value="Perfil"
+								styleClass="ui-priority-primary" 
+								 update="msgGrowl"/>
 							<p:commandButton id="boton2" value="Procesos"
-								styleClass="btn btn-info" action="#{PrincipalView.procesosAction()}"/>
+								styleClass="ui-priority-primary" action="#{PrincipalView.procesosAction()}" update="msgGrowl"/>
 							<p:commandButton id="boton3" value="Pagos"
-								styleClass="btn btn-info" action="#{PrincipalView.pagosAction()}" />
+								styleClass="ui-priority-primary" action="#{PrincipalView.pagosAction()}"  update="msgGrowl"/>
 							<p:commandButton id="boton4" value="Clientes"
-								styleClass="btn btn-info" action="#{PrincipalView.clientesAction()}" />
+								styleClass="ui-priority-primary" action="#{PrincipalView.clientesAction()}"  update="msgGrowl"/>
 
 							<p:commandButton id="boton5" value="Sesiones"
-								styleClass="btn btn-info" action="#{PrincipalView.sesionesAction()}" />
+								styleClass="ui-priority-primary" actionListener="#{PrincipalView.sesionesAction()}" update="msgGrowl"/>
 						</center>
 					</div>
 

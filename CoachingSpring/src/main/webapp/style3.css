@@ -34,7 +34,7 @@ body {
 
 #boton1{
 	background:#585858;
-	border-radius: 15%;
+	
 	height:155% ;
 	width: 15%;
 	font-size: 80%;
@@ -42,7 +42,6 @@ body {
 }
 #boton2{
 	background:#585858;
-	border-radius: 15%;
 	height:155% ;
 	width: 15%;
 	font-size: 80%;
@@ -50,7 +49,7 @@ body {
 }
 #boton3{
 	background:#585858;
-	border-radius: 15%;
+	
 	height:155% ;
 	width: 15%;
 	font-size: 80%;
@@ -58,7 +57,7 @@ body {
 }
 #boton4{
 	background:#585858;
-	border-radius: 15%;
+	
 	height:155% ;
 	width: 15%;
 	font-size: 80%;
@@ -66,7 +65,7 @@ body {
 }
 #boton5{
 	background:#585858;
-	border-radius: 15%;
+
 	height:155% ;
 	width: 15%;
 	font-size: 80%;

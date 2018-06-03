@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Ventana principal</title>
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css" />
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+		integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+		crossorigin="anonymous" />
+
+	<link
+		href="https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC|Montserrat|Open+Sans|Oswald|Roboto+Condensed|Roboto+Slab|Slabo+27px"
+		rel="stylesheet" />
+	<link rel="stylesheet" href="style3.css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		rel="stylesheet" />
+		
+		<h:outputStylesheet library="css" name="style3.css"/>
+
+
+<style>
+
+.ui-priority-primary{
+      background: grey darken-2;
+ }
+ 
+ .btn, .btn-large, .btn-small {
+    text-decoration: none;
+    /* color: #fff; */
+     color:  #333333;
+    
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+}
+
+
+
+</style>
+
+</h:head>
+
+<style>
+
+.ui-priority-primary{
+      background: grey darken-2;
+ }
+ 
+  .btn, .btn-large, .btn-small {
+    text-decoration: none;
+     color:  #333333;
+  
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+}
+
+</style>
+<h:body>
+
+	<div class="container">
+		<div class="row">
+		<h:form>
+			<p:growl id="msgGrowl" autoUpdate="true" showDetail="false" />
+			<center>
+			
+				<div id="cuadro" class="col-2">
+					<div class="container">
+						<center>
+							<img
+								src="http://emdr-es.org/wp-content/uploads/2016/07/Persona-leyendo-%C3%ADcono.jpg"
+								style="width: 20%; hight: 20%; margin-top: 2%;" alt=""
+								class="circle responsive-img" />
+						</center>
+					</div>
+					<br />
+
+
+					<div>
+
+						<center>
+						
+							
+							<p:commandButton  action="#{PrincipalView.perfilAction}" id="boton1" value="Perfil"
+								styleClass="btn"  
+								 update="msgGrowl"/>
+							<p:commandButton id="boton2" value="Procesos"
+								styleClass="waves-effect waves-light btn" action="#{PrincipalView.procesosAction}" update="msgGrowl"/>
+							<p:commandButton id="boton3" value="Pagos"
+								styleClass="waves-effect waves-light btn" action="#{PrincipalView.pagosAction}"  update="msgGrowl"/>
+							<p:commandButton  id="boton4" value="Clientes"
+								styleClass="waves-effect waves-light btn" action="#{PrincipalView.clientesAction}"  update="msgGrowl"/>
+
+							<p:commandButton id="boton5" value="Sesiones"
+								styleClass="waves-effect waves-light btn " actionListener="#{PrincipalView.sesionesAction}" update="msgGrowl"/>
+						</center>
+					</div>
+
+
+				</div>
+			</center>
+			<br />
+
+			<div class="row" id="cuadro2">
+				
+
+
+
+					
+					<h5 style="text-align: center; color: black"><STRONG>Información personal</STRONG></h5>
+
+					<center>
+					
+						<div class="input-field col s12">
+							<i class="material-icons prefix">account_circle</i>
+							<p:inputText id="usernameField" name="j_username"
+								value="" />
+
+							<label for="icon_prefix"
+								style="color: black; font-family: Oswald; font-size: 120%;">Nombre</label>
+						</div>
+						
+								<div class="input-field col s12">
+							<i class="material-icons prefix">person_outline</i>
+							<p:inputText id="usernameField2" name="j_username2"
+								value="" />
+
+							<label for="icon_prefix"
+								style="color: black; font-family: Oswald; font-size: 120%;">Apellido</label>
+						</div>
+						
+									<div class="input-field col s12">
+							<i class="material-icons prefix">contact_mail</i>
+							<p:inputText id="usernameField3" name="j_username3"
+								value="" />
+
+							<label for="icon_prefix"
+								style="color: black; font-family: Oswald; font-size: 120%;">Correo electronico</label>
+						</div>
+						
+									<div class="input-field col s12">
+							<i class="material-icons prefix">contact_phone</i>
+							<p:inputText id="usernameField4" name="j_username4"
+								value="" />
+
+							<label for="icon_prefix"
+								style="color: black; font-family: Oswald; font-size: 120%;">Telefono celular</label>
+						</div>
+						
+								<div class="input-field col s12">
+							<i class="material-icons prefix">local_phone</i>
+							<p:inputText id="usernameField5" name="j_username5"
+								value="" />
+
+							<label for="icon_prefix"
+								style="color: black; font-family: Oswald; font-size: 120%;">Telefono fijo</label>
+						</div>
+						
+							<div class="input-field col s12">
+							<i class="material-icons prefix">assignment_ind</i>
+							<p:inputText id="usernameField6" name="j_username6"
+								value="" />
+
+							<label for="icon_prefix"
+								style="color: black; font-family: Oswald; font-size: 120%;">Login</label>
+						</div>
+						
+						<div class="input-field col s12">
+							<i class="material-icons prefix">lock</i>
+							<p:password id="passwordField" name="j_password"
+								value="" />
+
+							<label for="password"
+								style="color: black; font-family: Oswald; font-size: 120%;">Contraseña</label>
+						</div>
+						
+							<div class="col s12" id="boton">
+								
+								
+							<p:commandButton action="#{loginView.login()}"
+								value="Guardar cambios" styleClass="ui-priority-primary" update="msgGrowl" />
+
+
+							<br/>
+						</div>
+						
+						<br/>
+						
+					</center>
+
+
+				
+				
+				<br />
+			</div>
+</h:form>
+		</div>
+	</div>
+
+
+
+	
+
+
+	<!-- Compiled and minified JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</h:body>
+</html>

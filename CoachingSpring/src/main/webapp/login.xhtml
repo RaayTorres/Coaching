@@ -37,9 +37,9 @@
 							<i class="material-icons prefix">account_circle</i>
 							<p:inputText id="usernameField" name="j_username"
 								value="#{loginView.userId}" />
-
+							<br/>
 							<label for="icon_prefix"
-								style="color: black; font-family: Oswald; font-size: 150%;">Usuario</label>
+								style="color: black; font-family: Oswald; font-size: 110%;">Usuario</label>
 						</div>
 						<div class="input-field col s12">
 							<i class="material-icons prefix">lock</i>
@@ -47,10 +47,11 @@
 								value="#{loginView.password}" />
 
 							<label for="password"
-								style="color: black; font-family: Oswald; font-size: 150%;">Contraseña</label>
+								style="color: black; font-family: Oswald; font-size: 110%;">Contraseña</label>
 						</div>
 						<div class="col s12" id="boton">
-
+								
+								
 							<p:commandButton action="#{loginView.login()}"
 								value="Iniciar Sesion" styleClass="ui-priority-primary" update="msgGrowl" />
 

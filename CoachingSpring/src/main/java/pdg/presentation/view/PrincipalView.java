@@ -27,7 +27,8 @@ public class PrincipalView {
 	public String perfilAction() {
 		System.out.println("perfilAction");
 	//	return "/XHTML/NewFile.xhtml";
-		return "/XHTML/coach.xhtml";
+		//return "/XHTML/coach.xhtml";
+		return "/XHTML/coachDefinitivo.xhtml";
 	}
 	public String pagosAction() {
 		System.out.println("PagosAction");

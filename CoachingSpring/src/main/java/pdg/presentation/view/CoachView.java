@@ -11,6 +11,7 @@ import javax.faces.bean.ViewScoped;
 
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
+import org.primefaces.component.password.Password;
 import org.primefaces.model.DefaultStreamedContent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,8 +51,28 @@ public class CoachView implements Serializable {
     private CoachDTO selectedCoach;
     private Coach entity;
     private boolean showDialog;
+    private String passwordCoach;
+    private Password txtClave;
+  
+
     
     
+	public String getPasswordCoach() {
+		return passwordCoach;
+	}
+
+	public Password getTxtClave() {
+		return txtClave;
+	}
+
+	public void setTxtClave(Password txtClave) {
+		this.txtClave = txtClave;
+	}
+
+	public void setPasswordCoach(String passwordCoach) {
+		this.passwordCoach = passwordCoach;
+	}
+
 	private DefaultStreamedContent filedownload;
 
     

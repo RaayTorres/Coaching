@@ -16,8 +16,11 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.hazelcast.util.concurrent.BusySpinIdleStrategy;
+
 import pdg.exceptions.ZMessManager;
 import pdg.modelo.Coach;
+import pdg.modelo.Coachee;
 import pdg.modelo.dto.CoachDTO;
 import pdg.presentation.businessDelegate.IBusinessDelegate;
 import pdg.utilities.FacesUtils;
@@ -33,9 +36,9 @@ public class CoachView implements Serializable {
     private InputText txtCelular;
     private InputText txtContrasena;
     private InputText txtCorreo;
-    //private InputText txtHoraPagada;
-  //  private InputText txtHoraProbono;
-    //private InputText txtIdentificacion;
+    private InputText txtHoraPagada;
+    private InputText txtHoraProbono;
+    private InputText txtIdentificacion;
     private InputText txtLogin;
     private InputText txtNombre;
     private InputText txtTelefono;
@@ -57,6 +60,32 @@ public class CoachView implements Serializable {
 
     
     
+    
+    
+	public InputText getTxtIdentificacion() {
+		return txtIdentificacion;
+	}
+
+	public void setTxtIdentificacion(InputText txtIdentificacion) {
+		this.txtIdentificacion = txtIdentificacion;
+	}
+
+	public InputText getTxtHoraPagada() {
+		return txtHoraPagada;
+	}
+
+	public void setTxtHoraPagada(InputText txtHoraPagada) {
+		this.txtHoraPagada = txtHoraPagada;
+	}
+
+	public InputText getTxtHoraProbono() {
+		return txtHoraProbono;
+	}
+
+	public void setTxtHoraProbono(InputText txtHoraProbono) {
+		this.txtHoraProbono = txtHoraProbono;
+	}
+
 	public String getPasswordCoach() {
 		return passwordCoach;
 	}
@@ -727,5 +756,44 @@ public class CoachView implements Serializable {
 //
 //		return filedownload;
 //	}
+    
+    public String actionSave() {
+    	System.out.println("Action coach save");
+    	entity = new Coach();
+    	 try {
+			
+    		 entity.setIdCoach(businessDelegatorView.genSecuenciaCoach());
+    		 entity.setApellido(FacesUtils.checkString(txtApellido));
+    		 entity.setIdentificacion(FacesUtils.checkString(txtIdentificacion));
+    		 String apeliido = txtApellido.getValue().toString();
+             entity.setCelular(FacesUtils.checkString(txtCelular));
+             entity.setContrasena(FacesUtils.checkString(txtContrasena));
+             entity.setCorreo(FacesUtils.checkString(txtCorreo));
+            entity.setLogin(FacesUtils.checkString(txtLogin));
+             entity.setNombre(FacesUtils.checkString(txtNombre));
+             entity.setTelefono(FacesUtils.checkString(txtTelefono));
+            entity.setTipoDocumento(businessDelegatorView.getTipoDocumento(1L));
+             //long horaPagada= Long.valueOf(txtHoraPagada.getValue().toString()).longValue();
+             double horaPagada= Double.parseDouble(txtHoraPagada.getValue().toString());
+             entity.setHoraPagada(horaPagada);
+             double horaPro = Double.parseDouble(txtHoraProbono.getValue().toString());
+             entity.setHoraProbono(horaPro);
+             
+             businessDelegatorView.saveCoach(entity);
+    		 FacesUtils.addInfoMessage("Se guardo con exito");
+		} catch (Exception e) {
+			e.getMessage();
+			FacesUtils.addErrorMessage("No se pudo realizar el registro" + " " + e.getMessage());
+		}  
+    	
+    	return "";
+    }
+    
+    public String volverAction() {
+    	System.out.println("volver action");
+    	
+    	return "/login.xhtml";
+    	
+    }
     
 }

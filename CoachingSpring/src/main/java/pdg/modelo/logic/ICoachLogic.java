@@ -81,6 +81,7 @@ public interface ICoachLogic {
     
     public Coach validarCredencialesCoach(String login, String passwd)throws Exception;
     
+    public long genSecuencia();
 }
 
 

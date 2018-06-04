@@ -43,18 +43,15 @@
 }
 
 label {
-    
-    color: #333333;
+	color: #333333;
 }
 
-#tipoDoc{
-
-margin-left: 6%;
-margin-right: 6%
-
+#tipoDoc {
+	margin-left: 6%;
+	margin-right: 36%
 }
 
-#pasa{
+#pasa {
 	margin-left: 7%;
 	margin-right: 7%;
 }
@@ -134,26 +131,26 @@ margin-right: 6%
 					<h5 style="text-align: center; color: black">
 						<STRONG>Crear Cliente</STRONG>
 					</h5>
-					<br/>
+					<br />
 
-								<div id="tipoDoc" >
-								
+					<div id="tipoDoc">
+
 						<p:outputLabel id="oplTipoUsuario" value="Tipo de documento:   " />
 						<p:selectOneMenu id="somTipoUsuario"
 							binding="#{coacheeView.somTipoUsuario}">
 							<f:selectItems value="#{coacheeView.losTipoUsuarioItem}" />
 						</p:selectOneMenu>
-						
-						<br/>
 
-							
-						</div>
-						
-						<br/>
-					
+						<br />
+
+
+					</div>
+
+					<br />
+
 					<center>
 
-			
+
 
 						<div class="input-field col s12">
 							<i class="material-icons prefix">account_circle</i>
@@ -167,17 +164,15 @@ margin-right: 6%
 						<div class="input-field col s12">
 							<i class="material-icons prefix">person_outline</i>
 							<p:inputText id="usernameField2" name="j_username2"
-								
 								binding="#{coacheeView.txtApellido}" />
 
 							<label for="icon_prefix"
 								style="color: black; font-family: Oswald; font-size: 120%;">Apellido</label>
 						</div>
-						
+
 						<div class="input-field col s12">
 							<i class="material-icons prefix">assignment_ind</i>
 							<p:inputText id="usernameField22" name="j_username22"
-								
 								binding="#{coacheeView.txtIdentificacion}" />
 
 							<label for="icon_prefix"
@@ -187,7 +182,6 @@ margin-right: 6%
 						<div class="input-field col s12">
 							<i class="material-icons prefix">contact_mail</i>
 							<p:inputText id="usernameField3" name="j_username3"
-								
 								binding="#{coacheeView.txtCorreo}" />
 
 							<label for="icon_prefix"
@@ -198,7 +192,6 @@ margin-right: 6%
 						<div class="input-field col s12">
 							<i class="material-icons prefix">contact_phone</i>
 							<p:inputText id="usernameField4" name="j_username4"
-								
 								binding="#{coacheeView.txtCelular}" />
 
 							<label for="icon_prefix"
@@ -209,44 +202,43 @@ margin-right: 6%
 						<div class="input-field col s12">
 							<i class="material-icons prefix">local_phone</i>
 							<p:inputText id="usernameField5" name="j_username5"
-								
 								binding="#{coacheeView.txtTelefono}" />
 
 							<label for="icon_prefix"
 								style="color: black; font-family: Oswald; font-size: 120%;">Telefono
 								fijo</label>
 						</div>
-						
+
 						<div class="input-field col s12">
 							<i class="material-icons prefix">directions</i>
 							<p:inputText id="usernameField61" name="j_username61"
-								
 								binding="#{coacheeView.txtDireccion}" />
 
 							<label for="icon_prefix"
 								style="color: black; font-family: Oswald; font-size: 120%;">Dirección</label>
 						</div>
-					
-					
-					<div id="pasa">
-					
-					<h:outputText value="Pasatiempos" />
-							<p:inputTextarea rows="6" cols="33"   id="txtHobbies" binding="#{coacheeView.txtHobbies}" />
-					</div>
-					
+
+
+						<div id="pasa">
+
+							<h:outputText value="Pasatiempos" />
+							<p:inputTextarea rows="6" cols="33" id="txtHobbies"
+								binding="#{coacheeView.txtHobbies}" />
+						</div>
+
 
 						<div class="col s12" id="boton">
 
 
-							<p:commandButton action="#{coacheeView.actionSave()}" update="@form"
-								value="Guardar cambios" styleClass="ui-priority-primary"
-								 />
+							<p:commandButton action="#{coacheeView.actionSave()}"
+								update="@form" value="Guardar cambios"
+								styleClass="ui-priority-primary" />
 
 
-							
+
 						</div>
 
-						
+
 
 					</center>
 

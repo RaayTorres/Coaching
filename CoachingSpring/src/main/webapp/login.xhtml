@@ -49,13 +49,18 @@
 							<label for="password"
 								style="color: black; font-family: Oswald; font-size: 120%;">Contraseña</label>
 						</div>
-						<div class="col s12" id="boton">
+						
+						<center>
+						<div class="col s12" >
 								
 								
 							<p:commandButton action="#{loginView.login()}"
 								value="Iniciar Sesion" styleClass="ui-priority-primary" update="msgGrowl" />
-
+								
+							<p:commandButton action="#{loginView.registrarAction()}"
+								value="Registrarse" styleClass="ui-priority-primary" update="msgGrowl" />
 						</div>
+						</center>
 					</div>
 				</h:form>
 			</div>

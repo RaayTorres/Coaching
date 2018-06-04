@@ -152,6 +152,7 @@ public class CoachLogic implements ICoachLogic {
 				}
 			}
             
+            
             coachDAO.save(entity);
             log.debug("save Coach successful");
         } catch (Exception e) {
@@ -541,6 +542,12 @@ public class CoachLogic implements ICoachLogic {
 		}
 
 		return nuevoCoach;
+	}
+
+	@Override
+	public long genSecuencia() {
+		
+		return coachDAO.genSecuencia();
 	}
 	
 	

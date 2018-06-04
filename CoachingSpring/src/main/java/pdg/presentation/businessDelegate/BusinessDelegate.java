@@ -739,6 +739,12 @@ public class BusinessDelegate implements IBusinessDelegate {
 		return procCoachingLogic.sesionesCoachee(coach, client, proc);
 	}
 
+	@Override
+	public long genSecuenciaCoach() {
+		// TODO Auto-generated method stub
+		return coachLogic.genSecuencia();
+	}
+
 	
 	
 }

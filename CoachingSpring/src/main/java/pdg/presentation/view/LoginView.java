@@ -86,6 +86,11 @@ public class LoginView {
 
 
     
+    public String registrarAction() {
+    	System.out.println("Registrar Action");
+    	return "/registroCoach.xhtml";
+    }
+    
     
 	
 }

@@ -36,11 +36,13 @@ public class PrincipalView {
 	}
 	public String procesosAction() {
 		System.out.println("ProcesosAction");
-		return "/XHTML/procCoachingListDataTable.xhtml";
+		//return "/XHTML/procCoachingListDataTable.xhtml";
+		return "/XHTML/procesosDefinitivo.xhtml";
 	}
 	
 	public String sesionesAction() {
 		System.out.println("SesionesAction");
+		//return "/XHTML/principalFinal.xhtml";
 		return "/XHTML/principalFinal.xhtml";
 	}
 	

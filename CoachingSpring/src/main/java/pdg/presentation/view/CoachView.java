@@ -359,7 +359,7 @@ public class CoachView implements Serializable {
             btnModify.setDisabled(true);
             btnClear.setDisabled(false);
             
-          FacesUtils.addInfoMessage(ZMessManager.ENTITY_SUCCESFULLYMODIFIED);
+          FacesUtils.addInfoMessage("Se guardo con exito");
         } catch (Exception e) {
             data = null;
             FacesUtils.addErrorMessage(e.getMessage());

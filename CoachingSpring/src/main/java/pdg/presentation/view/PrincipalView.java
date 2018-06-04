@@ -20,8 +20,8 @@ public class PrincipalView {
 
 	public String clientesAction() {
 		System.out.println("clientesAction");
-		return "/XHTML/gestionCoacheeView.xhtml";
-		
+		//return "/XHTML/gestionCoacheeView.xhtml";
+		return "/XHTML/gestionCoacheeViewDefinitivo.xhtml";
 	}
 	
 	public String perfilAction() {

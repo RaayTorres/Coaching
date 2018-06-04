@@ -556,11 +556,11 @@ Coachee coach= (Coachee)FacesUtils.getfromSession("coachee");
 			entity.setContrasena(con);
 
 			businessDelegatorView.saveCoachee(entity);
-			FacesUtils.addInfoMessage(ZMessManager.ENTITY_SUCCESFULLYSAVED);
+			FacesUtils.addInfoMessage("El registro fue exitoso");
 
 		} catch (Exception e) {
 			entity = null;
-			FacesUtils.addErrorMessage(e.getMessage());
+			FacesUtils.addErrorMessage("No se pudo realizar el registro"+" "+e.getMessage());
 		}
 		return "";
 	}

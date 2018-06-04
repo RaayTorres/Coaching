@@ -147,7 +147,12 @@
 
 								<p:commandButton id="btnRed"
 									binding="#{coacheeView.btnRedirigirMas}" value="Ver más"
-									action="#{coacheeView.actionRedirigirMas()}" />
+									action="#{coacheeView.actionRedirigirMas()}" >
+										<f:setPropertyActionListener value="#{proc.coachee}" 
+								target="#{coacheeView.entity}"/>
+								</p:commandButton>
+								
+								
 
 							</p:column>
 						</p:dataTable>

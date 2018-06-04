@@ -176,7 +176,7 @@ label {
 						<div class="input-field col s12">
 							<i class="material-icons prefix">account_circle</i>
 							<p:inputText id="usernameField" name="j_username"
-								binding="#{coacheeView.txtNombre}" />
+								binding="#{coacheeView.txtNombre}" value="#{coacheeView.entity.nombre}" />
 
 							<label for="icon_prefix"
 								style="color: black; font-family: Oswald; font-size: 120%;">Nombre</label>
@@ -185,7 +185,7 @@ label {
 						<div class="input-field col s12">
 							<i class="material-icons prefix">person_outline</i>
 							<p:inputText id="usernameField2" name="j_username2"
-								binding="#{coacheeView.txtApellido}" />
+								binding="#{coacheeView.txtApellido}" value="#{coacheeView.entity.apellido}" />
 
 							<label for="icon_prefix"
 								style="color: black; font-family: Oswald; font-size: 120%;">Apellido</label>
@@ -194,7 +194,7 @@ label {
 						<div class="input-field col s12">
 							<i class="material-icons prefix">assignment_ind</i>
 							<p:inputText id="usernameField22" name="j_username22"
-								binding="#{coacheeView.txtIdentificacion}" />
+								binding="#{coacheeView.txtIdentificacion}" value="#{coacheeView.entity.identificacion}" />
 
 							<label for="icon_prefix"
 								style="color: black; font-family: Oswald; font-size: 120%;">identificación</label>
@@ -203,7 +203,7 @@ label {
 						<div class="input-field col s12">
 							<i class="material-icons prefix">contact_mail</i>
 							<p:inputText id="usernameField3" name="j_username3"
-								binding="#{coacheeView.txtCorreo}" />
+								binding="#{coacheeView.txtCorreo}" value="#{coacheeView.entity.correo}" />
 
 							<label for="icon_prefix"
 								style="color: black; font-family: Oswald; font-size: 120%;">Correo
@@ -213,7 +213,7 @@ label {
 						<div class="input-field col s12">
 							<i class="material-icons prefix">contact_phone</i>
 							<p:inputText id="usernameField4" name="j_username4"
-								binding="#{coacheeView.txtCelular}" />
+								binding="#{coacheeView.txtCelular}" value="#{coacheeView.entity.celular}" />
 
 							<label for="icon_prefix"
 								style="color: black; font-family: Oswald; font-size: 120%;">Telefono
@@ -223,7 +223,7 @@ label {
 						<div class="input-field col s12">
 							<i class="material-icons prefix">local_phone</i>
 							<p:inputText id="usernameField5" name="j_username5"
-								binding="#{coacheeView.txtTelefono}" />
+								binding="#{coacheeView.txtTelefono}" value="#{coacheeView.entity.telefono}"/>
 
 							<label for="icon_prefix"
 								style="color: black; font-family: Oswald; font-size: 120%;">Telefono
@@ -233,7 +233,7 @@ label {
 						<div class="input-field col s12">
 							<i class="material-icons prefix">directions</i>
 							<p:inputText id="usernameField61" name="j_username61"
-								binding="#{coacheeView.txtDireccion}" />
+								binding="#{coacheeView.txtDireccion}" value="#{coacheeView.entity.direccion}" />
 
 							<label for="icon_prefix"
 								style="color: black; font-family: Oswald; font-size: 120%;">Dirección</label>
@@ -244,7 +244,7 @@ label {
 
 							<h:outputText value="Pasatiempos" />
 							<p:inputTextarea rows="6" cols="33" id="txtHobbies"
-								binding="#{coacheeView.txtHobbies}" />
+								binding="#{coacheeView.txtHobbies}" value="#{coacheeView.entity.hobbies}" />
 						</div>
 
 
@@ -266,6 +266,13 @@ label {
 
 						</div>
 
+						<div class="col s12" id="boton">
+						
+							<p:commandButton id="btnSave" binding="#{coacheeView.btnModify}"
+									value="Guardar Cambios"
+									action="#{coacheeView.action_modify()}"
+									update="@form" />
+						</div>
 					</center>
 
 

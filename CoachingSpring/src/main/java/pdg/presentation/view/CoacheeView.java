@@ -529,9 +529,9 @@ Coachee coach= (Coachee)FacesUtils.getfromSession("coachee");
 		Coachee ent= entity;
 		 FacesUtils.putinSession("coachee", ent);
 
-		return "/XHTML/verMasCoachee.xhtml";
+	//	return "/XHTML/verMasCoachee.xhtml";
 	//	return "/XHTML/crearCoachee.xhtml";
-
+		 return "/XHTML/verMasDefinitivo.xhtml"; 	
 	}
 
 	///

@@ -75,7 +75,8 @@ public class CoacheeView implements Serializable {
 	private InputText txtIdEstado_Estado;
 	private InputText txtIdDoc_TipoDocumento;
 	private InputText txtIdCoachee;
-	
+	private InputText txtContrasena;
+	private InputText txtLogin;
 	private Integer txtProgreso;
 	
 	
@@ -111,7 +112,20 @@ public class CoacheeView implements Serializable {
 	private IBusinessDelegate businessDelegatorView;
 
 
+	
 
+	public InputText getTxtContrasena() {
+		return txtContrasena;
+	}
+	public void setTxtContrasena(InputText txtContrasena) {
+		this.txtContrasena = txtContrasena;
+	}
+	public InputText getTxtLogin() {
+		return txtLogin;
+	}
+	public void setTxtLogin(InputText txtLogin) {
+		this.txtLogin = txtLogin;
+	}
 	public InputText getTxtApellido() {
 		return txtApellido;
 	}
@@ -490,8 +504,8 @@ Coachee coach= (Coachee)FacesUtils.getfromSession("coachee");
 	public String actionRedirigir() {
 
 
-		return "/XHTML/crearCoachee.xhtml";
-
+		//return "/XHTML/crearCoachee.xhtml";
+		return "/XHTML/crearClienteDefinitivo.xhtml";
 	}
 
 
@@ -530,7 +544,6 @@ Coachee coach= (Coachee)FacesUtils.getfromSession("coachee");
 			entity.setCelular(txtCelular.getValue().toString());
 			entity.setCorreo(FacesUtils.checkString(txtCorreo));
 			entity.setDireccion(txtDireccion.getValue().toString());
-
 			entity.setHobbies(FacesUtils.checkString(txtHobbies));
 			entity.setIdentificacion(FacesUtils.checkString(txtIdentificacion));
 			entity.setNombre(FacesUtils.checkString(txtNombre));
